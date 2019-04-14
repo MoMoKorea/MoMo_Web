@@ -1,9 +1,13 @@
 from django.db import models
 from django.utils import timezone
-
+from job.models.job_sex import JobSexModel
 
 
 class Job(models.Model):
+
+    class Meta:
+        db_table = "job"
+
 
     id = models.BigAutoField(primary_key=True)
     user_id = models.BigIntegerField(default=0, help_text='회원 번호')
@@ -14,7 +18,7 @@ class Job(models.Model):
     location_id = models.SmallIntegerField(default=1)
     sub_location_id = models.SmallIntegerField(default=1)
     third_location_id = models.SmallIntegerField(default=1)
-    worker_sex_id = models.SmallIntegerField(default=1)
+    worker_sex = models.ForeignKey(JobSexModel, on_delete=models.SET_NULL, null=True)
     worker_age_id = models.SmallIntegerField(default=1)
     has_car = models.BooleanField(default=False)
     description = models.TextField(default="")
@@ -26,10 +30,5 @@ class Job(models.Model):
     end_working_date = models.DateField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
-    
-    class Meta:
-        db_table = "job"
-
-
 
 

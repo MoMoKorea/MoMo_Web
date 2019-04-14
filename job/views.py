@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from pprint import pprint, pformat
-from .models import Job
+from job.models.job import Job
 import logging
 
 logger = logging.getLogger(__name__)
