@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from job.models.job_sex import JobSexModel
+from job.models.job_age import JobAgeModel
 
 
 class Job(models.Model):
@@ -19,7 +20,7 @@ class Job(models.Model):
     sub_location_id = models.SmallIntegerField(default=1)
     third_location_id = models.SmallIntegerField(default=1)
     worker_sex = models.ForeignKey(JobSexModel, on_delete=models.SET_NULL, null=True)
-    worker_age_id = models.SmallIntegerField(default=1)
+    worker_age = models.ForeignKey(JobAgeModel, on_delete=models.SET_NULL, null=True)
     has_car = models.BooleanField(default=False)
     description = models.TextField(default="")
     start_available_calling_time = models.SmallIntegerField(default=9)
