@@ -25,7 +25,7 @@ SECRET_KEY = '^f4h*i)xwqt5e_1deirro#0$@bkj3u=ejap&(c9k-s49+l_=fx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'momo',
     'job',
 ]

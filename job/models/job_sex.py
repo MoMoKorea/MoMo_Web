@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class JobSexModel(models.Model):
+class JobSexORM(models.Model):
     class Meta:
         db_table = "job_sex"
 
