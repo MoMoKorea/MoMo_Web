@@ -1,11 +1,9 @@
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from pprint import pprint, pformat
-from job.models.job import JobORM
-from job.entities.job import Job
 from .queries import JobRecords
-from rest_framework.parsers import JSONParser
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.shortcuts import render
 
 import logging
 
@@ -13,23 +11,26 @@ logger = logging.getLogger(__name__)
 
 
 @csrf_exempt
+@api_view(['GET', 'POST'])
 def register(request):
 
 
     if request.method == 'POST':
 
-
-        # 0. 벨리데이션 체크
+        # 스크립트쪽에서 한번 하겠지만 한번 더 한다.
+        # TODO 0. 벨리데이션 체크
 
         # 1. DB에 데이터를 저장한다.
-        newJob = JobRecords.create(request)
+        jobSerializer = JobRecords.create(request)
+        #TODO 레코드용 테이블을 추가한다.
 
         # 2. 화면에 등록 성공/실패여부를 노출한다.
+        if (jobSerializer):
+            return Response({'data': 'success'})
+        else:
+            return HttpResponse('none')
 
-        # if cart is None:
-        #     return Response(display_cart_json(CartRecords.create(identifier)),status=HTTP_201_CREATED)
+        #TODO 리다이렉트는 스크립트에서 팝업을 뛰워주고 이동한다.
 
-
-        return HttpResponse('ok')
-    else:
-        return render(request, 'home.html')
+    elif request.method == 'GET':
+        return render(request, template_name='test.html', context={'title': '타이틀입니다.'})

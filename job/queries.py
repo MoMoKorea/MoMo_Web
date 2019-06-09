@@ -16,9 +16,12 @@ class JobRecords:
     @staticmethod
     def create(request):
         # job = Job(request)
-        serializer = JobSerializer(data=request.POST)
+        serializer = JobSerializer(data=request.data)
         if serializer.is_valid():
-            return serializer.save()
+            serializer.save()
+            return serializer
+        else:
+            return None
 
 
         # out = Product(reference, price, 0, 0)
