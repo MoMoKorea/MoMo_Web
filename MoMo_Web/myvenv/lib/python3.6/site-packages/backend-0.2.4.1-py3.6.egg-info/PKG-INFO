@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: backend
+Version: 0.2.4.1
+Summary: Backend Utility Tools
+Home-page: https://github.com/tr4n2uil/backend.django
+Author: Vibhaj Rajan
+Author-email: vibhaj8@gmail.com
+License: MIT
+Description: Backend Utility Tools for Python Django
+Keywords: django backend
+Platform: UNKNOWN

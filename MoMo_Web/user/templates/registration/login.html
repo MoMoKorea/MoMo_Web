@@ -1,0 +1,17 @@
+{#login.html#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인 합시다. </title>
+</head>
+
+<body>
+  <form method = "post">
+    {%csrf_token%}
+    {{ form.as_p }}
+    <input type = "submit" value = "submit">
+    <input type = "reset" value = "reset">
+  </form>
+</body>
+</html>
