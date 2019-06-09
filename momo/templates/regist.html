@@ -1,12 +1,82 @@
 {% include 'head.html' %}
 
 
-<div class="global_head">
-    <div>등록123123하기</div>
+<div class="regist_head">
+  <div>
+    <div class="global_close">
+      <img src="static/images/global/top_x.svg" alt="global_close">
+    </div>
+  </div>
+
+  <h4>등록하기</h4>
 </div>
 
 <div class="regist_body">
-    <div>등록123123하기</div>
+  <div class="container">
+    <!-- step -->
+    <div class="row">
+      <div class="col-3 pr-0">
+        <div class="regist_step_line_p"></div>
+        <div class="regist_step_line_text">1/4</div>
+      </div>
+
+      <div class="col-3 pr-0">
+        <div class="regist_step_line_pd"></div>
+      </div>
+
+      <div class="col-3 pr-0">
+        <div class="regist_step_line_pd"></div>
+      </div>
+
+      <div class="col-3">
+        <div class="regist_step_line_pd"></div>
+      </div>
+    </div>
+
+    <!-- body -->
+
+    <div class="regist_list">
+
+      <!-- 제목 -->
+      <div class="row">
+        <div class="col-12">
+          <div>제목</div>
+          <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다">
+
+        </div>
+      </div>
+
+      <!-- 영아정보 -->
+      <div class="row">
+        <div class="col-12">
+          영아정보
+        </div>
+
+        <div class="col-6 pr-0">
+          <div class="radiobtn_l">
+            <input type="radio" id="regist_age01" name="regist_age">
+            <label for="regist_age01"><span class="regist_emoji">&#x1F476;</span>4~6세</label>
+
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="radiobtn_l">
+            <input type="radio" id="regist_age02" name="regist_age">
+            <label for="regist_age02"><span class="regist_emoji">&#x1F9D2;</span>초등학생</label>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
 </div>
 
 
