@@ -9,39 +9,20 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
 import os
 ## from user.apps import UserConfig
 
-# Sending e-mail Configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'momonim.korea@gmail.com'
-EMAIL_HOST_PASSWORD = 'joekorea3'
-DEFAULT_FROM_MAIL = 'esj1020@gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-
-SERVER_EMAIL = 'momonim.korea@gmail.com'
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^f4h*i)xwqt5e_1deirro#0$@bkj3u=ejap&(c9k-s49+l_=fx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = [
 'django.contrib.admin',
     'django.contrib.auth',
@@ -155,8 +136,11 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 ## AUTH_USER_MODEL = 'custom_user.User'
 
-## ------------------ https://wsvincent.com/django-login-with-email-not-username/ ----------- ##
-
+## ----------------------------------------------------------------------------------------------------- ##
+'''
+ - Title : LogIn/SignUp with django-allauth
+ - URL   : https://wsvincent.com/django-login-with-email-not-username/
+'''
 # emaillogin_project/settings.py
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -170,9 +154,32 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
+# Make email verification mandatory to avoid junk email accounts
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
+
+## ------------------------------------------------------------------------------------------------------- ##
+'''
+ - Title : Sending e-mail Configuration
+ - URL   : https://frfahim.github.io/post/django-registration-with-confirmation-email/
+'''
+'''
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'momonim.korea@gmail.com'
+EMAIL_HOST_PASSWORD = 'joekorea3'
+EMAIL_PORT = 587
+'''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'momonim.korea@gmail.com'
+EMAIL_HOST_PASSWORD = 'joekorea3'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+SERVER_EMAIL = 'momonim.korea@gmail.com'
+DEFAULT_FROM_MAIL = 'momonim.korea'
