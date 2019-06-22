@@ -29,3 +29,17 @@ class JobRecords:
 
 
         # return jobObject
+
+    @staticmethod
+    def get_job_detail(jobId):
+
+        querySet = JobORM.objects.get(id=jobId)
+        job = JobSerializer(querySet)
+
+
+        # 데이터 가공 필요
+        data = job.data.copy()
+        data['carPreference'] = data['carPreference']['value']
+
+        pprint(data)
+        return job

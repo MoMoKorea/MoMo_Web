@@ -21,10 +21,10 @@ class JobORM(models.Model):
     location_id = models.SmallIntegerField(default=1)
     sub_location_id = models.SmallIntegerField(default=1)
     third_location_id = models.SmallIntegerField(default=1)
-    worker_sex_id = models.ForeignKey(JobSexORM, on_delete=models.SET_NULL, null=True, db_column='worker_sex_id')
+    worker_sex_id = models.ForeignKey(JobSexORM, on_delete=models.SET_NULL, null=True, db_column='worker_sex_id', related_name='workerSex')
     worker_age_from = models.IntegerField(help_text='지원 연령대 시작', null=True)
     worker_age_to = models.IntegerField(help_text='지원 연령대 끝', null=True)
-    car_preference_id = models.ForeignKey(JobCarPreferenceORM, on_delete=models.SET_NULL, null=True, db_column='car_preference_id')
+    car_preference_id = models.ForeignKey(JobCarPreferenceORM, on_delete=models.SET_NULL, null=True, db_column='car_preference_id', related_name='carPreference')
     description = models.TextField(default='')
     start_available_calling_time = models.SmallIntegerField(default=9)
     end_available_calling_time = models.SmallIntegerField(default=18)
@@ -34,5 +34,13 @@ class JobORM(models.Model):
     end_working_date = models.DateField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
+
+
+
+    # 영아정보
+    # 근무요일
+    # 희망제출서류
+
+
 
 
