@@ -1,14 +1,8 @@
+import logging
+from pprint import pprint
 
-from job.entities.job import Job
 from job.models.job import JobORM
 from job.serializers import JobSerializer
-from rest_framework.parsers import JSONParser
-from django.http import JsonResponse
-from pprint import pprint, pformat
-
-import logging
-
-
 
 logger = logging.getLogger(__name__)
 class JobRecords:
@@ -35,11 +29,10 @@ class JobRecords:
 
         querySet = JobORM.objects.get(id=jobId)
         job = JobSerializer(querySet)
-
+        pprint(job.data)
 
         # 데이터 가공 필요
-        data = job.data.copy()
-        data['carPreference'] = data['carPreference']['value']
+        # data = job.data.copy()
+        # data['carPreference'] = data['carPreference']['value']
 
-        pprint(data)
-        return job
+        return job.data.copy()

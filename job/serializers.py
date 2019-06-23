@@ -1,17 +1,25 @@
 from rest_framework import serializers
-from .models.job import JobORM, JobCarPreferenceORM
-
-class JobCarPreferenceSerializer(serializers.ModelSerializer):
-
-    class Meta():
-        model = JobCarPreferenceORM
-        fields = '__all__'
-
+from .models.job import JobORM
 
 
 class JobSerializer(serializers.ModelSerializer):
 
-    carPreference = JobCarPreferenceSerializer(source='car_preference_id')
+    carPreference = serializers.ReadOnlyField(source='car_preference_id')
+    workerSex = serializers.ReadOnlyField(source='worker_sex_id')
+
+
+
+
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        ret['carPreference'] = ret['carPreference'].value
+        ret['workerSex'] = ret['workerSex'].sex
+
+        # 필요없는 컬럼 제외
+        ret.pop('car_preference_id')
+        ret.pop('worker_sex_id')
+
+        return ret
 
     class Meta():
         model = JobORM
