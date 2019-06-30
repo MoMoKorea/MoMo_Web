@@ -100,6 +100,10 @@ input{
   width: 100%;
 }
 
+input::placeholder{
+  color: #888;
+}
+
 button{
   background-color: transparent;
   cursor: pointer;
@@ -108,9 +112,10 @@ button{
 
 /* global */
 
-/* select */
+/* input_select */
 
 .selectinput{
+  position: relative;
   margin-top: 12px;
 }
 
@@ -141,9 +146,15 @@ button{
   -webkit-transition: 0.3s;
   transition: 0.3s;
 
+  color: #333;
+
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.selectinput select:invalid{
+  color: #888;
 }
 
 .selectinput select:focus{
@@ -164,6 +175,7 @@ button{
 /* input_text */
 
 .textinput{
+  position: relative;
   margin-top: 12px;
 }
 
@@ -185,6 +197,7 @@ button{
 /* input_number */
 
 .numberinput{
+  position: relative;
   margin-top: 12px;
 }
 
@@ -206,12 +219,13 @@ button{
 /* input_date */
 
 .datebtn_l{
+  position: relative;
   margin-top: 12px;
 }
 
 .datebtn_l input[type=date]{
   width: 100%;
-  padding: 7px 12px 8px 12px;
+  padding: 9px 12px 8px 12px;
 
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -220,7 +234,7 @@ button{
   border: solid 2px #eee;
   color: #888;
   background-color: #fff;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .datebtn_l input[type=date]::before{
@@ -238,7 +252,9 @@ button{
 }
 
 /* input_time */
+
 .timeinput{
+  position: relative;
   margin-top: 12px;
 }
 
@@ -273,6 +289,7 @@ button{
 /* input_radiobtn */
 
 .radiobtn_l{
+  position: relative;
   margin-top: 12px;
 }
 
@@ -282,7 +299,7 @@ button{
 
 .radiobtn_l input[type=radio] + label {
   width: 100%;
-  padding: 7px 12px 8px 12px;
+  padding: 9px 12px 8px 12px;
 
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -290,7 +307,7 @@ button{
 
   border: solid 2px #eee;
   color: #888;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .radiobtn_l input[type=radio]:checked + label {
@@ -331,6 +348,7 @@ button{
 /* input_checkboxbtn */
 
 .checkboxbtn_l{
+  position: relative;
   margin-top: 12px;
 }
 
@@ -340,7 +358,7 @@ button{
 
 .checkboxbtn_l input[type=checkbox] + label {
   width: 100%;
-  padding: 7px 12px 8px 12px;
+  padding: 9px 12px 8px 12px;
 
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -348,7 +366,7 @@ button{
 
   border: solid 2px #eee;
   color: #888;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .checkboxbtn_l input[type=checkbox]:checked + label {
@@ -561,8 +579,18 @@ button{
 
 .regist_emoji{
   position: relative;
-  top: -1px;
-  padding-right: 6px;
+  top: -2px;
 
-  font-size: 18px;
+  padding-right: 5px;
+
+  font-size: 15px;
+}
+
+.regist_documentcheck{
+  position: absolute;
+  right: 14px;
+  top: 14px;
+
+  width: 13px;
+  height: 12px;
 }
