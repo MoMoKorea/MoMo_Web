@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class JobAgeORM(models.Model):
 
     class Meta:

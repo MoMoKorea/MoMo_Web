@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import render
 from .repository import JobRepository
+from pprint import pprint
 
 import logging
 
@@ -53,12 +54,10 @@ Kyle 2019-06-15
 def get_detail(request, jobId):
 
     # 0. 유효하지않은 jobId면 없는페이지로 돌린다
+
     # 1. jobId로 정보들을 불러온다.
     jobData = JobRecords.get_job_detail(jobId)
     # 2. 필요한 정보를 가공한다.
-    # resultData = jobRepository.getJobDetail(jobData)
+    jobDetail = jobRepository.process_job_detail(jobData)
     # 3. 화면으로 가공한 정보를 넘긴다.
-
-
-
-    return render(request, template_name='test.html', context={'title': jobId})
+    return render(request, template_name='test.html', context={'title': jobId, 'data': jobDetail})
