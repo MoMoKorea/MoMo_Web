@@ -59,5 +59,6 @@ def get_detail(request, jobId):
     jobData = JobRecords.get_job_detail(jobId)
     # 2. 필요한 정보를 가공한다.
     jobDetail = jobRepository.process_job_detail(jobData)
+    pprint(jobDetail)
     # 3. 화면으로 가공한 정보를 넘긴다.
     return render(request, template_name='test.html', context={'title': jobId, 'data': jobDetail})
