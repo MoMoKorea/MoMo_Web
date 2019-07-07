@@ -21,8 +21,7 @@ class JobSerializer(serializers.ModelSerializer):
         ret['worker_sex'] = ret['worker_sex'].sex
         ret['worker_age_from'] = ret['worker_age_from'].age
         ret['worker_age_to'] = ret['worker_age_to'].age
-        # day_of_weeks = JobDayOfWeekMappingORM.objects.filter(job_id=ret['id']).day_of_week_id
-        ret['day_of_weeks'] = JobDayOfWeekMappingORM.objects.filter(job_id=ret['id'])
+        ret['day_of_weeks'] = JobDayOfWeekMappingORM.objects.filter(job_id=ret['job_id'])
 
         # 필요없는 컬럼 제외
         ret.pop('car_preference_id')

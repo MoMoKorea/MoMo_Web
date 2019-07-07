@@ -6,6 +6,6 @@ class JobSexORM(models.Model):
         db_table = "job_sex"
 
 
-    id = models.BigAutoField(primary_key=True)
+    job_sex_id = models.BigAutoField(primary_key=True)
     sex = models.CharField(max_length=10, help_text='성별', default="")
     status = models.SmallIntegerField(default=1)

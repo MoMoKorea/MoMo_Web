@@ -12,7 +12,7 @@ class JobORM(models.Model):
         db_table = "job"
 
 
-    id = models.BigAutoField(primary_key=True)
+    job_id = models.BigAutoField(primary_key=True)
     # TODO :: user_id foreignKey
     user_id = models.BigIntegerField(default=0, help_text='회원 번호')
     status = models.SmallIntegerField(default=1)
@@ -41,8 +41,6 @@ class JobORM(models.Model):
 
 
 
-    # 영아정보
-    # 근무요일
     # 희망제출서류
 
 

@@ -19,7 +19,7 @@ class JobRecords:
     @staticmethod
     def get_job_detail(jobId):
 
-        querySet = JobORM.objects.get(id=jobId)
+        querySet = JobORM.objects.get(job_id=jobId)
         jobSerializer = JobSerializer(querySet)
 
         jobData = jobSerializer.data.copy()
