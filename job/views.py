@@ -29,7 +29,7 @@ def register(request):
 
         # 1. DB에 데이터를 저장한다.
         jobSerializer = JobRecords.create(request)
-        #TODO 레코드용 테이블을 추가한다.
+        # TODO 레코드용 테이블을 추가한다.
 
         # 2. 화면에 등록 성공/실패여부를 노출한다.
         # TODO 리다이렉트는 스크립트에서 팝업을 뛰워주고 이동한다.
@@ -42,7 +42,7 @@ def register(request):
 
 
     elif request.method == 'GET':
-        return render(request, template_name='regist_01.html', context={'title': '타이틀입니다.'})
+        return render(request, template_name='regist/regist_01.html', context={'title': '타이틀입니다.'})
 
 
 """

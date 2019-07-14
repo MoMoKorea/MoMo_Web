@@ -1,4 +1,7 @@
 {% include 'head.html' %}
+{% load static %}
+<script src="{% static 'js/job.vue.js' %}"></script>
+
 
 <div class="regist_head">
   <div class="global_close">
@@ -9,7 +12,7 @@
 
 </div>
 
-<div class="regist_body">
+<div id="body" class="regist_body">
   <div class="container">
     <!-- step -->
 
@@ -40,7 +43,7 @@
         <div class="col-12">
           <div>제목</div>
           <div class="textinput">
-            <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다">
+            <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다" v-model="title">
           </div>
 
         </div>
@@ -56,17 +59,19 @@
       </div>
 
       <div class="row">
+        <!-- 4 ~ 6세 -->
         <div class="col-6">
           <div class="radiobtn_l">
-            <input type="radio" id="regist_age01" name="regist_age">
+            <input type="radio" id="regist_age01" name="regist_age" v-bind:value=1 v-model="child_age">
             <label for="regist_age01"><span class="regist_emoji">&#x1F476;</span>4~6세</label>
 
           </div>
         </div>
 
+        <!-- 초등학생 -->
         <div class="col-6">
           <div class="radiobtn_l">
-            <input type="radio" id="regist_age02" name="regist_age">
+            <input type="radio" id="regist_age02" name="regist_age" v-bind:value=2 v-model="child_age">
             <label for="regist_age02"><span class="regist_emoji">&#x1F9D2;</span>초등학생</label>
 
           </div>
@@ -86,13 +91,13 @@
       <div class="row">
         <div class="col-7">
           <div class="numberinput">
-            <input type="number" pattern="\d*" placeholder="희망시급을 입력하세요">
+            <input type="number" pattern="\d*" placeholder="희망시급을 입력하세요" v-model.number="pay">
           </div>
         </div>
 
         <div class="col-5 text_c">
           <div class="checkboxbtn_s">
-            <input type="checkbox" id="regist_moneyafter" name="r_money">
+            <input type="checkbox" id="regist_moneyafter" name="r_money" v-model="isNegotiation">
             <label for="regist_moneyafter">
               <div class="text_c">
                 <svg class="regist_moneyafter" xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 25 22">
@@ -115,7 +120,7 @@
           <div>근무시작일</div>
           <form>
             <div class="datebtn_l">
-              <input type="date" name="workdate" data-placeholder="&#x1F4C5;&nbsp;&nbsp;시작일 선택" required aria-required="true" />
+              <input type="date" name="workdate" data-placeholder="&#x1F4C5;&nbsp;&nbsp;시작일 선택" required aria-required="true" v-model="startWorkingDate" />
             </div>
           </form>
 
@@ -133,61 +138,60 @@
 
       <div class="row text_c">
 
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_mon" name="regist_week">
-              <label for="regist_week_mon">월</label>
+          <div class="col-3" v-for="item in dayOfWeek" >
+            <div class="checkboxbtn_l" v-bind:value="item" v-model="selectedDayOfWeek">
+              <input type="checkbox" id="regist_week_mon" name="regist_week" >
+              <label for="regist_week_mon"> [[item]] </label>
             </div>
-
           </div>
 
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_tue" name="regist_week">
-              <label for="regist_week_tue">화</label>
-            </div>
+          <!--<div class="col-3">-->
+            <!--<div class="checkboxbtn_l">-->
+              <!--<input type="checkbox" id="regist_week_tue" name="regist_week">-->
+              <!--<label for="regist_week_tue">화</label>-->
+            <!--</div>-->
 
-          </div>
+          <!--</div>-->
 
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_wed" name="regist_week">
-              <label for="regist_week_wed">수</label>
-            </div>
+          <!--<div class="col-3">-->
+            <!--<div class="checkboxbtn_l">-->
+              <!--<input type="checkbox" id="regist_week_wed" name="regist_week">-->
+              <!--<label for="regist_week_wed">수</label>-->
+            <!--</div>-->
 
-          </div>
+          <!--</div>-->
 
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_thu" name="regist_week">
-              <label for="regist_week_thu">목</label>
-            </div>
+          <!--<div class="col-3">-->
+            <!--<div class="checkboxbtn_l">-->
+              <!--<input type="checkbox" id="regist_week_thu" name="regist_week">-->
+              <!--<label for="regist_week_thu">목</label>-->
+            <!--</div>-->
 
-          </div>
+          <!--</div>-->
 
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_fri" name="regist_week">
-              <label for="regist_week_fri">금</label>
-            </div>
+          <!--<div class="col-3">-->
+            <!--<div class="checkboxbtn_l">-->
+              <!--<input type="checkbox" id="regist_week_fri" name="regist_week">-->
+              <!--<label for="regist_week_fri">금</label>-->
+            <!--</div>-->
 
-          </div>
+          <!--</div>-->
 
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_sat" name="regist_week">
-              <label for="regist_week_sat">토</label>
-            </div>
+          <!--<div class="col-3">-->
+            <!--<div class="checkboxbtn_l">-->
+              <!--<input type="checkbox" id="regist_week_sat" name="regist_week">-->
+              <!--<label for="regist_week_sat">토</label>-->
+            <!--</div>-->
 
-          </div>
+          <!--</div>-->
 
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_sun" name="regist_week">
-              <label for="regist_week_sun">일</label>
-            </div>
+          <!--<div class="col-3">-->
+            <!--<div class="checkboxbtn_l">-->
+              <!--<input type="checkbox" id="regist_week_sun" name="regist_week">-->
+              <!--<label for="regist_week_sun">일</label>-->
+            <!--</div>-->
 
-          </div>
+          <!--</div>-->
 
       </div>
     </div>
@@ -204,7 +208,7 @@
         <div class="col-6">
           <form>
             <div class="timeinput">
-              <input type="time" name="regist_time" data-placeholder="&#x1F31D;&nbsp;&nbsp;시작" required aria-required="true">
+              <input type="time" name="regist_time" data-placeholder="&#x1F31D;&nbsp;&nbsp;시작" required aria-required="true" v-model="startWorkingTime">
             </div>
           </form>
         </div>
@@ -212,7 +216,7 @@
         <div class="col-6">
           <form>
             <div class="timeinput">
-              <input type="time" name="regist_time" data-placeholder="&#x1F31A;&nbsp;&nbsp;끝" required aria-required="true">
+              <input type="time" name="regist_time" data-placeholder="&#x1F31A;&nbsp;&nbsp;끝" required aria-required="true" v-model="endWorkingTime">
             </div>
           </form>
         </div>

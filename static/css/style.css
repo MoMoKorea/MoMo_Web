@@ -531,6 +531,20 @@ button{
   text-align: center;
 }
 
+.grobal_head{
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.grobal_head h4{
+  font-family: 'NotoSansKR Bold';
+}
+
 .bottombtn{
   position: fixed;
   bottom: 0px;
