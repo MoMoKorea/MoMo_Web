@@ -174,6 +174,31 @@ button{
 
 /* input_text */
 
+.textareainput{
+  position: relative;
+  margin-top: 12px;
+}
+
+.textareainput textarea{
+  width: 100%;
+  padding: 9px 12px 8px 12px;
+
+  color: #333;
+  font-size: 13px;
+
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  border: solid 2px #eee;
+
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.textareainput textarea:focus {
+  border: 2px solid #005cef;
+}
+
 .textinput{
   position: relative;
   margin-top: 12px;
@@ -593,4 +618,37 @@ button{
 
   width: 13px;
   height: 12px;
+}
+
+
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
 }
