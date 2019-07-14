@@ -33,9 +33,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'momo',
-    #'user',
-    #'users.apps.UsersConfig',
-    #'emailusernames',
+    ## 'user',
+    ## 'users.apps.UsersConfig',
+    ## 'emailusernames',
 
     # 3rd party
     'allauth', # new
@@ -59,6 +59,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'momo_web.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -79,12 +80,28 @@ WSGI_APPLICATION = 'momo_web.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases'''
 
+#
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+#
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'momo_web',
+        'USER': 'root',
+        'PASSWORD': '!1q2w3e4r',
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'OPTIONS': {
+                 "init_command": "SET foreign_key_checks = 0;",
+            },
     }
 }
 
