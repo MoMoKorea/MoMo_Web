@@ -6,6 +6,11 @@ from rest_framework.response import Response
 from django.shortcuts import render
 from .repository import JobRepository
 from pprint import pprint
+from django.forms.models import model_to_dict
+
+
+import json
+
 
 import logging
 
@@ -42,7 +47,20 @@ def register(request):
 
 
     elif request.method == 'GET':
-        return render(request, template_name='regist/regist_01.html', context={'title': '타이틀입니다.'})
+
+        # 1. 근무요일, 유아 나이정보, 선호성별, 선호 연령대, 차량 소지여부, 제출서류
+        childAgeList = JobRecords.get_all_child_age()
+        dayOfWeekList = JobRecords.get_all_day_of_week()
+
+        data = {
+            "childAgeList": json.dumps(list(childAgeList.values()))
+            # "dayOfWeekList": list(dayOfWeekList),
+        }
+
+        # data = serializers.serialize('json', model_to_dict(childAgeList))
+
+
+        return render(request, template_name='regist/regist_01.html', context={'title': '타이틀입니다.', 'data': data,})
 
 
 """

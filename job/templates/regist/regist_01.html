@@ -1,6 +1,6 @@
 {% include 'head.html' %}
-{% load static %}
-<script src="{% static 'js/job.vue.js' %}"></script>
+<!--{% load static %}-->
+<!--<script src="{% static 'js/job.vue.js' %}"></script>-->
 
 
 <div class="regist_head">
@@ -41,6 +41,7 @@
     <div class="regist_list">
       <div class="row">
         <div class="col-12">
+
           <div>제목</div>
           <div class="textinput">
             <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다" v-model="title">
@@ -138,8 +139,8 @@
 
       <div class="row text_c">
 
-          <div class="col-3" v-for="item in dayOfWeek" >
-            <div class="checkboxbtn_l" v-bind:value="item" v-model="selectedDayOfWeek">
+          <div class="col-3" v-for="(item, key) in childAgeList" >
+            <div class="checkboxbtn_l" v-bind:value="item">
               <input type="checkbox" id="regist_week_mon" name="regist_week" >
               <label for="regist_week_mon"> [[item]] </label>
             </div>
@@ -241,5 +242,7 @@
   </button> -->
 </div>
 
+
+{% include 'regist/regist_script.html' %}
 
 {% include 'footer.html' %}

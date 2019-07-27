@@ -1,20 +1,20 @@
 
-window.onload = function() {
 
     var app = new Vue({
       el: '#body',
       delimiters: ['[[', ']]'],
 
       data: {
-        title: '',
+        title: "title",
         child_age: 1,
         pay: '',
         isNegotiation: false,
         startWorkingDate: '',
         startWorkingTime: '',
         endWorkingTime: '',
-        dayOfWeek: ['월','화','수','목','금','토','일'],
-        selectedDayOfWeek: [],
+        dayOfWeek: '',
+        selectedDayOfWeek: '',
+        childAgeList: '',
 
       },
 
@@ -31,4 +31,6 @@ window.onload = function() {
 //        }
       }
     })
-}
+
+
+

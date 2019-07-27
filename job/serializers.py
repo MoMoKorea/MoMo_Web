@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models.job import JobORM
-from .models.job_day_of_week_mapping import JobDayOfWeekMappingORM
+from .models import JobORM, JobDayOfWeekMappingORM, ChildAgeORM
 
 
 class JobSerializer(serializers.ModelSerializer):
@@ -42,3 +41,9 @@ class JobSerializer(serializers.ModelSerializer):
 
 
 
+
+class ChildAgeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ChildAgeORM
+        fields = '__all__'

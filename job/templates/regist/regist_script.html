@@ -1,0 +1,14 @@
+
+{% load static %}
+<script src="{% static 'js/job.vue.js' %}"></script>
+
+<script>
+
+    window.onload = function() {
+
+        var childAgeList = {{ data.childAgeList|safe }}
+        app.childAgeList = childAgeList
+
+    }
+
+</script>
