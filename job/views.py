@@ -40,6 +40,7 @@ def register(request):
         # TODO 리다이렉트는 스크립트에서 팝업을 뛰워주고 이동한다.
         # 성공
         if (jobSerializer):
+            # test
             return Response({'data': 'success'})
         # 실패
         else:
