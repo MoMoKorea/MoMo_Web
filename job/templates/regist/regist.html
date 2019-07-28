@@ -1,0 +1,87 @@
+{% include 'head.html' %}
+
+<div id="content">
+
+    <!-- header progress -->
+    <div class="regist_head">
+        <div class="global_close">
+            <img src="../static/images/global/top_x.svg" alt="global_close">
+        </div>
+
+        <h4>등록하기</h4>
+
+    </div>
+
+    <!-- body -->
+    <div class="regist_body">
+        <div class="container">
+            <!-- step -->
+
+            <div class="row">
+                <div class="col-3">
+                    <div v-bind:class="[currentPage >= 1 ? 'regist_step_line_p' : 'regist_step_line_pd']"></div>
+                    <div class="regist_step_line_text" v-show="currentPage == 1">1/4</div>
+                </div>
+
+                <div class="col-3">
+                    <div v-bind:class="[currentPage >= 2 ? 'regist_step_line_p' : 'regist_step_line_pd']"></div>
+                    <div class="regist_step_line_text" v-show="currentPage == 2">2/4</div>
+                </div>
+
+                <div class="col-3">
+                    <div v-bind:class="[currentPage >= 3 ? 'regist_step_line_p' : 'regist_step_line_pd']"></div>
+                    <div class="regist_step_line_text" v-show="currentPage == 3">3/4</div>
+                </div>
+
+                <div class="col-3">
+                    <div v-bind:class="[currentPage >= 4 ? 'regist_step_line_p' : 'regist_step_line_pd']"></div>
+                    <div class="regist_step_line_text" v-show="currentPage == 4">4/4</div>
+                </div>
+            </div>
+
+            <!-- body -->
+
+            <div v-show="currentPage == 1">
+                {% include 'regist/regist_01.html' %}
+            </div>
+
+            <div v-show="currentPage == 2">
+                {% include 'regist/regist_02.html' %}
+            </div>
+
+            <div v-show="currentPage == 3">
+                {% include 'regist/regist_03.html' %}
+            </div>
+
+            <div v-show="currentPage == 4">
+                {% include 'regist/regist_04.html' %}
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- bottom button -->
+    <div class="bottombtn">
+        <button class="bottombtn_back" v-show="currentPage > 1" v-on:click="onBeforePage(currentPage)">
+            <h4>이전으로</h4>
+        </button>
+
+        <button class="bottombtn_p_o" v-on:click="onAfterPage(currentPage)">
+            <h4 v-if="currentPage == 4">등록</h4>
+            <h4 v-else>다음</h4>
+        </button>
+
+        <!-- <button class="bottombtn_p">
+          <h4>다음</h4>
+        </button> -->
+    </div>
+
+</div>
+
+
+{% include 'regist/regist_script.html' %}
+
+
+{% include 'footer.html' %}

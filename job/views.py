@@ -54,14 +54,12 @@ def register(request):
         dayOfWeekList = JobRecords.get_all_day_of_week()
 
         data = {
-            "childAgeList": json.dumps(list(childAgeList.values()))
-            # "dayOfWeekList": list(dayOfWeekList),
+            "childAgeList": json.dumps(list(childAgeList.values())),
+            "dayOfWeekList": json.dumps(list(dayOfWeekList.values()))
         }
 
-        # data = serializers.serialize('json', model_to_dict(childAgeList))
 
-
-        return render(request, template_name='regist/regist_01.html', context={'title': '타이틀입니다.', 'data': data,})
+        return render(request, template_name='regist/regist.html', context={'title': '타이틀입니다.', 'data': data,})
 
 
 """

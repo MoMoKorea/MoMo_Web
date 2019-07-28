@@ -39,10 +39,7 @@ class JobRecords:
 
     @staticmethod
     def get_all_child_age():
-
-        querySet = ChildAgeORM.objects.all()
-        # childAgeSerializer = ChildAgeSerializer(querySet, many=True)
-        return querySet
+        return ChildAgeORM.objects.all()
 
     @staticmethod
     def get_all_day_of_week():
