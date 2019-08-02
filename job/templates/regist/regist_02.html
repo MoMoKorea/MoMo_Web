@@ -79,7 +79,7 @@
         <div class="col-12">
             <div>연락처</div>
             <div class="numberinput">
-                <input type="number" pattern="\d*" placeholder="연락받을 전화번호를 기입하세요">
+                <input type="number" pattern="\d*" placeholder="연락받을 전화번호를 기입하세요" v-model="mobile">
             </div>
 
         </div>
@@ -94,34 +94,23 @@
         </div>
     </div>
 
-    <div class="selectinput">
-        <div class="row">
-            <div class="col-6">
-                <select required>
-                    <option value="" disabled selected>부터</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-
-                <div class="selectinput_arrow">
-                    <img src="../static/images/global/dropdown_arrow.svg" alt="global_close">
+    <div class="row">
+        <div class="col-6">
+            <form>
+                <div class="timeinput">
+                    <input type="time" name="contact_time" data-placeholder="부터" required aria-required="true"
+                           v-model="startAvailableCallingTime">
                 </div>
-            </div>
+            </form>
+        </div>
 
-            <div class="col-6">
-                <select required>
-                    <option value="" disabled selected>까지</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-
-                <div class="selectinput_arrow">
-                    <img src="../static/images/global/dropdown_arrow.svg" alt="global_close">
+        <div class="col-6">
+            <form>
+                <div class="timeinput">
+                    <input type="time" name="contact_time" data-placeholder="까지" required aria-required="true"
+                           v-model="endAvailableCallingTime">
                 </div>
-            </div>
-
+            </form>
         </div>
     </div>
 

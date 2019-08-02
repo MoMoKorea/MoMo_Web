@@ -52,10 +52,17 @@ def register(request):
         # 1. 근무요일, 유아 나이정보, 선호성별, 선호 연령대, 차량 소지여부, 제출서류
         childAgeList = JobRecords.get_all_child_age()
         dayOfWeekList = JobRecords.get_all_day_of_week()
+        preferredSexList = JobRecords.get_all_preferred_sex()
+        preferredAgeList = JobRecords.get_all_preferred_age()
+        preferredCarList = JobRecords.get_all_preferred_car()
+        # requiredDocumentList = JobRecords.get_all_required_document()
 
         data = {
             "childAgeList": json.dumps(list(childAgeList.values())),
-            "dayOfWeekList": json.dumps(list(dayOfWeekList.values()))
+            "dayOfWeekList": json.dumps(list(dayOfWeekList.values())),
+            "preferredSexList": json.dumps(list(preferredSexList.values())),
+            "preferredAgeList": json.dumps(list(preferredAgeList.values())),
+            "preferredCarList": json.dumps(list(preferredCarList.values())),
         }
 
 

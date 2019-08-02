@@ -7,26 +7,15 @@
     </div>
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-4" v-for="item in preferredSexList">
             <div class="radiobtn_l">
-                <input type="radio" id="regist_sex01" name="regist_sex">
-                <label for="regist_sex01"><span class="regist_emoji">&#x1F469;</span>여성</label>
-
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="radiobtn_l">
-                <input type="radio" id="regist_sex02" name="regist_sex">
-                <label for="regist_sex02"><span class="regist_emoji">&#x1F468;</span>남성</label>
-
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="radiobtn_l">
-                <input type="radio" id="regist_sex03" name="regist_sex">
-                <label for="regist_sex03"><span class="regist_emoji">&#x1F44C;</span>상관없음</label>
+                <input type="radio" v-bind:id="'regist_sex_' + item.job_sex_id" name="regist_sex"  v-bind:value="item.job_sex_id" v-model="selectedPreferredSexId">
+                <label v-bind:for="'regist_sex_' + item.job_sex_id">
+                    <span class="regist_emoji" v-if="item.job_sex_id == 1" >&#x1F468;</span>
+                    <span class="regist_emoji" v-else-if="item.job_sex_id == 2" >&#x1F469;</span>
+                    <span class="regist_emoji" v-else-if="item.job_sex_id == 3" >&#x1F44C;</span>
+                    [[ item.sex ]]
+                </label>
 
             </div>
         </div>
@@ -59,26 +48,15 @@
     </div>
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-4" v-for=" item in preferredCarList">
             <div class="radiobtn_l">
-                <input type="radio" id="regist_vehicle01" name="regist_vehicle">
-                <label for="regist_vehicle01"><span class="regist_emoji">&#x1F44D;</span>선호</label>
-
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="radiobtn_l">
-                <input type="radio" id="regist_vehicle02" name="regist_vehicle">
-                <label for="regist_vehicle02"><span class="regist_emoji">&#x1F697;</span>필수</label>
-
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="radiobtn_l">
-                <input type="radio" id="regist_vehicle03" name="regist_vehicle">
-                <label for="regist_vehicle03"><span class="regist_emoji">&#x1F6AB;</span>필요없음</label>
+                <input type="radio" v-bind:id="'regist_vehicle_' + item.car_preference_id" name="regist_vehicle" v-bind:value="item.car_preference_id" v-model="selectedPreferredCarId">
+                <label v-bind:for="'regist_vehicle_' + item.car_preference_id">
+                    <span class="regist_emoji" v-if="item.car_preference_id == 1">&#x1F697;</span>
+                    <span class="regist_emoji" v-else-if="item.car_preference_id == 2">&#x1F44D;</span>
+                    <span class="regist_emoji" v-else-if="item.car_preference_id == 3">&#x1F6AB;</span>
+                    [[ item.value]]
+                </label>
 
             </div>
         </div>

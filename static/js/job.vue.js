@@ -17,6 +17,8 @@
         childAgeList: '',
         selectedChildAgeId: 1,
         currentPage: 1,
+        startAvailableCallingTime = 0,
+        endAvailableCallingTime = 0
       },
 
       watch: {
