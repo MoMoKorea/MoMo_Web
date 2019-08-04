@@ -32,9 +32,11 @@
         preferredAgeList: '',
         selectedPreferredSexId: 1,
         selectedPreferredCarId: 1,
-
+        requiredDocumentList: '',
+        selectedRequiredDocumentId: [],
 
         // page 4
+        description: '',
       },
 
       watch: {

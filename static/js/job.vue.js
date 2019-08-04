@@ -5,20 +5,36 @@
       delimiters: ['[[', ']]'],
 
       data: {
+
+        // common
+        currentPage: 1,
+
+        // page 1
         title: "",
         pay: '',
         isNegotiation: false,
         startWorkingDate: '',
         startWorkingTime: '',
         endWorkingTime: '',
-        dayOfWeek: '',
         dayOfWeekList: '',
         selectedDayOfWeekId: [ ],
         childAgeList: '',
         selectedChildAgeId: 1,
-        currentPage: 1,
-        startAvailableCallingTime = 0,
-        endAvailableCallingTime = 0
+
+        // page 2
+        startAvailableCallingTime: 0,
+        endAvailableCallingTime: 0,
+        mobile: '',
+
+        // page 3
+        preferredCarList: '',
+        preferredSexList: '',
+        preferredAgeList: '',
+        selectedPreferredSexId: 1,
+        selectedPreferredCarId: 1,
+
+        // page 4
+        description: '',
       },
 
       watch: {

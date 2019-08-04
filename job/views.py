@@ -55,7 +55,7 @@ def register(request):
         preferredSexList = JobRecords.get_all_preferred_sex()
         preferredAgeList = JobRecords.get_all_preferred_age()
         preferredCarList = JobRecords.get_all_preferred_car()
-        # requiredDocumentList = JobRecords.get_all_required_document()
+        requiredDocumentList = JobRecords.get_all_required_document()
 
         data = {
             "childAgeList": json.dumps(list(childAgeList.values())),
@@ -63,6 +63,8 @@ def register(request):
             "preferredSexList": json.dumps(list(preferredSexList.values())),
             "preferredAgeList": json.dumps(list(preferredAgeList.values())),
             "preferredCarList": json.dumps(list(preferredCarList.values())),
+            "requiredDocumentList": json.dumps(list(requiredDocumentList.values())),
+
         }
 
 

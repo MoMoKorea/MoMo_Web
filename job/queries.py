@@ -8,6 +8,7 @@ from job.models.job_day_of_week import JobDayOfWeekORM
 from job.models.job_sex import JobSexORM
 from job.models.job_car_preference import JobCarPreferenceORM
 from job.models.job_age import JobAgeORM
+from job.models.job_require_document import JobRequireDocumentORM
 
 logger = logging.getLogger(__name__)
 
@@ -81,7 +82,7 @@ class JobRecords:
 
     @staticmethod
     def get_all_required_document():
-        return
+        return JobRequireDocumentORM.objects.all()
 
 
     @staticmethod
