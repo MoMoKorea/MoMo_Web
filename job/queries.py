@@ -9,6 +9,7 @@ from job.models.job_sex import JobSexORM
 from job.models.job_car_preference import JobCarPreferenceORM
 from job.models.job_age import JobAgeORM
 from job.models.job_require_document import JobRequireDocumentORM
+from .models.job_location import JobLocationORM
 
 logger = logging.getLogger(__name__)
 
@@ -88,3 +89,7 @@ class JobRecords:
     @staticmethod
     def get_all_preferred_car():
         return JobCarPreferenceORM.objects.all()
+
+    @staticmethod
+    def get_all_root_location():
+        return JobLocationORM.objects.filter(depth=1)

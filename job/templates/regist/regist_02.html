@@ -13,11 +13,9 @@
             </div>
 
             <div class="col-8">
-                <select required>
-                    <option value="" disabled selected>선택하세요</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                <select required v-model.number="selectedRootLocationId">
+                    <option value="0" disabled selected>선택하세요</option>
+                    <option v-for="item in rootLocationList" v-bind:value="item.job_location_id">[[item.name]]</option>
                 </select>
 
                 <div class="selectinput_arrow">

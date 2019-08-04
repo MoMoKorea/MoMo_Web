@@ -68,14 +68,11 @@
             <h4>이전으로</h4>
         </button>
 
-        <button class="bottombtn_p_o" v-on:click="onAfterPage(currentPage)">
+        <button class="bottombtn_p_o"  v-on:click="currentPage == 4 ? onRegist() : onAfterPage(currentPage)">
             <h4 v-if="currentPage == 4">등록</h4>
             <h4 v-else>다음</h4>
         </button>
 
-        <!-- <button class="bottombtn_p">
-          <h4>다음</h4>
-        </button> -->
     </div>
 
 </div>
