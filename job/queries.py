@@ -93,3 +93,11 @@ class JobRecords:
     @staticmethod
     def get_all_root_location():
         return JobLocationORM.objects.filter(depth=1)
+
+    @staticmethod
+    def get_second_location(parent_id):
+        return JobLocationORM.objects.filter(parent_location_id=parent_id, depth=2)
+
+    @staticmethod
+    def get_third_location(parent_id):
+        return JobLocationORM.objects.filter(parent_location_id=parent_id, depth=3)

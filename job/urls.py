@@ -9,5 +9,7 @@ urlpatterns = [
 
     path('api/', include([
         path('root-location', apis.get_root_location),
+        path('second-location', apis.get_second_location),
+        path('third-location', apis.get_third_location),
     ])),
 ]
