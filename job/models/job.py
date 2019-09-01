@@ -23,10 +23,10 @@ class JobORM(models.Model):
     sub_location_id = models.SmallIntegerField(default=1)
     third_location_id = models.SmallIntegerField(default=1)
     description = models.TextField(default='')
-    start_available_calling_time = models.SmallIntegerField(default=9)
-    end_available_calling_time = models.SmallIntegerField(default=18)
-    start_working_time = models.SmallIntegerField(null=True)
-    end_working_time = models.SmallIntegerField(null=True)
+    start_available_calling_time = models.TimeField()
+    end_available_calling_time = models.TimeField()
+    start_working_time = models.TimeField(null=True)
+    end_working_time = models.TimeField(null=True)
     start_working_date = models.DateField(default=timezone.now)
     end_working_date = models.DateField(default=timezone.now)
     created_at = models.DateTimeField(default=timezone.now)
@@ -38,8 +38,6 @@ class JobORM(models.Model):
     worker_age_to_id = models.ForeignKey(JobAgeORM, on_delete=models.SET_NULL, db_column='worker_age_to_id', related_name='worker_age_to', help_text='지원 연령대 끝', null=True)
     car_preference_id = models.ForeignKey(JobCarPreferenceORM, on_delete=models.SET_NULL, null=True, db_column='car_preference_id', related_name='car_preference')
     child_age_id = models.ForeignKey(ChildAgeORM, on_delete=models.SET_NULL, null=True, db_column='child_age_id', related_name='child_age')
-
-
 
     # 희망제출서류
 

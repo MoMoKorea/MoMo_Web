@@ -29,11 +29,13 @@ def register(request):
 
     if request.method == 'POST':
 
+        pprint(request.data['params'])
+
         # 스크립트쪽에서 한번 하겠지만 한번 더 한다.
         # TODO 0. 벨리데이션 체크
 
         # 1. DB에 데이터를 저장한다.
-        jobSerializer = JobRecords.create(request)
+        jobSerializer = JobRecords.create(request.data['params'])
         # TODO 레코드용 테이블을 추가한다.
 
         # 2. 화면에 등록 성공/실패여부를 노출한다.
