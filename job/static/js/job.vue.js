@@ -1,6 +1,9 @@
 
     Vue.prototype.$http = axios
     const baseUri = "http://127.0.0.1:8000/"
+    var validateChildIds = new Array()
+    var validateDayOfWeekIds = new Array()
+    var validate = new Array()
 
     var app = new Vue({
       el: '#content',
@@ -21,7 +24,7 @@
         dayOfWeekList: '',
         selectedDayOfWeekId: [ ],
         childAgeList: '',
-        selectedChildAgeId: 1,
+        selectedChildAgeId: '',
 
         // page 2
         startAvailableCallingTime: 0,
@@ -92,9 +95,19 @@
                 })
 
             }
+        },
+        childAgeList: function() {
+
+            this.childAgeList.forEach(function(item) {
+                validateChildIds.push(item.child_age_id)
+            })
+        },
+        dayOfWeekList: function() {
+
+            this.dayOfWeekList.forEach(function(item) {
+                validateDayOfWeekIds.push(item.job_day_of_week_id)
+            })
         }
-
-
 
       },
 
@@ -103,7 +116,19 @@
 //          this.child_age = event.target.id
 //        }
         onAfterPage: function(page) {
-            this.currentPage = page + 1
+
+            // 1. validation 체크
+            this.checkPageValidate(page)
+
+            // 2. validation 항목이 존재할경우 경고메시지 show
+            if (validate.length > 0) {
+                alert(validate)
+            }
+            // 3. validation 항목이 없을경우 페이지 이동
+            else {
+                this.currentPage = page + 1
+            }
+
         },
         onBeforePage: function(page) {
             this.currentPage = page - 1
@@ -153,6 +178,85 @@
               .then((result) => {
                 console.log(result)
               })
+
+        },
+         // 벨리데이션 체크용 함수
+        checkPageValidate: function(page) {
+
+            validate = []
+
+            if (page == 1) {
+
+                // 제목
+                if (isEmpty(this.title)) {
+                    validate.push("title")
+                }
+                else{
+                    // 글자수 체크
+                }
+
+                // 영아정보
+                if (isEmpty(this.selectedChildAgeId)) {
+                    validate.push("child_age")
+                }
+                else { // 유효한 선택값인지 체크
+                    if(validateChildIds.includes(this.selectedChildAgeId)) {
+                        console.log("include")
+                    }
+                    else {
+                        console.log("not include")
+                    }
+                }
+
+                // 희망시급
+                if (isEmpty(this.pay)) {
+                    validate.push("pay")
+                }
+                else {
+                    // 금액 체크
+                }
+
+                // 근무시작일
+                if (isEmpty(this.startWorkingDate)) {
+                    validate.push("start_working_time")
+                }
+                else {
+
+                }
+
+
+                // 근무요일
+                if (isEmpty(this.selectedDayOfWeekId)) {
+                    validate.push("day_of_week")
+                }
+                else {
+                    // 유효한 요일 체크
+                    this.selectedDayOfWeekId.forEach(function(selectedItem) {
+                        if (validateDayOfWeekIds.includes(selectedItem)) {
+                            console.log(selectedItem + "selectedDayOfWeekId include")
+                        }
+                        else {
+                            console.log(selectedItem + "selectedDayOfWeekId not include")
+                        }
+                    })
+
+                }
+
+                // 근무 시작 시간
+                if (isEmpty(this.startWorkingTime)) {
+                    validate.push("start_working_time")
+                }
+
+                // 근무 시작 종료
+
+                if (isEmpty(this.endWorkingTime)) {
+                    validate.push("end_working_time")
+                }
+
+            }
+
+
+            console.log(validate)
 
 
         }
