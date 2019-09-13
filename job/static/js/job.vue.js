@@ -41,8 +41,8 @@
         preferredCarList: '',
         preferredSexList: '',
         preferredAgeList: '',
-        selectedPreferredSexId: 1,
-        selectedPreferredCarId: 1,
+        selectedPreferredSexId: 0,
+        selectedPreferredCarId: 0,
         requiredDocumentList: '',
         selectedRequiredDocumentId: [],
 
@@ -117,16 +117,14 @@
 //        }
         onAfterPage: function(page) {
 
-            // 1. validation 체크
-            this.checkPageValidate(page)
-
-            // 2. validation 항목이 존재할경우 경고메시지 show
-            if (validate.length > 0) {
-                alert(validate)
-            }
-            // 3. validation 항목이 없을경우 페이지 이동
-            else {
+            // validation 체크
+            if(this.checkPageValidate(page)) {
+                // validation 항목이 없을경우 페이지 이동
                 this.currentPage = page + 1
+            }
+            // validation 항목이 존재할경우 경고메시지 show
+            else{
+                alert(validate)
             }
 
         },
@@ -146,45 +144,68 @@
             // 1. 페이지 체크
             if (this.currentPage != 4) return
             // 2. 벨리데이션 체크
+            if(this.checkPageValidate(this.currentPage)) {
 
-            // 3. 데이터 가공
-            var data = this.$data
+                // 3. 데이터 가공
+                var data = this.$data
 
-            var params = {
-                user_id: 72738,
-                title: data.title,
-                pay: data.pay,
-                is_negotiation: data.isNegotiation,
-                location_id: data.selectedRootLocationId,
-                sub_location_id: data.selectedSecondLocationId,
-                third_location_id: data.selectedThirdLocationId,
-                description: data.description,
-                start_available_calling_time: data.startAvailableCallingTime,
-                end_available_calling_time: data.endAvailableCallingTime,
-                start_working_time: data.startWorkingTime,
-                end_working_time: data.endWorkingTime,
-                start_working_date: data.startWorkingDate,
-                worker_sex_id: data.selectedPreferredSexId,
-                worker_age_from_id: 1,
-                worker_age_to_id: 3,
-                car_preference_id: data.selectedPreferredCarId,
-                child_age_id: data.selectedChildAgeId,
-                selectedDayOfWeeks: data.selectedDayOfWeekId,
-                selectedRequiredDocuments: data.selectedRequiredDocumentId
-            };
+                var params = {
+                    user_id: 72738,
+                    title: data.title,
+                    pay: data.pay,
+                    is_negotiation: data.isNegotiation,
+                    location_id: data.selectedRootLocationId,
+                    sub_location_id: data.selectedSecondLocationId,
+                    third_location_id: data.selectedThirdLocationId,
+                    description: data.description,
+                    start_available_calling_time: data.startAvailableCallingTime,
+                    end_available_calling_time: data.endAvailableCallingTime,
+                    start_working_time: data.startWorkingTime,
+                    end_working_time: data.endWorkingTime,
+                    start_working_date: data.startWorkingDate,
+                    worker_sex_id: data.selectedPreferredSexId,
+                    worker_age_from_id: 1,
+                    worker_age_to_id: 3,
+                    car_preference_id: data.selectedPreferredCarId,
+                    child_age_id: data.selectedChildAgeId,
+                    selectedDayOfWeeks: data.selectedDayOfWeekId,
+                    selectedRequiredDocuments: data.selectedRequiredDocumentId
+                };
 
 
-            this.$http.post(baseUri + "job/regist", { params })
-              .then((result) => {
-                console.log(result)
-              })
+                this.$http.post(baseUri + "job/regist", { params })
+                  .then((result) => {
+                    console.log(result)
+                  })
+            }
 
+        },
+        dump: function() {
+            this.title = "test"
+            this.selectedChildAgeId = 1
+            this.pay = 5000
+            this.startWorkingTime = "09:00"
+            this.endWorkingTime = "18:00"
+            this.selectedDayOfWeekId = [1,2]
+            this.startWorkingDate = "2019-09-12"
+
+            this.selectedRootLocationId = 1
+            this.selectedSecondLocationId = 40
+            this.mobile = "01034110912"
+            this.startAvailableCallingTime = "09:00"
+            this.endAvailableCallingTime = "20:00"
+
+            this.selectedPreferredSexId = 1
+            this.selectedPreferredCarId = 1
+            this.selectedRequiredDocumentId = [1]
         },
          // 벨리데이션 체크용 함수
         checkPageValidate: function(page) {
 
             validate = []
 
+
+            // page 1
             if (page == 1) {
 
                 // 제목
@@ -201,9 +222,11 @@
                 }
                 else { // 유효한 선택값인지 체크
                     if(validateChildIds.includes(this.selectedChildAgeId)) {
+                        // 유효할때
                         console.log("include")
                     }
                     else {
+                        // 유효하지 않을때
                         console.log("not include")
                     }
                 }
@@ -232,9 +255,11 @@
                 else {
                     // 유효한 요일 체크
                     this.selectedDayOfWeekId.forEach(function(selectedItem) {
+                        // 유효할때
                         if (validateDayOfWeekIds.includes(selectedItem)) {
                             console.log(selectedItem + "selectedDayOfWeekId include")
                         }
+                        // 유효하지않을때
                         else {
                             console.log(selectedItem + "selectedDayOfWeekId not include")
                         }
@@ -256,8 +281,84 @@
             }
 
 
-            console.log(validate)
 
+
+
+
+            // page 2
+            else if (page == 2) {
+
+                // 지역1
+                if (isEmpty(this.selectedRootLocationId)) {
+                    validate.push("root_location")
+                }
+                else {
+                }
+                // 지역2
+                if (isEmpty(this.selectedSecondLocationId)) {
+                    validate.push("sub_location")
+                }
+                else {
+                }
+
+                // 지역3
+//                if (isEmpty(selectedThirdLocationId)) {
+//                    validate.push("third_location")
+//                }
+//                else {
+//                }
+                // 연락처
+                if (isEmpty(this.mobile)) {
+                    validate.push("mobile")
+                }
+                else {
+                }
+
+
+                // 연락 가능 시간1
+                if (isEmpty(this.startAvailableCallingTime)) {
+                    validate.push("start_available_calling_time")
+                }
+                // 연락 가능 시간2
+                if (isEmpty(this.endAvailableCallingTime)) {
+                    validate.push("end_available_calling_time")
+                }
+
+            }
+
+
+            // page3
+            else if (page == 3) {
+
+                // 선호 성별
+                if (isEmpty(this.selectedPreferredSexId)) {
+                    validate.push("preferred_sex")
+                }
+
+                // 선호 연령
+
+                // 차량 소지여부
+                if (isEmpty(this.selectedPreferredCarId)) {
+                    validate.push("preferred_car")
+                }
+                // 희망제출서류
+                if (isEmpty(this.selectedRequiredDocumentId)) {
+                    validate.push("required_document")
+                }
+            }
+
+            // page4
+
+            else if (page == 4) {
+                if (isEmpty(this.description)) {
+                    validate.push("description")
+                }
+            }
+
+
+
+            console.log(validate)
+            return validate.length == 0
 
         }
 
