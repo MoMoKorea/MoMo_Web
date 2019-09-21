@@ -1,0 +1,14 @@
+
+
+{% load static %}
+<script src="{% static 'js/job_detail_vue.js' %}"></script>
+
+<script>
+
+    window.onload = function() {
+
+        var jobDetail = {{ data|safe }}
+        app.job = jobDetail
+    }
+
+</script>
