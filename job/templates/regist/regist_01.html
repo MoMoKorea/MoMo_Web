@@ -1,0 +1,140 @@
+<!-- 제목 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+
+            <div>제목</div>
+            <div class="textinput">
+                <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다" v-model="title">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 영아정보 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            영아정보
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- 4 ~ 6세 -->
+        <div class="col-6" v-for="(item, key) in childAgeList">
+            <div class="radiobtn_l">
+                <input type="radio" name="regist_age" v-bind:id="'regist_age_' + item.child_age_id"
+                       v-bind:value="item.child_age_id" v-model.number="selectedChildAgeId">
+
+                <label v-bind:for="'regist_age_' + item.child_age_id">
+                    <span class="regist_emoji" v-if="item.child_age_id == 1">&#x1F476;</span>
+                    <span class="regist_emoji" v-else>&#x1F9D2;</span>
+                    [[item.age]]
+                </label>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 희망시급 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            희망시급
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-7">
+            <div class="numberinput">
+                <input type="number" pattern="\d*" placeholder="희망시급을 입력하세요" v-model.number="pay">
+            </div>
+        </div>
+
+        <div class="col-5 text_c">
+            <div class="checkboxbtn_s">
+                <input type="checkbox" id="regist_moneyafter" name="r_money" v-model="isNegotiation">
+                <label for="regist_moneyafter">
+                    <div class="text_c">
+                        <svg class="regist_moneyafter" xmlns="http://www.w3.org/2000/svg" width="25" height="22"
+                             viewBox="0 0 25 22">
+                            <path fill="#888" fill-rule="nonzero"
+                                  d="M21.876 0L25 3.158 7.48 22 0 12.476 3.366 9.6l4.388 5.587z"/>
+                        </svg>
+                        협의 후 결정
+                    </div>
+                </label>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 근무시작일 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            <div>근무시작일</div>
+            <form>
+                <div class="datebtn_l">
+                    <input type="date" name="workdate" data-placeholder="&#x1F4C5;  시작일 선택" required
+                           aria-required="true" v-model="startWorkingDate"/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- 근무요일 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            근무요일
+        </div>
+    </div>
+
+    <div class="row text_c">
+
+        <div class="col-3" v-for="(item, key) in dayOfWeekList">
+            <div class="checkboxbtn_l">
+                <input type="checkbox" v-bind:id="'regist_week_' + item.job_day_of_week_id" name="regist_week"
+                       v-bind:value="item.job_day_of_week_id" v-model.number="selectedDayOfWeekId">
+                <label v-bind:for="'regist_week_' + item.job_day_of_week_id"> [[item.day_of_week]] </label>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 근무시간 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            <div>근무시간</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <form>
+                <div class="timeinput">
+                    <input type="time" name="regist_time" data-placeholder="&#x1F31D;  시작" required aria-required="true"
+                           v-model="startWorkingTime">
+                </div>
+            </form>
+        </div>
+
+        <div class="col-6">
+            <form>
+                <div class="timeinput">
+                    <input type="time" name="regist_time" data-placeholder="&#x1F31A;  끝" required aria-required="true"
+                           v-model="endWorkingTime">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

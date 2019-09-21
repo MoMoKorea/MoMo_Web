@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.contrib.staticfiles import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('momo.urls'))
+    path('', include('momo.urls')),
+    path('job/', include('job.urls')),
 ]
+
+
+
+if settings.DEBUG:
+    urlpatterns += [
+        path(r'^static/(?P<path>.*)$', views.serve)
+    ]
