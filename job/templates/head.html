@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 
 <html lang="ko">
@@ -8,7 +7,8 @@
     <meta charset="utf-8">
     <?xml-stylesheet type="text/css" href="style.css"?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
 
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.css' %}">
@@ -30,6 +30,26 @@
     <!-- Custom JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+
+    <!-- 도움되는 콘솔 경고를 포함한 개발 버전 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- 상용버전, 속도와 용량이 최적화됨. -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>    -->
+
+
+    <!-- http client -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- jquery CDN -->
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/common.js' %}"></script>
+
+
 
     <title>I've Always Been</title>
 

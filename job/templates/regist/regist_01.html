@@ -1,241 +1,140 @@
-{% include 'head.html' %}
+<!-- 제목 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
 
-<div class="regist_head">
-  <div class="global_close">
-    <img src="../../static/images/global/top_x.svg" alt="global_close">
-  </div>
+            <div>제목</div>
+            <div class="textinput">
+                <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다" v-model="title">
+            </div>
 
-  <h4>등록하기</h4>
-
+        </div>
+    </div>
 </div>
 
-<div class="regist_body">
-  <div class="container">
-    <!-- step -->
+<!-- 영아정보 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            영아정보
+        </div>
+    </div>
 
     <div class="row">
-      <div class="col-3">
-        <div class="regist_step_line_p"></div>
-        <div class="regist_step_line_text">1/4</div>
-      </div>
+        <!-- 4 ~ 6세 -->
+        <div class="col-6" v-for="(item, key) in childAgeList">
+            <div class="radiobtn_l">
+                <input type="radio" name="regist_age" v-bind:id="'regist_age_' + item.child_age_id"
+                       v-bind:value="item.child_age_id" v-model.number="selectedChildAgeId">
 
-      <div class="col-3">
-        <div class="regist_step_line_pd"></div>
-      </div>
+                <label v-bind:for="'regist_age_' + item.child_age_id">
+                    <span class="regist_emoji" v-if="item.child_age_id == 1">&#x1F476;</span>
+                    <span class="regist_emoji" v-else>&#x1F9D2;</span>
+                    [[item.age]]
+                </label>
 
-      <div class="col-3">
-        <div class="regist_step_line_pd"></div>
-      </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-      <div class="col-3">
-        <div class="regist_step_line_pd"></div>
-      </div>
+<!-- 희망시급 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            희망시급
+        </div>
     </div>
 
-    <!-- body -->
-
-    <!-- 제목 -->
-    <div class="regist_list">
-      <div class="row">
-        <div class="col-12">
-          <div>제목</div>
-          <div class="textinput">
-            <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다">
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- 영아정보 -->
-    <div class="regist_list">
-      <div class="row">
-        <div class="col-12">
-          영아정보
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-6">
-          <div class="radiobtn_l">
-            <input type="radio" id="regist_age01" name="regist_age">
-            <label for="regist_age01"><span class="regist_emoji">&#x1F476;</span>4~6세</label>
-
-          </div>
-        </div>
-
-        <div class="col-6">
-          <div class="radiobtn_l">
-            <input type="radio" id="regist_age02" name="regist_age">
-            <label for="regist_age02"><span class="regist_emoji">&#x1F9D2;</span>초등학생</label>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 희망시급 -->
-    <div class="regist_list">
-      <div class="row">
-        <div class="col-12">
-          희망시급
-        </div>
-      </div>
-
-      <div class="row">
+    <div class="row">
         <div class="col-7">
-          <div class="numberinput">
-            <input type="number" pattern="\d*" placeholder="희망시급을 입력하세요">
-          </div>
+            <div class="numberinput">
+                <input type="number" pattern="\d*" placeholder="희망시급을 입력하세요" v-model.number="pay">
+            </div>
         </div>
 
         <div class="col-5 text_c">
-          <div class="checkboxbtn_s">
-            <input type="checkbox" id="regist_moneyafter" name="r_money">
-            <label for="regist_moneyafter">
-              <div class="text_c">
-                <svg class="regist_moneyafter" xmlns="http://www.w3.org/2000/svg" width="25" height="22" viewBox="0 0 25 22">
-                    <path fill="#888" fill-rule="nonzero" d="M21.876 0L25 3.158 7.48 22 0 12.476 3.366 9.6l4.388 5.587z"/>
-                </svg>
-                협의 후 결정
-              </div>
-            </label>
+            <div class="checkboxbtn_s">
+                <input type="checkbox" id="regist_moneyafter" name="r_money" v-model="isNegotiation">
+                <label for="regist_moneyafter">
+                    <div class="text_c">
+                        <svg class="regist_moneyafter" xmlns="http://www.w3.org/2000/svg" width="25" height="22"
+                             viewBox="0 0 25 22">
+                            <path fill="#888" fill-rule="nonzero"
+                                  d="M21.876 0L25 3.158 7.48 22 0 12.476 3.366 9.6l4.388 5.587z"/>
+                        </svg>
+                        협의 후 결정
+                    </div>
+                </label>
 
-          </div>
+            </div>
         </div>
 
-      </div>
+    </div>
+</div>
+
+<!-- 근무시작일 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            <div>근무시작일</div>
+            <form>
+                <div class="datebtn_l">
+                    <input type="date" name="workdate" data-placeholder="&#x1F4C5;  시작일 선택" required
+                           aria-required="true" v-model="startWorkingDate"/>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- 근무요일 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            근무요일
+        </div>
     </div>
 
-    <!-- 근무시작일 -->
-    <div class="regist_list">
-      <div class="row">
-        <div class="col-12">
-          <div>근무시작일</div>
-          <form>
-            <div class="datebtn_l">
-              <input type="date" name="workdate" data-placeholder="&#x1F4C5;&nbsp;&nbsp;시작일 선택" required aria-required="true" />
-            </div>
-          </form>
+    <div class="row text_c">
 
+        <div class="col-3" v-for="(item, key) in dayOfWeekList">
+            <div class="checkboxbtn_l">
+                <input type="checkbox" v-bind:id="'regist_week_' + item.job_day_of_week_id" name="regist_week"
+                       v-bind:value="item.job_day_of_week_id" v-model.number="selectedDayOfWeekId">
+                <label v-bind:for="'regist_week_' + item.job_day_of_week_id"> [[item.day_of_week]] </label>
+            </div>
         </div>
-      </div>
+
+    </div>
+</div>
+
+<!-- 근무시간 -->
+<div class="regist_list">
+    <div class="row">
+        <div class="col-12">
+            <div>근무시간</div>
+        </div>
     </div>
 
-    <!-- 근무요일 -->
-    <div class="regist_list">
-      <div class="row">
-        <div class="col-12">
-          근무요일
-        </div>
-      </div>
-
-      <div class="row text_c">
-
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_mon" name="regist_week">
-              <label for="regist_week_mon">월</label>
-            </div>
-
-          </div>
-
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_tue" name="regist_week">
-              <label for="regist_week_tue">화</label>
-            </div>
-
-          </div>
-
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_wed" name="regist_week">
-              <label for="regist_week_wed">수</label>
-            </div>
-
-          </div>
-
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_thu" name="regist_week">
-              <label for="regist_week_thu">목</label>
-            </div>
-
-          </div>
-
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_fri" name="regist_week">
-              <label for="regist_week_fri">금</label>
-            </div>
-
-          </div>
-
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_sat" name="regist_week">
-              <label for="regist_week_sat">토</label>
-            </div>
-
-          </div>
-
-          <div class="col-3">
-            <div class="checkboxbtn_l">
-              <input type="checkbox" id="regist_week_sun" name="regist_week">
-              <label for="regist_week_sun">일</label>
-            </div>
-
-          </div>
-
-      </div>
-    </div>
-
-    <!-- 근무시간 -->
-    <div class="regist_list">
-      <div class="row">
-        <div class="col-12">
-          <div>근무시간</div>
-        </div>
-      </div>
-
-      <div class="row">
+    <div class="row">
         <div class="col-6">
-          <form>
-            <div class="timeinput">
-              <input type="time" name="regist_time" data-placeholder="&#x1F31D;&nbsp;&nbsp;시작" required aria-required="true">
-            </div>
-          </form>
+            <form>
+                <div class="timeinput">
+                    <input type="time" name="regist_time" data-placeholder="&#x1F31D;  시작" required aria-required="true"
+                           v-model="startWorkingTime">
+                </div>
+            </form>
         </div>
 
         <div class="col-6">
-          <form>
-            <div class="timeinput">
-              <input type="time" name="regist_time" data-placeholder="&#x1F31A;&nbsp;&nbsp;끝" required aria-required="true">
-            </div>
-          </form>
+            <form>
+                <div class="timeinput">
+                    <input type="time" name="regist_time" data-placeholder="&#x1F31A;  끝" required aria-required="true"
+                           v-model="endWorkingTime">
+                </div>
+            </form>
         </div>
-      </div>
     </div>
-
-  </div>
-
 </div>
-
-<div class="bottombtn">
-  <!-- <button class="bottombtn_back">
-    <h4>이전으로</h4>
-  </button> -->
-
-  <button class="bottombtn_p_o">
-    <h4>다음</h4>
-  </button>
-
-  <!-- <button class="bottombtn_p">
-    <h4>다음</h4>
-  </button> -->
-</div>
-
-
-{% include 'footer.html' %}

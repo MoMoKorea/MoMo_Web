@@ -6,6 +6,11 @@ from rest_framework.response import Response
 from django.shortcuts import render
 from .repository import JobRepository
 from pprint import pprint
+from django.forms.models import model_to_dict
+
+
+import json
+
 
 import logging
 
@@ -24,17 +29,20 @@ def register(request):
 
     if request.method == 'POST':
 
+        pprint(request.data['params'])
+
         # 스크립트쪽에서 한번 하겠지만 한번 더 한다.
         # TODO 0. 벨리데이션 체크
 
         # 1. DB에 데이터를 저장한다.
-        jobSerializer = JobRecords.create(request)
-        #TODO 레코드용 테이블을 추가한다.
+        jobSerializer = JobRecords.create(request.data['params'])
+        # TODO 레코드용 테이블을 추가한다.
 
         # 2. 화면에 등록 성공/실패여부를 노출한다.
         # TODO 리다이렉트는 스크립트에서 팝업을 뛰워주고 이동한다.
         # 성공
         if (jobSerializer):
+            # test
             return Response({'data': 'success'})
         # 실패
         else:
@@ -42,7 +50,27 @@ def register(request):
 
 
     elif request.method == 'GET':
-        return render(request, template_name='regist_01.html', context={'title': '타이틀입니다.'})
+
+        # 1. 근무요일, 유아 나이정보, 선호성별, 선호 연령대, 차량 소지여부, 제출서류
+        childAgeList = JobRecords.get_all_child_age()
+        dayOfWeekList = JobRecords.get_all_day_of_week()
+        preferredSexList = JobRecords.get_all_preferred_sex()
+        preferredAgeList = JobRecords.get_all_preferred_age()
+        preferredCarList = JobRecords.get_all_preferred_car()
+        requiredDocumentList = JobRecords.get_all_required_document()
+
+        data = {
+            "childAgeList": json.dumps(list(childAgeList.values())),
+            "dayOfWeekList": json.dumps(list(dayOfWeekList.values())),
+            "preferredSexList": json.dumps(list(preferredSexList.values())),
+            "preferredAgeList": json.dumps(list(preferredAgeList.values())),
+            "preferredCarList": json.dumps(list(preferredCarList.values())),
+            "requiredDocumentList": json.dumps(list(requiredDocumentList.values())),
+
+        }
+
+
+        return render(request, template_name='regist/regist.html', context={'title': '타이틀입니다.', 'data': data,})
 
 
 """
