@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'momo_local',
         'USER': 'root',
-        'PASSWORD': '!Dfdf120452',
+        'PASSWORD': 'secret',
         'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
