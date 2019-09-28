@@ -526,7 +526,7 @@ button{
 
 .global_back{
   position: absolute;
-  top: 17px;
+  top: 20px;
   left: 15px;
   z-index: 99;
 }
@@ -1109,31 +1109,39 @@ button{
 }
 
 
-/* home */
+/* user */
 
-
-.user_body{
+.user_content{
   position: absolute;
   top: 50%;
   transform: translate(0,-50%);
-  margin: 0px 15px 0px 15px;
+
+  width: 100%;
+  padding: 0px 15px 0px 15px;
 }
 
+
+/* home */
+
+
 .home_img{
-  margin: 0px 13px 30px 13px;
+  padding: 0px 13px 30px 13px;
 }
 
 .home_title{
-  margin: 0px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
   text-align: center;
 
   font-family: 'NotoSansKR Bold';
 }
 
 .home_btn{
-  margin: 0px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
 }
 
 .home_login{
-  margin: 0px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
 }
+
+
+/* signup */

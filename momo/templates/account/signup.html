@@ -1,8 +1,25 @@
-<!-- templates/account/signup.html -->
-<h2> 스쿨로드 커뮤니티와 함께 하세요 </h2>
+{% include 'head.html' %}
 
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
+<div class="grobal_head">
+  <div class="global_back">
+    <img src="../../static/images/global/top_back.svg" alt="global_back">
+  </div>
+
+  <h4 class="text_c">등/하교</h4>
+</div>
+
+
+<div class="user_body">
+  <div class="row">
+      <div class="col-12">
+        <div>제목</div>
+        <div class="textinput">
+            <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다" v-model="title">
+        </div>
+
+      </div>
+  </div>
+</div>
+
+
+{% include 'footer.html' %}
