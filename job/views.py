@@ -85,7 +85,8 @@ def get_detail(request, jobId):
 
     # 1. jobId로 정보들을 불러온다.
     jobData = JobRecords.get_job_detail(jobId)
-    pprint(jobData)
+    # pprint(jobData)
+    # pprint(model_to_dict(jobData['day_of_weeks'][0]))
     # 2. 필요한 정보를 가공한다.
     jobDetail = jobRepository.process_job_detail(jobData)
     pprint(jobDetail)

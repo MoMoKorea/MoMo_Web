@@ -60,6 +60,8 @@ class JobRecords:
         jobSerializer = JobSerializer(querySet)
 
         jobData = jobSerializer.data.copy()
+        jobData['all_day_of_week'] = list(JobRecords.get_all_day_of_week())
+
         return jobData
 
     """

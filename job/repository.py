@@ -27,11 +27,21 @@ class JobRepository:
 
 
         # 근무요일
-        day_of_weeks = []
-        for item in jobData["day_of_weeks"]:
-            day_of_weeks.append(model_to_dict(item.day_of_week_id))
+        custom_day_of_weeks = []
+        for item in jobData["all_day_of_week"]:
+            customItem = model_to_dict(item)
+            customItem['selected'] = False
+            for selectedItem in jobData['day_of_weeks']:
+                selectedItemDict = model_to_dict(selectedItem.day_of_week_id)
+                if customItem['job_day_of_week_id'] == selectedItemDict['job_day_of_week_id']:
+                    customItem['selected'] = True
+                    break
+            custom_day_of_weeks.append(customItem)
 
-        jobDetail['working_day_of_weeks'] = day_of_weeks
+
+
+
+        jobDetail['working_day_of_weeks'] = custom_day_of_weeks
 
 
         # 제출서류
@@ -41,8 +51,10 @@ class JobRepository:
             documents.append(model_to_dict(item.require_document_id))
             documents.append(model_to_dict(item.require_document_id))
 
+        for index, item in enumerate(documents):
+            if index > 0:
+                documents_string += ", "
 
-        for item in documents:
             documents_string += item["document"]
 
         jobDetail['documents'] = documents_string
