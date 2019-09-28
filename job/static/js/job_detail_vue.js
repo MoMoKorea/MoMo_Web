@@ -7,7 +7,8 @@
       delimiters: ['[[', ']]'],
 
       data: {
-        job: {}
+        job: {},
+        workingDayOfWeeks: []
       },
 
       watch: {

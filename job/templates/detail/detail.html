@@ -21,60 +21,60 @@
 <!-- 지금 하단에 modal 둘다 뜨는 데, 작업할 때 하나 지우고 작업하면 좋음 -->
 
 <!-- 전화번호입력 modal -->
-<div class="detail_call_body modal_bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 modal_title">
-        전화번호 입력
-      </div>
+<!--<div class="detail_call_body modal_bottom">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-12 modal_title">-->
+<!--        전화번호 입력-->
+<!--      </div>-->
 
-      <div class="col-12">
-        <div>연락처</div>
+<!--      <div class="col-12">-->
+<!--        <div>연락처</div>-->
 
-        <div class="textinput">
-          <input type="text" id="" placeholder="휴대폰번호를 입력하세요">
-        </div>
-      </div>
+<!--        <div class="textinput">-->
+<!--          <input type="text" id="" placeholder="휴대폰번호를 입력하세요">-->
+<!--        </div>-->
+<!--      </div>-->
 
-    </div>
-  </div>
+<!--    </div>-->
+<!--  </div>-->
 
-  <div class="modal_btn">
-    <button class="bottombtn_p_o">
-      <h4>다음</h4>
-    </button>
+<!--  <div class="modal_btn">-->
+<!--    <button class="bottombtn_p_o">-->
+<!--      <h4>다음</h4>-->
+<!--    </button>-->
 
-  </div>
-</div>
+<!--  </div>-->
+<!--</div>-->
 
 <!-- 연락처 modal -->
-<div class="detail_call_body modal_bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 modal_title">
-        연락하기
-      </div>
+<!--<div class="detail_call_body modal_bottom">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-12 modal_title">-->
+<!--        연락하기-->
+<!--      </div>-->
 
-      <div class="col-12">
-        <div class="detail_info">
-          <div class="detail_info_title">연락가능시간</div>
-          <h5>10:30 ~ 18:00</h5>
-        </div>
+<!--      <div class="col-12">-->
+<!--        <div class="detail_info">-->
+<!--          <div class="detail_info_title">연락가능시간</div>-->
+<!--          <h5>10:30 ~ 18:00</h5>-->
+<!--        </div>-->
 
-        <div class="detail_info detail_call_caution">
-          ※ 타인에게 전화해서 가나다라바사
-        </div>
-      </div>
+<!--        <div class="detail_info detail_call_caution">-->
+<!--          ※ 타인에게 전화해서 가나다라바사-->
+<!--        </div>-->
+<!--      </div>-->
 
-    </div>
-  </div>
+<!--    </div>-->
+<!--  </div>-->
 
-  <div class="modal_btn">
-    <button class="bottombtn_p">
-      <h4>010-1**4-1**4 연락하기</h4>
-    </button>
-  </div>
-</div>
+<!--  <div class="modal_btn">-->
+<!--    <button class="bottombtn_p">-->
+<!--      <h4>010-1**4-1**4 연락하기</h4>-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</div>-->
 
 <div class="modal_background"></div>
 
@@ -84,7 +84,7 @@
   <!-- title -->
   <div class="detail_title">
     <h4>[[ job.user.username ]] 님</h4>
-    <div class="detail_title_want">등하원 스쿨버스 도우미 구합니다</div>
+    <div class="detail_title_want">[[ job.title ]]</div>
 
   </div>
 
@@ -166,7 +166,9 @@
             <div class="color_8">근무 요일</div>
 
             <div>
-              <h5 v-bind:class='item.selected == True ? "detail_date_p" : "detail_date_g"'  v-for="item in job.working_day_of_weeks">[[ item.day_of_week ]]</h5>
+              <h5 v-bind:class='item.selected == true ? "detail_date_p" : "detail_date_g"' v-for="item in workingDayOfWeeks">
+                [[ item.day_of_week ]]
+              </h5>
             </div>
 
           </div>
@@ -206,7 +208,7 @@
     </div>
 
     <!-- 연락하기 -->
-    <div class="row">
+    <div id="btnCall" class="row">
       <div class="col-12">
         <div class="grobal_btnbox">
           <div class="detail_contact">

@@ -3,12 +3,25 @@
 {% load static %}
 <script src="{% static 'js/job_detail_vue.js' %}"></script>
 
+
 <script>
 
     window.onload = function() {
 
+
         var jobDetail = {{ data|safe }}
         app.job = jobDetail
+        app.workingDayOfWeeks = {{ data.working_day_of_weeks|safe }}
+
+
+
+        $(window).scroll(function () {
+             var scrollValue = $(this).scrollTop();
+             console.log(scrollValue);
+             console.log($("#btnCall").offset().top)
+         });
+
+
     }
 
 </script>

@@ -1,4 +1,5 @@
 from django.forms.models import model_to_dict
+import json
 
 class JobRepository:
 
@@ -41,7 +42,7 @@ class JobRepository:
 
 
 
-        jobDetail['working_day_of_weeks'] = custom_day_of_weeks
+        jobDetail['working_day_of_weeks'] = json.dumps(custom_day_of_weeks)
 
 
         # 제출서류
