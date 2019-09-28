@@ -23,6 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('momo.urls')),
     path('job/', include('job.urls')),
+<<<<<<< HEAD
+    path('user/', include('allauth.urls')),
+=======
+>>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
 ]
 
 

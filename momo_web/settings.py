@@ -40,6 +40,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'momo',
     'job',
+    'django.contrib.sites', # new
+
+    # 3rd party
+    'allauth', # new
+    'allauth.account', #new
+    'allauth.socialaccount', #new
+
+    # local
+    'user.apps.UserConfig', # new
 ]
 
 MIDDLEWARE = [
@@ -57,7 +66,7 @@ ROOT_URLCONF = 'momo_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,3 +148,29 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
 DATE_INPUT_FORMATS = ['%Y-%m-%d']
+
+## --------------------------------------------------------------------------------------------------------- ##
+## Reference : https://wsvincent.com/django-login-with-email-not-username/
+AUTH_USER_MODEL = 'user.CustomUser' # new
+#LOGIN_REDIRECT_URL = '/' # Important ★★★★★
+
+LOGIN_REDIRECT_URL = '/' #home'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/' #home'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of 'allauth'
+    "django.contrib.auth.backends.ModelBackend",
+    #`allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
