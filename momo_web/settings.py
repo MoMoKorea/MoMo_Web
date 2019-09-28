@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'momo',
     'job',
+<<<<<<< HEAD
     'django.contrib.sites', # new
 
     # 3rd party
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
 
     # local
     'user.apps.UserConfig', # new
+=======
+>>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
 ]
 
 MIDDLEWARE = [
@@ -66,7 +69,11 @@ ROOT_URLCONF = 'momo_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+=======
+        'DIRS': [],
+>>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,6 +154,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
+<<<<<<< HEAD
 DATE_INPUT_FORMATS = ['%Y-%m-%d']
 
 ## --------------------------------------------------------------------------------------------------------- ##
@@ -175,3 +183,6 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 
 ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
+=======
+DATE_INPUT_FORMATS = ['%Y-%m-%d']
+>>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
