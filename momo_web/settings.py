@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'momo',
     'job',
-<<<<<<< HEAD
     'django.contrib.sites', # new
 
     # 3rd party
@@ -50,8 +49,6 @@ INSTALLED_APPS = [
 
     # local
     'user.apps.UserConfig', # new
-=======
->>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
 ]
 
 MIDDLEWARE = [
@@ -69,11 +66,7 @@ ROOT_URLCONF = 'momo_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-<<<<<<< HEAD
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-=======
-        'DIRS': [],
->>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,7 +97,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'momo_local',
         'USER': 'root',
-        'PASSWORD': '!Dfdf120452',
+        # 'PASSWORD': 'secret',  # ken
+        'PASSWORD': '!Dfdf120452', # Kyle
+        # 'PASSWORD': '!1q2w3e4r', # Joe
         'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
@@ -154,7 +149,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 
-<<<<<<< HEAD
 DATE_INPUT_FORMATS = ['%Y-%m-%d']
 
 ## --------------------------------------------------------------------------------------------------------- ##
@@ -181,8 +175,4 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
-
 ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
-=======
-DATE_INPUT_FORMATS = ['%Y-%m-%d']
->>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
