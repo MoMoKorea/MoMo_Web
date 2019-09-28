@@ -1,44 +1,33 @@
-<<<<<<< HEAD
-<!-- templates/home.html -->
+{% include 'head.html' %}
 
-
-{% if user.is_authenticated %}
-  Hi {{ user.email }}!
-  <p><a href="{% url 'account_logout' %}">Log Out</a></p>
-
-
-{% else %}
-  <style type="text/css">
-  #wrapper {
-      width:500px;
-      margin : 0 auto ;
-      border:1px solid rgba(0, 0, 255, 0.5);
+<style>
+  body{
+    background-color: #fff;
   }
-  </style>
+</style>
 
-  <div id="wrapper">
-    <p>우리 아이의 등하원을 도와주시는 동네이웃을 찾을 수 있어요</p>
-    <p>
-      <div id="wrapper" style="width:100px;height:50px;border:1px solid #000;">
-        <a href="{% url 'account_signup' %}">함께하기 (가입)</a>
-      </div>
-      <div id="wrapper" style="width:100px;height:50px;border:1px solid #000;">
-        <a href="{% url 'account_login' %}">이미 가입하셨나요? (로그인)</a>
-      </div>
-    </p>
+
+<div class="user_body">
+  <div class="home_img">
+    <img src="../../static/images/user/img_welcome.svg" alt="img_welcome">
   </div>
-{% endif %}
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>home</title>
 
-    <h1>home</h1>
-</head>
-<body>
+  <h2 class="home_title">아이들의 안전을<br/>지켜줄 이웃을 만나보세요</h2>
 
-</body>
-</html>
->>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192
+  <a href="#">
+    <div class="home_btn grobal_btn">
+      <h4 class="grobal_btn_primary grobal_btn_round">간편 회원가입</h4>
+    </div>
+  </a>
+
+  <a href="#">
+    <h4 class="text_c home_login">로그인</h4>
+  </a>
+
+  <a href="#">
+    <h4 class="text_c color_8">먼저 둘러보기</h4>
+  </a>
+</div>
+
+
+{% include 'footer.html' %}
