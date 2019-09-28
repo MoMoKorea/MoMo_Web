@@ -95,9 +95,9 @@ WSGI_APPLICATION = 'momo_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'momo_web',
+        'NAME': 'momo_local',
         'USER': 'root',
-        'PASSWORD': '!1q2w3e4r',  ### 비밀번호 Joe기준으로 수정되어있음
+        'PASSWORD': '!Dfdf120452',
         'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
