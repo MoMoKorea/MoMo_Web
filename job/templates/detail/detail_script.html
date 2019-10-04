@@ -1,27 +1,38 @@
-
-
 {% load static %}
 <script src="{% static 'js/job_detail_vue.js' %}"></script>
 
 
 <script>
 
-    window.onload = function() {
-
-
+    $(document).ready(function() {
         var jobDetail = {{ data|safe }}
         app.job = jobDetail
         app.workingDayOfWeeks = {{ data.working_day_of_weeks|safe }}
 
-
-
+        var windowHeight = $(window).height();
         $(window).scroll(function () {
-             var scrollValue = $(this).scrollTop();
-             console.log(scrollValue);
-             console.log($("#btnCall").offset().top)
-         });
 
+            var documentHeight = $(document).height();
+            var scrollHeight = documentHeight - windowHeight
 
-    }
+            // 스크롤 길이가 54px보다 크면 floating 버튼의 show/hide 동작을 추가한다.
+            if (scrollHeight > 54) {
+
+               var scrollY = $(document).scrollTop();
+               if (scrollY > (scrollHeight - 54)) {
+                   $("#btnFloating").hide()
+               }
+               else {
+                   $("#btnFloating").show()
+               }
+
+            }
+            else {
+               $("#btnFloating").hide()
+            }
+        });
+
+    });
+
 
 </script>
