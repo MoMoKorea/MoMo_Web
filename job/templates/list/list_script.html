@@ -1,0 +1,19 @@
+{% load static %}
+<script src="{% static 'js/job_list_vue.js' %}"></script>
+
+
+<script>
+
+
+    $(document).ready(function() {
+
+        var jobList = {{ data|safe }}
+        listVue.jobList = jobList
+        console.log("here")
+
+    })
+
+
+
+
+</script>

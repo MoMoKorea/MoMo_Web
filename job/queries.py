@@ -65,6 +65,20 @@ class JobRecords:
         return jobData
 
     """
+    Kyle 2019-10-06
+
+    @API: 구직 리스트  
+    """
+    @staticmethod
+    def get_job_list():
+
+        querySet = JobORM.objects.all()
+        jobSerializer = JobSerializer(querySet, many=True)
+        jobList = jobSerializer.data.copy()
+        return jobList
+
+
+    """
     Kyle 2019-07-20
 
     @API: 자녀 나이 리스트 Query  

@@ -91,4 +91,17 @@ def get_detail(request, jobId):
     jobDetail = jobRepository.process_job_detail(jobData)
     pprint(jobDetail)
     # 3. 화면으로 가공한 정보를 넘긴다.
-    return render(request, template_name='detail/detail.html', context={'title': jobId, 'data': jobDetail})
+    return render(request, template_name='detail/detail.html', context={'data': jobDetail})
+
+"""
+Kyle 2019-10-06
+
+@API: job 리스트
+"""
+def get_list(request):
+
+    # 1. 리스트 데이터들을 불러온다.
+    jobList = JobRecords.get_job_list()
+
+
+    return render(request, template_name='list/list.html', context={'data': json.dumps(jobList)})

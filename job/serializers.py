@@ -20,10 +20,11 @@ class JobSerializer(serializers.ModelSerializer):
         ret['worker_sex'] = ret['worker_sex'].sex
         ret['worker_age_from'] = ret['worker_age_from'].age
         ret['worker_age_to'] = ret['worker_age_to'].age
-        ret['day_of_weeks'] = JobDayOfWeekMappingORM.objects.filter(job_id=ret['job_id'])
-        ret['root_location'] = JobLocationORM.objects.get(job_location_id=ret['location_id'])
-        ret['sub_location'] = JobLocationORM.objects.get(job_location_id=ret['sub_location_id'])
-        ret['documents'] = JobRequireDocumentMappingORM.objects.filter(job_id=ret['job_id'])
+        dayOfWeeks = DayOfWeeksSerializer(JobDayOfWeekMappingORM.objects.filter(job_id=ret['job_id']), many=True)
+        ret['day_of_weeks'] = list(dayOfWeeks.data.copy())
+        ret['root_location'] = LocationSerializer(JobLocationORM.objects.get(job_location_id=ret['location_id'])).data.copy()
+        ret['sub_location'] = LocationSerializer(JobLocationORM.objects.get(job_location_id=ret['sub_location_id'])).data.copy()
+        ret['documents'] = DocumentSerializer(JobRequireDocumentMappingORM.objects.filter(job_id=ret['job_id']), many=True).data.copy()
 
         # 필요없는 컬럼 제외
         ret.pop('car_preference_id')
@@ -51,4 +52,25 @@ class ChildAgeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChildAgeORM
+        fields = '__all__'
+
+
+class DayOfWeeksSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = JobDayOfWeekMappingORM
+        fields = '__all__'
+
+
+class LocationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = JobLocationORM
+        fields = '__all__'
+
+
+class DocumentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = JobRequireDocumentMappingORM
         fields = '__all__'
