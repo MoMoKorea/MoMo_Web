@@ -1,3 +1,34 @@
+<<<<<<< HEAD
+<!-- templates/home.html -->
+
+
+{% if user.is_authenticated %}
+  Hi {{ user.email }}!
+  <p><a href="{% url 'account_logout' %}">Log Out</a></p>
+
+
+{% else %}
+  <style type="text/css">
+  #wrapper {
+      width:500px;
+      margin : 0 auto ;
+      border:1px solid rgba(0, 0, 255, 0.5);
+  }
+  </style>
+
+  <div id="wrapper">
+    <p>우리 아이의 등하원을 도와주시는 동네이웃을 찾을 수 있어요</p>
+    <p>
+      <div id="wrapper" style="width:100px;height:50px;border:1px solid #000;">
+        <a href="{% url 'account_signup' %}">함께하기 (가입)</a>
+      </div>
+      <div id="wrapper" style="width:100px;height:50px;border:1px solid #000;">
+        <a href="{% url 'account_login' %}">이미 가입하셨나요? (로그인)</a>
+      </div>
+    </p>
+  </div>
+{% endif %}
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +41,4 @@
 
 </body>
 </html>
+>>>>>>> aab0717fe2eb36de1db09b20755749f0ef111192

@@ -1,0 +1,8 @@
+<!-- templates/account/signup.html -->
+<h2> 스쿨로드 커뮤니티와 함께 하세요 </h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Sign Up</button>
+</form>
