@@ -181,6 +181,8 @@ button{
     }
 }
 
+
+
 /* input_text */
 
 .textareainput{
@@ -1216,4 +1218,8 @@ button{
   width: 150px;
   margin: 0 auto;
   padding-bottom: 20px;
+}
+
+.signup_body{
+  margin: 90px 0px 40px 0px;
 }
