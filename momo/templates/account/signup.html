@@ -1,4 +1,11 @@
+<!-- {% extends "account/base.html" %} -->
 {% include 'head.html' %}
+
+<!-- {% load i18n %}
+{% block head_title %}{% trans "Signup" %}{% endblock %} -->
+
+<!-- <h1>{% trans "Sign Up" %}</h1> -->
+
 
 <!-- 특정 style -->
 <style>
@@ -71,7 +78,7 @@
   </div>
 
   <div class="home_list">
-    <a href="#">
+    <a href= '#'> <!-- {% url 'account_signup' %} --> 
       <div class="grobal_btn">
         <h4 class="grobal_btn_primary grobal_btn_round">간편 회원가입</h4>
       </div>
@@ -79,7 +86,6 @@
   </div>
 
 </div>
-
 
 
 
