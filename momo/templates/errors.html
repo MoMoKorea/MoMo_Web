@@ -1,0 +1,154 @@
+{% include 'head.html' %}
+
+<!-- 특정 style -->
+<style>
+  body{
+    background-color: #fff;
+  }
+</style>
+<!-- 특정 style end-->
+
+<!-- content -->
+
+  <div class="container">
+
+    <div class="mar_50">
+      <div class="row">
+        <div class="col-12">
+          <div>input_text</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="textinput textinput_error">
+              <input type="text" id="inputtext" placeholder="inputtext" v-model="title">
+          </div>
+        </div>
+
+        <div class="col-12">
+          <h5 class="grobal_errortext">에러메시지가 여기에 나옴</h5>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mar_50">
+      <div class="row">
+        <div class="col-12">
+          <div>input_time</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <form>
+            <div class="timeinput timeinput_error">
+              <input type="time" name="regist_time" data-placeholder="🌝  시작" required="required" aria-required="true">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-6">
+          <form>
+            <div class="timeinput">
+              <input type="time" name="regist_time" data-placeholder="🌚  끝" required="required" aria-required="true">
+            </div>
+          </form>
+        </div>
+
+        <div class="col-12">
+          <h5 class="grobal_errortext">에러메시지가 여기에 나옴</h5>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mar_50">
+      <div class="row">
+        <div class="col-12">
+          <div>input_number</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="numberinput numberinput_error">
+            <input type="number" pattern="\d*" placeholder="연락받을 전화번호를 기입하세요">
+          </div>
+        </div>
+
+        <div class="col-12">
+          <h5 class="grobal_errortext">에러메시지가 여기에 나옴</h5>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mar_50">
+      <div class="row">
+        <div class="col-12">
+          <div>input_radiobtn</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="radiobtn_l">
+            <input type="radio" name="regist_age">
+
+            <label>
+                <span class="regist_emoji">&#x1F476;</span>4~6세
+            </label>
+
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="radiobtn_l">
+              <input type="radio" name="regist_age">
+
+              <label>
+                  <span class="regist_emoji">&#x1F9D2;</span>초등학생
+              </label>
+
+          </div>
+        </div>
+
+        <div class="col-12">
+          <h5 class="grobal_errortext">에러메시지가 여기에 나옴</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="mar_50">
+      <div class="row">
+        <div class="col-12">
+          <div>input_textarea</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="textareainput textareainput_error">
+            <textarea rows="6" placeholder="당부드리고 싶은 내용을 기입하세요.
+
+  ex) 시간 약속 잘 지켜주시고 성실하신 분이면 연령 무관하게 지원 가능합니다."></textarea>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <h5 class="grobal_errortext">에러메시지가 여기에 나옴</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="mar_50"></div>
+
+  </div>
+
+
+
+
+
+{% include 'footer.html' %}
