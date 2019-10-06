@@ -8,13 +8,39 @@
 
       data: {
         job: {},
-        workingDayOfWeeks: []
+        workingDayOfWeeks: [],
+        hasContactNumber: false,
+        contactNumber: '',
       },
 
       watch: {
+
       },
 
       methods: {
+
+        showContactModal: function() {
+
+            if (this.hasContactNumber) {
+                $("#contactModal").toggle()
+            }
+            else {
+                $("#requiredContactNumberModal").toggle()
+            }
+            $(".modal_background").toggle()
+
+        },
+        // 연락처 정보 업데이트
+        updateContactNumber: function() {
+
+            if (this.contactNumber.length == 0) return
+
+            //TODO :: user contactnumber update api
+            alert('저장완료')
+            location.reload()
+
+        }
+
       }
     })
 
