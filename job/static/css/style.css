@@ -228,6 +228,36 @@ button{
   border-bottom: 2px solid #005cef;
 }
 
+.textinput input[type="email"]{
+  padding-bottom: 3px;
+  font-size: 16px;
+
+  border-radius: 0px;
+  border-bottom: solid 2px #eee;
+
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.textinput input[type="email"]:focus{
+  border-bottom: 2px solid #005cef;
+}
+
+.textinput input[type="password"]{
+  padding-bottom: 3px;
+  font-size: 16px;
+
+  border-radius: 0px;
+  border-bottom: solid 2px #eee;
+
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.textinput input[type="password"]:focus{
+  border-bottom: 2px solid #005cef;
+}
+
 /* input_number */
 
 .numberinput{
@@ -1120,6 +1150,20 @@ button{
   padding: 0px 15px 0px 15px;
 }
 
+.user_head{
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.user_head h4{
+  font-family: 'NotoSansKR Bold';
+}
+
 
 /* home */
 
@@ -1143,5 +1187,16 @@ button{
   padding: 0px 0px 20px 0px;
 }
 
+.home_list:nth-child(1){
+  margin-top: 0px;
+}
+
+.home_list{
+  margin-top: 26px;
+}
+
+.home_list_password{
+  margin-top: 40px;
+}
 
 /* signup */
