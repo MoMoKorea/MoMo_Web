@@ -95,11 +95,11 @@ WSGI_APPLICATION = 'momo_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'momo_local',
+        'NAME': 'momo_web',
         'USER': 'root',
-        'PASSWORD': 'secret',  # ken
+        # 'PASSWORD': 'secret',  # ken
         # 'PASSWORD': '!Dfdf120452', # Kyle
-        # 'PASSWORD': '!1q2w3e4r', # Joe>>>>>>> 6e70a34cc065fe88a8cb010b31023bceea9244f3
+        'PASSWORD': '!1q2w3e4r', # Joe
         'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
@@ -158,15 +158,6 @@ AUTH_USER_MODEL = 'user.CustomUser' # new
 
 LOGIN_REDIRECT_URL = '/' #home'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/' #home'
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of 'allauth'
-    "django.contrib.auth.backends.ModelBackend",
-    #`allauth` specific authentication methods, such as login by e-mail
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-
 SITE_ID = 1
 
 ACCOUNT_EMAIL_REQUIRED = True
@@ -176,3 +167,23 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
+
+
+## --------------------------------------------------------------------------------------------------------- ##
+## Reference : https://ssungkang.tistory.com/entry/Django-회원가입-시-이메일-인증-SMTP
+EMAIL_HOST = 'smtp.gmail.com' # 메일을 호스트하는 서버
+EMAIL_PORT = 587 # gmail과의 통신하는 포트
+EMAIL_HOST_USER = 'momonim.korea@gmail.com' # 발신할 이메일
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = 'joekorea3' # 발신할 메일의 비밀번호
+EMAIL_USE_TLS = True # TLS 보안 방법
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of 'allauth'
+    "django.contrib.auth.backends.ModelBackend",
+    #`allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
