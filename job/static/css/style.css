@@ -112,7 +112,7 @@ input{
 }
 
 input::placeholder{
-  color: #888;
+  color: #ccc;
 }
 
 button{
@@ -1170,6 +1170,7 @@ button{
 
 .home_img{
   padding: 0px 13px 30px 13px;
+  text-align: center;
 }
 
 .home_title{
@@ -1187,16 +1188,32 @@ button{
   padding: 0px 0px 20px 0px;
 }
 
-.home_list:nth-child(1){
-  margin-top: 0px;
-}
-
 .home_list{
-  margin-top: 26px;
+  padding-bottom: 26px;
 }
 
-.home_list_password{
-  margin-top: 40px;
+.home_list_btn{
+  padding-top: 14px;
 }
 
-/* signup */
+.home_list_btn{
+  padding-top: 14px;
+}
+
+.home_bottom{
+  position: absolute;
+  bottom: 16px;
+  text-align: center;
+  left: 0;
+  right:0;
+}
+
+.home_bottom span{
+  margin-right: 10px;
+}
+
+.home_emailimg{
+  width: 150px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
