@@ -180,7 +180,7 @@ EMAIL_HOST_PASSWORD = 'joekorea3' # 발신할 메일의 비밀번호
 EMAIL_USE_TLS = True # TLS 보안 방법
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of 'allauth'
     "django.contrib.auth.backends.ModelBackend",
