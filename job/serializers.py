@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import JobORM, JobDayOfWeekMappingORM, ChildAgeORM
+from .models import JobORM, JobDayOfWeekMappingORM, ChildAgeORM, JobLocationORM, JobRequireDocumentMappingORM
 
 
 class JobSerializer(serializers.ModelSerializer):
@@ -21,6 +21,9 @@ class JobSerializer(serializers.ModelSerializer):
         ret['worker_age_from'] = ret['worker_age_from'].age
         ret['worker_age_to'] = ret['worker_age_to'].age
         ret['day_of_weeks'] = JobDayOfWeekMappingORM.objects.filter(job_id=ret['job_id'])
+        ret['root_location'] = JobLocationORM.objects.get(job_location_id=ret['location_id'])
+        ret['sub_location'] = JobLocationORM.objects.get(job_location_id=ret['sub_location_id'])
+        ret['documents'] = JobRequireDocumentMappingORM.objects.filter(job_id=ret['job_id'])
 
         # 필요없는 컬럼 제외
         ret.pop('car_preference_id')
@@ -28,6 +31,8 @@ class JobSerializer(serializers.ModelSerializer):
         ret.pop('worker_age_from_id')
         ret.pop('worker_age_to_id')
         ret.pop('child_age_id')
+        ret.pop('location_id')
+        ret.pop('sub_location_id')
         return ret
 
     class Meta():

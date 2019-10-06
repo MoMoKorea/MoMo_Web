@@ -84,9 +84,11 @@ def get_detail(request, jobId):
     # 0. 유효하지않은 jobId면 없는페이지로 돌린다
 
     # 1. jobId로 정보들을 불러온다.
-    # jobData = JobRecords.get_job_detail(jobId)
+    jobData = JobRecords.get_job_detail(jobId)
+    # pprint(jobData)
+    # pprint(model_to_dict(jobData['day_of_weeks'][0]))
     # 2. 필요한 정보를 가공한다.
-    # jobDetail = jobRepository.process_job_detail(jobData)
-    # pprint(jobDetail)
+    jobDetail = jobRepository.process_job_detail(jobData)
+    pprint(jobDetail)
     # 3. 화면으로 가공한 정보를 넘긴다.
-    return render(request, template_name='detail/detail.html', context={'title': jobId})
+    return render(request, template_name='detail/detail.html', context={'title': jobId, 'data': jobDetail})
