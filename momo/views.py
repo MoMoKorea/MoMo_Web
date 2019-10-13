@@ -4,6 +4,7 @@ from allauth.account.views import SignupView
 from allauth.account.views import LoginView
 from allauth.account.views import LogoutView
 
+<<<<<<< HEAD
 
 class Signup(SignupView):
     '''
@@ -60,6 +61,10 @@ def password_reset_allauth(request):
 # ---------------------------------------------------------------------------------------
 
 # def home(request):
+=======
+def home(request):
+    return render(request, 'errors.html')
+>>>>>>> d28de1aaef07e4b11c2032ee201f8f3062796e5d
     # return render(request, 'account/verification_sent.html')
     # return render(request, 'account/password_reset.html')
     # return render(request, 'account/password_change.html')

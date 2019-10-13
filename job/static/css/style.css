@@ -181,6 +181,9 @@ button{
     }
 }
 
+.selectinput_error select{
+  border-bottom: solid 2px #e61b22;
+}
 
 
 /* input_text */
@@ -208,6 +211,10 @@ button{
 
 .textareainput textarea:focus {
   border: 2px solid #005cef;
+}
+
+.textareainput_error textarea{
+  border: solid 2px #e61b22;
 }
 
 .textinput{
@@ -260,6 +267,12 @@ button{
   border-bottom: 2px solid #005cef;
 }
 
+.textinput_error input[type="text"],
+.textinput_error input[type="email"],
+.textinput_error input[type="password"]{
+  border-bottom: solid 2px #e61b22;
+}
+
 /* input_number */
 
 .numberinput{
@@ -280,6 +293,10 @@ button{
 
 .numberinput input[type="number"]:focus{
   border-bottom: 2px solid #005cef;
+}
+
+.numberinput_error input[type="number"]{
+  border-bottom: solid 2px #e61b22;
 }
 
 /* input_date */
@@ -317,6 +334,10 @@ button{
   color: #005cef !important;
 }
 
+.datebtn_l_error input[type="date"]{
+  border: solid 2px #e61b22;
+}
+
 /* input_time */
 
 .timeinput{
@@ -350,6 +371,10 @@ button{
 .timeinput input[type="time"]:valid{
   border-bottom: 2px solid #005cef;
   color: #005cef !important;
+}
+
+.timeinput_error input[type="time"]{
+  border-bottom: solid 2px #e61b22;
 }
 
 /* input_radiobtn */
@@ -409,6 +434,11 @@ button{
 
 .radiobtn_s input[type=radio]:checked + label path{
   fill: #005cef;
+}
+
+.radiobtn_l_error input[type="radio"] + label,
+.radiobtn_s_error input[type="radio"] + label{
+  border: solid 2px #e61b22;
 }
 
 /* input_checkboxbtn */
@@ -472,6 +502,11 @@ button{
 
 .checkboxbtn_s input[type=checkbox]:checked + label path{
   fill: #005cef;
+}
+
+.checkboxbtn_l_error input[type="checkbox"] + label,
+.checkboxbtn_s_error input[type="checkbox"] + label{
+  border: solid 2px #e61b22;
 }
 
 
@@ -687,6 +722,11 @@ button{
   color: #fff;
 
   font-family: 'NotoSansKR Bold';
+}
+
+.grobal_errortext{
+  margin-top: 4px;
+  color: #e61b22;
 }
 
 
