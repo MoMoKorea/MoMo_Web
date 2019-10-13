@@ -166,7 +166,8 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
+# ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
+ACCOUNT_FORMS = {'signup': 'momo_web.forms.MyCustomSignupForm'}
 
 
 ## --------------------------------------------------------------------------------------------------------- ##
