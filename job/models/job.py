@@ -1,15 +1,38 @@
 from django.db import models
 from django.utils import timezone
-
+from job.models.job_location import JobLocationORM
 from job.models.job_car_preference import JobCarPreferenceORM
 from job.models.job_sex import JobSexORM
 from job.models.job_age import JobAgeORM
 from job.models.child_age import ChildAgeORM
+from job.models.job_day_of_week import JobDayOfWeekORM
+from job.models.job_require_document import JobRequireDocumentORM
+
 
 class JobORM(models.Model):
 
     class Meta:
         db_table = "job"
+
+    @classmethod
+    def get_main_list(self):
+        return self.objects.select_related("child_age",
+                                           "root_location",
+                                           "second_location")
+
+
+
+    @classmethod
+    def get_detail(self):
+        return self.objects.select_related("child_age",
+                                           "worker_sex",
+                                           "worker_age_from",
+                                           "worker_age_to",
+                                           "car_preference",
+                                           "root_location",
+                                           "second_location")
+
+
 
 
     job_id = models.BigAutoField(primary_key=True)
@@ -19,8 +42,6 @@ class JobORM(models.Model):
     title = models.CharField(max_length=50, help_text='글 제목', default='')
     pay = models.IntegerField(default=0)
     is_negotiation = models.BooleanField(default=False)
-    location_id = models.SmallIntegerField(default=1)
-    sub_location_id = models.SmallIntegerField(default=1)
     third_location_id = models.SmallIntegerField(default=1)
     description = models.TextField(default='')
     start_available_calling_time = models.TimeField()
@@ -33,13 +54,16 @@ class JobORM(models.Model):
     updated_at = models.DateTimeField(default=timezone.now)
 
 
-    worker_sex_id = models.ForeignKey(JobSexORM, on_delete=models.SET_NULL, null=True, db_column='worker_sex_id', related_name='worker_sex')
-    worker_age_from_id = models.ForeignKey(JobAgeORM, on_delete=models.SET_NULL, db_column='worker_age_from_id', related_name='worker_age_from', help_text='지원 연령대 시작', null=True)
-    worker_age_to_id = models.ForeignKey(JobAgeORM, on_delete=models.SET_NULL, db_column='worker_age_to_id', related_name='worker_age_to', help_text='지원 연령대 끝', null=True)
-    car_preference_id = models.ForeignKey(JobCarPreferenceORM, on_delete=models.SET_NULL, null=True, db_column='car_preference_id', related_name='car_preference')
-    child_age_id = models.ForeignKey(ChildAgeORM, on_delete=models.SET_NULL, null=True, db_column='child_age_id', related_name='child_age')
+    root_location = models.ForeignKey(JobLocationORM, on_delete=models.SET_NULL, null=True, db_column='root_location_id', related_name='root_location')
+    second_location = models.ForeignKey(JobLocationORM, on_delete=models.SET_NULL, null=True, db_column='second_location_id', related_name='second_location')
+    worker_sex = models.ForeignKey(JobSexORM, on_delete=models.SET_NULL, null=True, db_column='worker_sex_id', related_name='worker_sex')
+    worker_age_from = models.ForeignKey(JobAgeORM, on_delete=models.SET_NULL, db_column='worker_age_from_id', related_name='worker_age_from', help_text='지원 연령대 시작', null=True)
+    worker_age_to = models.ForeignKey(JobAgeORM, on_delete=models.SET_NULL, db_column='worker_age_to_id', related_name='worker_age_to', help_text='지원 연령대 끝', null=True)
+    car_preference = models.ForeignKey(JobCarPreferenceORM, on_delete=models.SET_NULL, null=True, db_column='car_preference_id')
+    child_age = models.ForeignKey(ChildAgeORM, on_delete=models.SET_NULL, null=True, db_column='child_age_id', related_name='child_age')
+    day_of_weeks = models.ManyToManyField(JobDayOfWeekORM, through="JobDayOfWeekMappingORM", null=True, related_name='day_of_weeks')
+    documents = models.ManyToManyField(JobRequireDocumentORM, through="JobRequireDocumentMappingORM", null=True, related_name='documents')
 
-    # 희망제출서류
 
 
 

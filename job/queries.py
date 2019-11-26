@@ -1,4 +1,4 @@
-import logging
+import logging, json
 from pprint import pprint
 
 from job.models import JobRequireDocumentMappingORM
@@ -35,12 +35,12 @@ class JobRecords:
             # 근무요일 save
             for dayId in data["selectedDayOfWeeks"]:
                 selectedDayOfWeek = JobDayOfWeekORM(dayId)
-                JobDayOfWeekMappingORM.objects.create(job_id=job.job_id, day_of_week_id=selectedDayOfWeek)
+                JobDayOfWeekMappingORM.objects.create(job_id=job, day_of_week_id=selectedDayOfWeek)
 
             # 제출문서 save
             for documentId in data["selectedRequiredDocuments"]:
                 selectedDocument = JobRequireDocumentORM(documentId)
-                JobRequireDocumentMappingORM.objects.create(job_id=job.job_id, require_document_id=selectedDocument)
+                JobRequireDocumentMappingORM.objects.create(job_id=job, require_document_id=selectedDocument)
 
             return serializer
         else:
@@ -55,14 +55,7 @@ class JobRecords:
 
     @staticmethod
     def get_job_detail(jobId):
-
-        querySet = JobORM.objects.get(job_id=jobId)
-        jobSerializer = JobSerializer(querySet)
-
-        jobData = jobSerializer.data.copy()
-        jobData['all_day_of_week'] = list(JobRecords.get_all_day_of_week())
-
-        return jobData
+        return JobORM.get_detail().get(job_id=jobId)
 
     """
     Kyle 2019-10-06
@@ -71,11 +64,7 @@ class JobRecords:
     """
     @staticmethod
     def get_job_list():
-
-        querySet = JobORM.objects.all()
-        jobSerializer = JobSerializer(querySet, many=True)
-        jobList = jobSerializer.data.copy()
-        return jobList
+        return JobORM.get_main_list()
 
 
     """

@@ -7,9 +7,11 @@
 
     $(document).ready(function() {
 
-        var jobList = {{ data|safe }}
+        var data = {{data|safe}}
+        var jobList = data['jobList']
+        var totalPage = data['totalPage']
         listVue.jobList = jobList
-        console.log("here")
+        listVue.totalPage = totalPage
 
     })
 

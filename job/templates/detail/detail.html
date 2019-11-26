@@ -170,7 +170,7 @@
             <div class="color_8">근무 요일</div>
 
             <div>
-              <h5 v-bind:class='item.selected == true ? "detail_date_p" : "detail_date_g"' v-for="item in workingDayOfWeeks">
+              <h5 v-bind:class='item.selected == true ? "detail_date_p" : "detail_date_g"' v-for="item in job.working_day_of_weeks">
                 [[ item.day_of_week ]]
               </h5>
             </div>

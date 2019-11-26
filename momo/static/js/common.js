@@ -1,5 +1,8 @@
 
 
+    Vue.prototype.$http = axios
+    const baseUri = "http://127.0.0.1:8000/"
+
     /**
      * 문자열이 빈 문자열인지 체크하여 결과값을 리턴한다.
      * @param str       : 체크할 문자열

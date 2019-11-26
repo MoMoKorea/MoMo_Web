@@ -1,6 +1,5 @@
 
-    Vue.prototype.$http = axios
-    const baseUri = "http://127.0.0.1:8000/"
+
     var validateChildIds = new Array()
     var validateDayOfWeekIds = new Array()
     var validate = new Array()
@@ -176,6 +175,8 @@
                 this.$http.post(baseUri + "job/regist", { params })
                   .then((result) => {
                     console.log(result)
+                    alert("등록되었습니다.")
+                    window.location.href = "/job/"
                   })
             }
 
