@@ -27,7 +27,6 @@ class JobRepository:
         jobDetail['working_time'] = str(querySet.start_working_time) + " ~ " + str(querySet.end_working_time)
         jobDetail['working_location'] = querySet.root_location.name + " " + querySet.second_location.name
         jobDetail['working_date'] = querySet.start_working_date #TODO 포맷
-        jobDetail['worker_age'] = str(querySet.worker_age_from.age) + " ~ " + str(querySet.worker_age_to.age) + "대"
         jobDetail['worker_sex'] = querySet.worker_sex.sex
         jobDetail['car_preference'] = querySet.car_preference.value
         jobDetail['child_age'] = querySet.child_age.age
@@ -48,6 +47,21 @@ class JobRepository:
             documents_string += item
 
         jobDetail['documents'] = documents_string
+
+        # 희망연령
+        selectedWorkAge = []
+        selectedWorkAgeString = ""
+        for item in list(querySet.worker_age.all()):
+            selectedWorkAge.append(item.age)
+
+        for index, item in enumerate(selectedWorkAge):
+            if index > 0:
+                selectedWorkAgeString += ", "
+
+            selectedWorkAgeString += str(item)
+
+        jobDetail['worker_age'] = selectedWorkAgeString
+
 
 
         return jobDetail
@@ -89,12 +103,14 @@ class JobRepository:
 
         for item in pagingItems:
             newItem = model_to_dict(item)
+            pprint(newItem)
             newItem['root_location'] = model_to_dict(item.root_location)
             newItem['second_location'] = model_to_dict(item.second_location)
             newItem['working_day_of_weeks'] = self.get_working_day_of_weeks(item.day_of_weeks.all(), allDayOfWeeks)
             newItem['child_age'] = model_to_dict(item.child_age)
             newItem['day_of_weeks'] = []
             newItem['documents'] = []
+            newItem['worker_age'] = []
             jobList.append(newItem)
 
         return {

@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+
 from job.models.job_location import JobLocationORM
 from job.models.job_car_preference import JobCarPreferenceORM
 from job.models.job_sex import JobSexORM
@@ -26,8 +27,6 @@ class JobORM(models.Model):
     def get_detail(self):
         return self.objects.select_related("child_age",
                                            "worker_sex",
-                                           "worker_age_from",
-                                           "worker_age_to",
                                            "car_preference",
                                            "root_location",
                                            "second_location")
@@ -57,12 +56,11 @@ class JobORM(models.Model):
     root_location = models.ForeignKey(JobLocationORM, on_delete=models.SET_NULL, null=True, db_column='root_location_id', related_name='root_location')
     second_location = models.ForeignKey(JobLocationORM, on_delete=models.SET_NULL, null=True, db_column='second_location_id', related_name='second_location')
     worker_sex = models.ForeignKey(JobSexORM, on_delete=models.SET_NULL, null=True, db_column='worker_sex_id', related_name='worker_sex')
-    worker_age_from = models.ForeignKey(JobAgeORM, on_delete=models.SET_NULL, db_column='worker_age_from_id', related_name='worker_age_from', help_text='지원 연령대 시작', null=True)
-    worker_age_to = models.ForeignKey(JobAgeORM, on_delete=models.SET_NULL, db_column='worker_age_to_id', related_name='worker_age_to', help_text='지원 연령대 끝', null=True)
     car_preference = models.ForeignKey(JobCarPreferenceORM, on_delete=models.SET_NULL, null=True, db_column='car_preference_id')
     child_age = models.ForeignKey(ChildAgeORM, on_delete=models.SET_NULL, null=True, db_column='child_age_id', related_name='child_age')
     day_of_weeks = models.ManyToManyField(JobDayOfWeekORM, through="JobDayOfWeekMappingORM", null=True, related_name='day_of_weeks')
     documents = models.ManyToManyField(JobRequireDocumentORM, through="JobRequireDocumentMappingORM", null=True, related_name='documents')
+    worker_age = models.ManyToManyField(JobAgeORM, through="JobAgeMappingORM", null=True, related_name='worker_age')
 
 
 

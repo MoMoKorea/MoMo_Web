@@ -1,7 +1,7 @@
 import logging, json
 from pprint import pprint
 
-from job.models import JobRequireDocumentMappingORM
+from job.models import JobRequireDocumentMappingORM, JobAgeMappingORM
 from job.models.job import JobORM
 from job.serializers import JobSerializer, ChildAgeSerializer
 from job.models.child_age import ChildAgeORM
@@ -42,6 +42,12 @@ class JobRecords:
                 selectedDocument = JobRequireDocumentORM(documentId)
                 JobRequireDocumentMappingORM.objects.create(job_id=job, require_document_id=selectedDocument)
 
+            # 선호 연령 save
+            for workerAge in data["selectedWorkerAge"]:
+                selectedWorkerAge = JobAgeORM(workerAge)
+                JobAgeMappingORM.objects.create(job_id=job, age_id=selectedWorkerAge)
+
+
             return serializer
         else:
             pprint("err_message=" + str(serializer.error_messages))
@@ -64,7 +70,7 @@ class JobRecords:
     """
     @staticmethod
     def get_job_list():
-        return JobORM.get_main_list()
+        return JobORM.get_main_list().order_by('-job_id')
 
 
     """

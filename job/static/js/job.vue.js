@@ -44,6 +44,7 @@
         selectedPreferredCarId: 0,
         requiredDocumentList: '',
         selectedRequiredDocumentId: [],
+        selectedPreferredAgeId: [],
 
         // page 4
         description: '',
@@ -153,8 +154,8 @@
                     title: data.title,
                     pay: data.pay,
                     is_negotiation: data.isNegotiation,
-                    location_id: data.selectedRootLocationId,
-                    sub_location_id: data.selectedSecondLocationId,
+                    root_location: data.selectedRootLocationId,
+                    second_location: data.selectedSecondLocationId,
                     third_location_id: data.selectedThirdLocationId,
                     description: data.description,
                     start_available_calling_time: data.startAvailableCallingTime,
@@ -162,13 +163,12 @@
                     start_working_time: data.startWorkingTime,
                     end_working_time: data.endWorkingTime,
                     start_working_date: data.startWorkingDate,
-                    worker_sex_id: data.selectedPreferredSexId,
-                    worker_age_from_id: 1,
-                    worker_age_to_id: 3,
-                    car_preference_id: data.selectedPreferredCarId,
-                    child_age_id: data.selectedChildAgeId,
+                    worker_sex: data.selectedPreferredSexId,
+                    car_preference: data.selectedPreferredCarId,
+                    child_age: data.selectedChildAgeId,
                     selectedDayOfWeeks: data.selectedDayOfWeekId,
-                    selectedRequiredDocuments: data.selectedRequiredDocumentId
+                    selectedRequiredDocuments: data.selectedRequiredDocumentId,
+                    selectedWorkerAge: data.selectedPreferredAgeId
                 };
 
 
@@ -199,6 +199,7 @@
             this.selectedPreferredSexId = 1
             this.selectedPreferredCarId = 1
             this.selectedRequiredDocumentId = [1]
+            this.selectedPreferredAgeId = [1]
         },
          // 벨리데이션 체크용 함수
         checkPageValidate: function(page) {
@@ -337,6 +338,9 @@
                 }
 
                 // 선호 연령
+                if (isEmpty(this.selectedPreferredAgeId)) {
+                    validate.push("preferred_age")
+                }
 
                 // 차량 소지여부
                 if (isEmpty(this.selectedPreferredCarId)) {
