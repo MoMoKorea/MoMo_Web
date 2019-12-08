@@ -1,3 +1,4 @@
+
 {% include 'head.html' %}
 
 <!-- 특정 style -->
@@ -18,14 +19,20 @@
 <!-- content -->
 <div class="user_content">
   <div class="home_emailimg">
-    <img src="../../static/images/user/img_emailcheck.svg" alt="img_emailcheck">
+    <img src="../../../static/images/user/img_emailcheck.svg" alt="img_emailcheck">
   </div>
 
-  <h2 class="home_title">메일이 전송되었습니다!</h2>
+  <h2 class="home_title">
+    <a href="mailto:{{ email }}">{{ email }}</a>
+  </h2>
 
   <h4 class="color_8 text_c">
-    이메일에 전송된 링크 클릭 시,<br/>
-    회원가입이 완료됩니다
+    아래 버튼을 클릭하시면 회원가입이 완료됩니다 </br>
+
+    <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+    {% csrf_token %}
+        <button type="submit">시작하기(인증)</button>
+    </form>
   </h4>
 
 </div>
