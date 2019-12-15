@@ -7,8 +7,6 @@
     $(document).ready(function() {
         var jobDetail = {{ data|safe }}
         app.job = jobDetail
-        app.workingDayOfWeeks = {{ data.working_day_of_weeks|safe }}
-
 
         // 스크롤 리스너 연결
         initScrollListener()

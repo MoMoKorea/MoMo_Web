@@ -49,6 +49,9 @@ INSTALLED_APPS = [
 
     # local
     'user.apps.UserConfig', # new
+
+    # debug
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'momo_web.urls'
@@ -176,3 +180,7 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

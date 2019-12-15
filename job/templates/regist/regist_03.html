@@ -32,8 +32,22 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
-            드레그인데 이따 작업함
+        <div class="col-6" v-for="item in preferredAgeList">
+            <div class="checkboxbtn_l">
+                <input type="checkbox" v-bind:id="'regist_preferred_age_' + item.job_age_id"
+                       v-bind:value="item.job_age_id" name="regist_preferred_age" v-model="selectedPreferredAgeId">
+                <label v-bind:for="'regist_preferred_age_' + item.job_age_id">
+                    <div>
+                        [[ item.age ]]
+                        <svg class="regist_documentcheck" xmlns="http://www.w3.org/2000/svg" width="25" height="22"
+                             viewBox="0 0 25 22">
+                            <path fill="#888" fill-rule="nonzero"
+                                  d="M21.876 0L25 3.158 7.48 22 0 12.476 3.366 9.6l4.388 5.587z"/>
+                        </svg>
+                    </div>
+                </label>
+
+            </div>
         </div>
 
     </div>
@@ -90,24 +104,6 @@
 
             </div>
         </div>
-
-<!--        <div class="col-12">-->
-<!--            <div class="checkboxbtn_l">-->
-<!--                <input type="checkbox" id="regist_document02" name="regist_document">-->
-<!--                <label for="regist_document02">-->
-<!--                    <div>-->
-<!--                        신분증 사본-->
-<!--                        <svg class="regist_documentcheck" xmlns="http://www.w3.org/2000/svg" width="25" height="22"-->
-<!--                             viewBox="0 0 25 22">-->
-<!--                            <path fill="#888" fill-rule="nonzero"-->
-<!--                                  d="M21.876 0L25 3.158 7.48 22 0 12.476 3.366 9.6l4.388 5.587z"/>-->
-<!--                        </svg>-->
-<!--                    </div>-->
-<!--                </label>-->
-
-<!--            </div>-->
-<!--        </div>-->
-
 
     </div>
 </div>
