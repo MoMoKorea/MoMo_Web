@@ -112,7 +112,7 @@ input{
 }
 
 input::placeholder{
-  color: #888;
+  color: #ccc;
 }
 
 button{
@@ -181,6 +181,11 @@ button{
     }
 }
 
+.selectinput_error select{
+  border-bottom: solid 2px #e61b22;
+}
+
+
 /* input_text */
 
 .textareainput{
@@ -208,6 +213,10 @@ button{
   border: 2px solid #005cef;
 }
 
+.textareainput_error textarea{
+  border: solid 2px #e61b22;
+}
+
 .textinput{
   position: relative;
   margin-top: 12px;
@@ -226,6 +235,42 @@ button{
 
 .textinput input[type="text"]:focus{
   border-bottom: 2px solid #005cef;
+}
+
+.textinput input[type="email"]{
+  padding-bottom: 3px;
+  font-size: 16px;
+
+  border-radius: 0px;
+  border-bottom: solid 2px #eee;
+
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.textinput input[type="email"]:focus{
+  border-bottom: 2px solid #005cef;
+}
+
+.textinput input[type="password"]{
+  padding-bottom: 3px;
+  font-size: 16px;
+
+  border-radius: 0px;
+  border-bottom: solid 2px #eee;
+
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.textinput input[type="password"]:focus{
+  border-bottom: 2px solid #005cef;
+}
+
+.textinput_error input[type="text"],
+.textinput_error input[type="email"],
+.textinput_error input[type="password"]{
+  border-bottom: solid 2px #e61b22;
 }
 
 /* input_number */
@@ -248,6 +293,10 @@ button{
 
 .numberinput input[type="number"]:focus{
   border-bottom: 2px solid #005cef;
+}
+
+.numberinput_error input[type="number"]{
+  border-bottom: solid 2px #e61b22;
 }
 
 /* input_date */
@@ -285,6 +334,10 @@ button{
   color: #005cef !important;
 }
 
+.datebtn_l_error input[type="date"]{
+  border: solid 2px #e61b22;
+}
+
 /* input_time */
 
 .timeinput{
@@ -318,6 +371,10 @@ button{
 .timeinput input[type="time"]:valid{
   border-bottom: 2px solid #005cef;
   color: #005cef !important;
+}
+
+.timeinput_error input[type="time"]{
+  border-bottom: solid 2px #e61b22;
 }
 
 /* input_radiobtn */
@@ -377,6 +434,11 @@ button{
 
 .radiobtn_s input[type=radio]:checked + label path{
   fill: #005cef;
+}
+
+.radiobtn_l_error input[type="radio"] + label,
+.radiobtn_s_error input[type="radio"] + label{
+  border: solid 2px #e61b22;
 }
 
 /* input_checkboxbtn */
@@ -440,6 +502,11 @@ button{
 
 .checkboxbtn_s input[type=checkbox]:checked + label path{
   fill: #005cef;
+}
+
+.checkboxbtn_l_error input[type="checkbox"] + label,
+.checkboxbtn_s_error input[type="checkbox"] + label{
+  border: solid 2px #e61b22;
 }
 
 
@@ -526,7 +593,7 @@ button{
 
 .global_back{
   position: absolute;
-  top: 17px;
+  top: 20px;
   left: 15px;
   z-index: 99;
 }
@@ -655,6 +722,11 @@ button{
   color: #fff;
 
   font-family: 'NotoSansKR Bold';
+}
+
+.grobal_errortext{
+  margin-top: 4px;
+  color: #e61b22;
 }
 
 
@@ -1111,34 +1183,83 @@ button{
 
 /* user */
 
-
-.start_body{
+.user_content{
   position: absolute;
   top: 50%;
   transform: translate(0,-50%);
-  margin: 0px 15px 0px 15px;
+
+  width: 100%;
+  padding: 0px 15px 0px 15px;
 }
 
-.start_skip{
-  text-align: right;
-  margin: 0px 0px 30px 0px;
+.user_head{
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
 }
 
-.start_img{
-  margin: 0px 15px 30px 15px;
+.user_head h4{
+  font-family: 'NotoSansKR Bold';
 }
 
-.start_title{
-  margin: 0px 0px 20px 0px;
+
+/* home */
+
+
+.home_img{
+  padding: 0px 13px 30px 13px;
+  text-align: center;
+}
+
+.home_title{
+  padding: 0px 0px 20px 0px;
   text-align: center;
 
   font-family: 'NotoSansKR Bold';
 }
 
-.start_btn{
-  margin: 0px 0px 20px 0px;
+.home_btn{
+  padding: 0px 0px 20px 0px;
 }
 
-.start_login{
+.home_login{
+  padding: 0px 0px 20px 0px;
+}
+
+.home_list{
+  padding-bottom: 26px;
+}
+
+.home_list_btn{
+  padding-top: 14px;
+}
+
+.home_list_btn{
+  padding-top: 14px;
+}
+
+.home_bottom{
+  position: absolute;
+  bottom: 16px;
   text-align: center;
+  left: 0;
+  right:0;
+}
+
+.home_bottom span{
+  margin-right: 10px;
+}
+
+.home_emailimg{
+  width: 150px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.signup_body{
+  margin: 90px 0px 40px 0px;
 }

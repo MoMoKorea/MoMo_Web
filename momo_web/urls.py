@@ -18,15 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.contrib.staticfiles import views
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('momo.urls')),
     path('job/', include('job.urls')),
-    path('user/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
+
 ]
-
-
 
 if settings.DEBUG:
     import debug_toolbar
