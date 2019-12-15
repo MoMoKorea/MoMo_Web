@@ -1,23 +1,51 @@
-<!-- http://127.0.0.1:8000/user/logout/ -->
+{% include 'head.html' %}
 
-{% extends "account/base.html" %}
+<!-- 특정 style -->
+<style>
+  body{
+    background-color: #fff;
+  }
+</style>
+<!-- 특정 style end-->
 
-{% load i18n %}
 
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+<!-- head -->
+<div class="user_head">
+  <div class="global_back">
+    <img src="../../static/images/global/top_back.svg" alt="global_back">
+  </div>
 
-{% block content %}
-<h1>{% trans "Sign Out" %}</h1>
+  <h4 class="text_c">로그 아웃 </h4>
+</div>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>  <!-- Are you sure you want to sign out? -->
+
+<!-- content http://127.0.0.1:8000/accounts/confirm-email/ -->
 
 <form method="post" action="{% url 'account_logout' %}">
   {% csrf_token %}
   {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
+
+  <div class="signup_body">
+    <div class="container">
+      <div class="home_list">
+        <div class="row">
+          <div class="col-12">
+            <div><h3>로그아웃 하시겠습니까?</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">
+        <div class="home_list_btn">
+            <div class="grobal_btn">
+                <h4 class="grobal_btn_primary grobal_btn_round">로그아웃</h4>
+            </div>
+        </div>
+      </button>
+    </div>
+  </div>
 </form>
 
-
-{% endblock %}
+{% include 'footer.html' %}
