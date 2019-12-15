@@ -14,7 +14,9 @@
       },
 
       watch: {
+        pay: function() {
 
+        }
       },
 
       methods: {

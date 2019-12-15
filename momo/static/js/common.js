@@ -29,4 +29,11 @@
     }
 
 
+    // 금액 천단위마다 콤마(,) 추가
+    function numberWithCommas(price) {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+
+
 

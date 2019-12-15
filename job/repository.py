@@ -38,7 +38,6 @@ class JobRepository:
         documents_string = ""
         for item in list(querySet.documents.all()):
             documents.append(item.document)
-            documents.append(item.document)
 
         for index, item in enumerate(documents):
             if index > 0:
