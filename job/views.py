@@ -7,6 +7,9 @@ from django.shortcuts import render
 from .repository import JobRepository
 from pprint import pprint
 from django.forms.models import model_to_dict
+from django.core.serializers.json import DjangoJSONEncoder
+from django.core.serializers import serialize
+
 
 
 import json
@@ -66,7 +69,6 @@ def register(request):
             "preferredAgeList": json.dumps(list(preferredAgeList.values())),
             "preferredCarList": json.dumps(list(preferredCarList.values())),
             "requiredDocumentList": json.dumps(list(requiredDocumentList.values())),
-
         }
 
 
@@ -82,11 +84,25 @@ Kyle 2019-06-15
 def get_detail(request, jobId):
 
     # 0. 유효하지않은 jobId면 없는페이지로 돌린다
+    # 1. jobId로 정보들을 불러오고 가공한다.
+    jobDetail = jobRepository.process_job_detail(jobId)
 
-    # 1. jobId로 정보들을 불러온다.
-    # jobData = JobRecords.get_job_detail(jobId)
-    # 2. 필요한 정보를 가공한다.
-    # jobDetail = jobRepository.process_job_detail(jobData)
-    # pprint(jobDetail)
-    # 3. 화면으로 가공한 정보를 넘긴다.
-    return render(request, template_name='detail/detail.html', context={'title': jobId})
+    # 2. 화면으로 가공한 정보를 넘긴다.
+    return render(request, template_name='detail/detail.html', context={'data': json.dumps(jobDetail, cls=DjangoJSONEncoder)})
+
+"""
+Kyle 2019-10-06
+
+@API: job 리스트
+"""
+def get_list(request):
+
+    # 1. 리스트 데이터들을 불러온다.
+    # request.GET.get('page') 가 NoneType이면 1을 반환 아니면 넘어온 page를 반환
+    page = 1 if request.GET.get('page') is None else int(request.GET.get('page'))
+    jobList = jobRepository.process_job_list(page)
+
+    if page > 1:
+        return HttpResponse(json.dumps(jobList, cls=DjangoJSONEncoder), content_type="application/json")
+    else:
+        return render(request, template_name='list/list.html', context={'data': json.dumps(jobList, cls=DjangoJSONEncoder)})
