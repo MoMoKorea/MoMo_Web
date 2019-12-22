@@ -15,77 +15,73 @@
     <img src="../../static/images/global/top_back.svg" alt="global_back">
   </div>
 
-  <h4 class="text_c">회원가입</h4>
+  <h4 class="text_c">회원가입 </h4>
 </div>
 
 
-<!-- content -->
+<!-- content http://127.0.0.1:8000/accounts/confirm-email/ -->
 
+<form class="signup" id="signup_form" method="post" accept-charset="utf-8" action= "{% url 'account_signup' %}" >
+  {% csrf_token %}
+  {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
 
-<div class="signup_body">
-  <div class="container">
-
-    <div class="home_list">
-      <div class="row">
-        <div class="col-12">
-          <div>성함</div>
-          <form>
-            <div class="textinput">
-                <input type="text" id="signup_name" placeholder="성함을 입력해주세요" v-model="name">
-            </div>
-          </form>
+  <div class="signup_body">
+    <div class="container">
+      <div class="home_list">
+        <div class="row">
+          <div class="col-12">
+            <div>성함</div>
+              <div class="textinput">
+                  <input type="text" id="username" name="username" placeholder="성함을 입력해주세요" v-model="username">
+              </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="home_list">
-      <div class="row">
-        <div class="col-12">
-          <div>이메일</div>
-          <form>
-            <div class="textinput">
-                <input type="email" id="signup_email" placeholder="이메일 주소를 입력해주세요" v-model="email">
-            </div>
-          </form>
+      <div class="home_list">
+        <div class="row">
+          <div class="col-12">
+            <div>이메일</div>
+              <div class="textinput">
+                  <input type="email" id="email" name="email" placeholder="이메일 주소를 입력해주세요" v-model="email">
+              </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="home_list">
-      <div class="row">
-        <div class="col-12">
-          <div>비밀번호</div>
-          <form>
-            <div class="textinput">
-                <input type="password" id="signup_password" placeholder="숫자와 특수문자 포함" v-model="password">
-            </div>
-          </form>
+      <div class="home_list">
+        <div class="row">
+          <div class="col-12">
+            <div>비밀번호</div>
+              <div class="textinput">
+                  <input type="password" id="password1" name="password1" placeholder="숫자와 특수문자를 포함해주세요" v-model="password1">
+              </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="home_list">
-      <div class="row">
-        <div class="col-12">
-          <div>비밀번호 확인</div>
-          <form>
-            <div class="textinput">
-                <input type="password" id="signup_repassword" placeholder="한번 더 입력해주세요" v-model="passwordAgain">
-            </div>
-          </form>
+      <div class="home_list">
+        <div class="row">
+          <div class="col-12">
+            <div>비밀번호 확인</div>
+              <div class="textinput">
+                  <input type="password" id="password2" name="password2" placeholder="한번 더 입력해주세요" v-model="password2">
+              </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="home_list_btn">
-      <a href="#">
-        <div class="grobal_btn">
-          <h4 class="grobal_btn_primary grobal_btn_round">회원가입 완료</h4>
+      <button type="submit">
+        <div class="home_list_btn">
+            <div class="grobal_btn">
+                <h4 class="grobal_btn_primary grobal_btn_round">회원가입 완료</h4>
+            </div>
         </div>
-      </a>
+      </button>
     </div>
   </div>
-</div>
-
+</form>
 
 {% include 'footer.html' %}

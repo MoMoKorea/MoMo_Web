@@ -8,3 +8,4 @@ from job.models.job_day_of_week_mapping import JobDayOfWeekMappingORM
 from job.models.job_location import JobLocationORM
 from job.models.job_require_document import JobRequireDocumentORM
 from job.models.job_require_document_mapping import JobRequireDocumentMappingORM
+from job.models.job_age_mapping import JobAgeMappingORM

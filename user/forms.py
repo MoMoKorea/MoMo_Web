@@ -5,24 +5,22 @@ from .models import CustomUser
 
 from allauth.account.forms import SignupForm
 class MyCustomSignupForm(SignupForm):
-    email = forms.EmailField(required=True,)
-    nameUser = forms.CharField(max_length=80,required=True,)
-    password1 = forms.CharField(widget=forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
+    # email = forms.EmailField(required=True,)
+    # nameUser = forms.CharField(max_length=80,required=True,)
+    # password1 = forms.CharField(widget=forms.PasswordInput)
+    # password2 = forms.CharField(widget=forms.PasswordInput)
     def save(self, request):
         # Ensure you call the parent class's save.
         # .save() returns a User object.
         user = super(MyCustomSignupForm, self).save(request)
-
         # Add your own processing here.
-
 
         # You must return the original result.
         return user
 
     class Meta:
         model = get_user_model()
-        fields = ['username','nameUser','email','phone_number','gender']
+        fields = ['username','email','phone_number','gender']
 
 
 class CustomUserCreationForm(UserCreationForm):

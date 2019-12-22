@@ -1,14 +1,19 @@
 {% include 'head.html' %}
 
+<div id="content">
+
 <div class="grobal_head">
   <div class="global_back">
-    <img src="../../static/images/global/top_back.svg" alt="global_back">
+    <img src="../../static/images/global/top_back.svg" alt="global_back" >
   </div>
 
   <h4 class="text_c">등/하교</h4>
 </div>
 
-<a href="#" id="modal_open">
+
+
+<!-- floating button -->
+<a id="btnFloating" href="#" style="display:none" v-on:click="showContactModal">
   <div class="grobal_radiusbottombtn">
     <div class="detail_contact">
       <img src="../../static/images/detail/detail_phone.svg" alt="detail_phone">
@@ -18,10 +23,8 @@
   </div>
 </a>
 
-<!-- 지금 하단에 modal 둘다 뜨는 데, 작업할 때 하나 지우고 작업하면 좋음 -->
-
 <!-- 전화번호입력 modal -->
-<div class="detail_call_body modal_bottom">
+<div id="requiredContactNumberModal" class="detail_call_body modal_bottom">
   <div class="container">
     <div class="row">
       <div class="col-12 modal_title">
@@ -32,23 +35,23 @@
         <div>연락처</div>
 
         <div class="textinput">
-          <input type="text" id="" placeholder="휴대폰번호를 입력하세요">
+          <input type="text"  placeholder="휴대폰번호를 입력하세요" v-model="contactNumber">
         </div>
       </div>
 
     </div>
   </div>
 
-  <div class="modal_btn">
-    <button class="bottombtn_p_o">
+  <div class="modal_btn" v-on:click="updateContactNumber">
+    <button v-bind:class="[contactNumber.length > 0 ? 'bottombtn_p' : 'bottombtn_p_o']" >
       <h4>다음</h4>
     </button>
 
   </div>
 </div>
 
-<!-- 연락처 modal -->
-<div class="detail_call_body modal_bottom">
+<!-- 연락처 modal-->
+<div id="contactModal" class="detail_call_body modal_bottom">
   <div class="container">
     <div class="row">
       <div class="col-12 modal_title">
@@ -76,15 +79,16 @@
   </div>
 </div>
 
-<div class="modal_background"></div>
+<!-- modal background -->
+<div class="modal_background" v-on:click="showContactModal"></div>
 
 <!-- body -->
 
 <div class="grobal_body">
   <!-- title -->
   <div class="detail_title">
-    <h4>yukiadada 님</h4>
-    <div class="detail_title_want">등하원 스쿨버스 도우미 구합니다</div>
+    <h4>[[ job.user.username ]] 님</h4>
+    <div class="detail_title_want">[[ job.title ]]</div>
 
   </div>
 
@@ -97,7 +101,7 @@
         <div class="grobal_box">
           <div class="detail_icontitle">
             <img src="../../static/images/detail/detail_won.svg" alt="detail_won">
-            <h4>20,000 원</h4>
+            <h4>[[ job.pay ]] 원</h4>
             <h5>희망시급</h5>
           </div>
 
@@ -108,7 +112,7 @@
         <div class="grobal_box">
           <div class="detail_icontitle">
             <img src="../../static/images/detail/detail_children.svg" alt="detail_children">
-            <h4>4~6세</h4>
+            <h4>[[ job.child_age ]]</h4>
             <h5>아이 나이</h5>
           </div>
 
@@ -122,9 +126,9 @@
       <div class="col-12">
         <div class="grobal_box">
           <div class="detail_contents">
-            <div class="color_8">상세정보</div>
+            <div id="btn" class="color_8">상세정보</div>
             <h5>
-              어린이 유치원입니다. 스쿨버스 등하원시 아이들 안전케어를 도와주실 등하원 도우미를 구합니다. 시간 약속 잘 지켜주시고 성실하신분이면 연령무관하게 지원 가능합니다.
+              [[ job.description ]]
             </h5>
 
           </div>
@@ -140,17 +144,17 @@
         <div class="grobal_box">
           <div class="detail_info">
             <div class="detail_info_title">근무시간</div>
-            <h5>08:30 ~ 09:00</h5>
+            <h5>[[ job.working_time ]]</h5>
           </div>
 
           <div class="detail_info">
             <div class="detail_info_title">근무위치</div>
-            <h5>광진구 자양1동</h5>
+            <h5>[[ job.working_location ]]</h5>
           </div>
 
           <div class="detail_info">
             <div class="detail_info_title">근무시작일</div>
-            <h5>19/01/01</h5>
+            <h5>[[ job.working_date ]]</h5>
           </div>
 
         </div>
@@ -166,13 +170,9 @@
             <div class="color_8">근무 요일</div>
 
             <div>
-              <h5 class="detail_date_g">일</h5>
-              <h5 class="detail_date_p">월</h5>
-              <h5 class="detail_date_p">화</h5>
-              <h5 class="detail_date_p">수</h5>
-              <h5 class="detail_date_p">목</h5>
-              <h5 class="detail_date_p">금</h5>
-              <h5 class="detail_date_g">토</h5>
+              <h5 v-bind:class='item.selected == true ? "detail_date_p" : "detail_date_g"' v-for="item in job.working_day_of_weeks">
+                [[ item.day_of_week ]]
+              </h5>
             </div>
 
           </div>
@@ -188,22 +188,22 @@
         <div class="grobal_box">
           <div class="detail_info">
             <div class="detail_info_title">희망 연령대</div>
-            <h5>20 ~ 30대</h5>
+            <h5>[[ job.worker_age ]]</h5>
           </div>
 
           <div class="detail_info">
             <div class="detail_info_title">희망 성별</div>
-            <h5>여성</h5>
+            <h5>[[ job.worker_sex ]]</h5>
           </div>
 
           <div class="detail_info">
             <div class="detail_info_title">차량소지</div>
-            <h5>필수</h5>
+            <h5>[[ job.car_preference ]]</h5>
           </div>
 
           <div class="detail_info">
             <div class="detail_info_title">제출서류</div>
-            <h5>주민등록등본</h5>
+            <h5>[[ job.documents ]]</h5>
           </div>
 
         </div>
@@ -212,21 +212,24 @@
     </div>
 
     <!-- 연락하기 -->
-    <div class="row">
-      <div class="col-12">
-        <div class="grobal_btnbox">
-          <div class="detail_contact">
-            <img src="../../static/images/detail/detail_phone.svg" alt="detail_phone">
-            <h5>연락하기</h5>
+      <div class="row">
+        <div class="col-12">
+          <div class="grobal_btnbox" v-on:click="showContactModal">
+            <div class="detail_contact">
+              <img src="../../static/images/detail/detail_phone.svg" alt="detail_phone">
+              <h5>연락하기</h5>
+            </div>
           </div>
         </div>
-
       </div>
-    </div>
 
   </div>
 
 
 </div>
+
+</div>
+
+{% include 'detail/detail_script.html' %}
 
 {% include 'footer.html' %}
