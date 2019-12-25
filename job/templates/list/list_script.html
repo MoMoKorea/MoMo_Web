@@ -2,6 +2,8 @@
 <script src="{% static 'js/job_list_vue.js' %}"></script>
 
 
+
+
 <script>
 
 
@@ -9,11 +11,20 @@
 
         var data = {{data|safe}}
         var jobList = data['jobList']
+        intComma(jobList)
         var totalPage = data['totalPage']
         listVue.jobList = jobList
         listVue.totalPage = totalPage
 
     })
+
+    function intComma(jobList) {
+
+        for (var item in jobList) {
+            console.log(item)
+        }
+
+    }
 
 
 

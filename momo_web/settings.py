@@ -52,6 +52,10 @@ INSTALLED_APPS = [
 
     # debug
     'debug_toolbar',
+
+    # 금액 천단위 콤마
+    'django.contrib.humanize',
+
 ]
 
 MIDDLEWARE = [
@@ -99,11 +103,11 @@ WSGI_APPLICATION = 'momo_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'momo_web',
+        'NAME': 'momo_local',
         'USER': 'root',
         # 'PASSWORD': 'secret',  # ken
-        # 'PASSWORD': '!Dfdf120452', # Kyle
-        'PASSWORD': '!1q2w3e4r', # Joe>>>>>>> 6e70a34cc065fe88a8cb010b31023bceea9244f3
+        'PASSWORD': '!Dfdf120452', # Kyle
+        # 'PASSWORD': '!1q2w3e4r', # Joe>>>>>>> 6e70a34cc065fe88a8cb010b31023bceea9244f3
         'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
@@ -160,7 +164,6 @@ DATE_INPUT_FORMATS = ['%Y-%m-%d']
 ## Reference : https://wsvincent.com/django-login-with-email-not-username/
 AUTH_USER_MODEL = 'user.CustomUser' # new
 ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
-#LOGIN_REDIRECT_URL = '/' # Important ★★★★★
 
 LOGIN_REDIRECT_URL = '/job/' #home >> 나중에 Kyle이랑 합칠 때 피드 URL 넣을 부분임
 ACCOUNT_EMAIL_REQUIRED = True
@@ -170,15 +173,12 @@ ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False # 로그인 후 로그인/회원�
 SITE_ID = 1
 
 # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
 ACCOUNT_UNIQUE_EMAIL = True
-# ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
-# ACCOUNT_FORMS = {'signup': 'momo_web.forms.MyCustomSignupForm'}
 
 
 ## --------------------------------------------------------------------------------------------------------- ##
@@ -202,15 +202,6 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
-SITE_ID = 1
-
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
-ACCOUNT_SESSION_REMEMBER = True
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
 
 INTERNAL_IPS = [
     '127.0.0.1',
