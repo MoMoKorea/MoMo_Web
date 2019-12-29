@@ -13,5 +13,7 @@ urlpatterns = [
     path('user/passchange', views.password_change_allauth),
     path('user/passreset', views.password_reset_allauth),
 
+    path('home', views.home),
+
 
 ]
