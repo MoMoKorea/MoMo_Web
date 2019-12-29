@@ -34,8 +34,13 @@ var listVue = new Vue({
                             }
                         })
                         .then((result) => {
-                             listVue.isPaging = false
-                             listVue.jobList = listVue.jobList.concat(result.data['jobList'])
+                            var jobList = result.data['jobList']
+                            for(var i = 0; i < jobList.length; i++) {
+                                // 원본데이터 변경을 방지하기 위해 새로운 변수에 담는다.
+                                jobList[i].payWithComma = numberWithCommas(jobList[i].pay)
+                            }
+                            listVue.isPaging = false
+                            listVue.jobList = listVue.jobList.concat(jobList)
                         })
                    }
                }

@@ -1,21 +1,16 @@
+import json
+import logging
+from pprint import pprint
+
+from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from .queries import JobRecords
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.shortcuts import render
+
+from .queries import JobRecords
 from .repository import JobRepository
-from pprint import pprint
-from django.forms.models import model_to_dict
-from django.core.serializers.json import DjangoJSONEncoder
-from django.core.serializers import serialize
-
-
-
-import json
-
-
-import logging
 
 logger = logging.getLogger(__name__)
 jobRepository = JobRepository()

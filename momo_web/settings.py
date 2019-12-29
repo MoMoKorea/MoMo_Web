@@ -106,7 +106,7 @@ DATABASES = {
         'NAME': 'momo_local',
         'USER': 'root',
         # 'PASSWORD': 'secret',  # ken
-        'PASSWORD': '!Dfdf120452', # Kyle
+        'PASSWORD': 'secret', # Kyle
         # 'PASSWORD': '!1q2w3e4r', # Joe>>>>>>> 6e70a34cc065fe88a8cb010b31023bceea9244f3
         'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
@@ -139,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'ko-kr'
+LANGUAGE_CODE = 'ko'
 
 TIME_ZONE = 'Asia/Seoul'
 
