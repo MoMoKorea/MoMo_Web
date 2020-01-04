@@ -205,4 +205,6 @@ AUTHENTICATION_BACKENDS = (
 
 INTERNAL_IPS = [
     '127.0.0.1',
+    'http://schoolroad-env.hvnkhfbpdb.ap-northeast-1.elasticbeanstalk.com/',
+    '13.114.209.60'
 ]
