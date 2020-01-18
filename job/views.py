@@ -2,12 +2,16 @@ import json
 import logging
 from pprint import pprint
 
+from django.contrib.auth.models import AnonymousUser
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils.functional import SimpleLazyObject
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.forms.models import model_to_dict
+
 
 from .queries import JobRecords
 from .repository import JobRepository
@@ -97,7 +101,16 @@ def get_list(request):
     page = 1 if request.GET.get('page') is None else int(request.GET.get('page'))
     jobList = jobRepository.process_job_list(page)
 
+
     if page > 1:
         return HttpResponse(json.dumps(jobList, cls=DjangoJSONEncoder), content_type="application/json")
     else:
-        return render(request, template_name='list/list.html', context={'data': json.dumps(jobList, cls=DjangoJSONEncoder), 'pay': 100000})
+
+        userModel = model_to_dict(request.user)
+        params = {
+            'data': json.dumps(jobList, cls=DjangoJSONEncoder),
+            'user': json.dumps(userModel, cls=DjangoJSONEncoder)
+        }
+
+
+        return render(request, template_name='list/list.html', context=params)

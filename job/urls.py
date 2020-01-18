@@ -7,7 +7,7 @@ urlpatterns = [
     # 공고 상세
     path('detail/<int:jobId>', views.get_detail, name="get_detail"),
     # 공고 리스트
-    path('', views.get_list),
+    path('', views.get_list, name="job_list"),
 
     path('api/', include([
         path('root-location', apis.get_root_location),

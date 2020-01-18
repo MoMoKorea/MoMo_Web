@@ -1,17 +1,16 @@
 {% load static %}
 <script src="{% static 'js/job_list_vue.js' %}"></script>
 
-
-
-
 <script>
 
 
     $(document).ready(function() {
 
+        var user = {{user|safe}}
         var data = {{data|safe}}
         var jobList = data['jobList']
         var totalPage = data['totalPage']
+        listVue.user = user
         listVue.jobList = jobList
         intComma(listVue.jobList)
         listVue.totalPage = totalPage

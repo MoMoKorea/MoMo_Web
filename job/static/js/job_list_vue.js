@@ -7,7 +7,8 @@ var listVue = new Vue({
         totalPage: 1,
         currentPage: 1,
         isPaging: false,
-        jobList: []
+        jobList: [],
+        user: {}
     },
     methods: {
 
@@ -24,11 +25,19 @@ var listVue = new Vue({
                 if (scrollHeight >= 200) {
 
                    var scrollY = $(document).scrollTop();
+                   if (scrollY >= 140) {
+                      $("#toolbar").show()
+                   }
+                   else {
+                      $("#toolbar").hide()
+                   }
+
                    // 스크롤길이가 200 정도 남았고, 마지막페이지가 아니며, 페이징중이 아니라면 추가로 로드한다.
                    if (scrollY > (scrollHeight - 200) && listVue.isLoadMore() && !listVue.isPaging) {
 
+                        console.log("http://" + baseUri +"/job")
                         listVue.isPaging = true
-                        listVue.$http.get(baseUri +"job", {
+                        listVue.$http.get("http://" + baseUri +"/job", {
                             params: {
                                 page: ++listVue.currentPage
                             }

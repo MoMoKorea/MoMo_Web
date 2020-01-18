@@ -102,7 +102,6 @@ class JobRepository:
 
         for item in pagingItems:
             newItem = model_to_dict(item)
-            pprint(newItem)
             newItem['root_location'] = model_to_dict(item.root_location)
             newItem['second_location'] = model_to_dict(item.second_location)
             newItem['working_day_of_weeks'] = self.get_working_day_of_weeks(item.day_of_weeks.all(), allDayOfWeeks)

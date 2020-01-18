@@ -7,7 +7,8 @@ var listVue = new Vue({
         totalPage: 1,
         currentPage: 1,
         isPaging: false,
-        jobList: []
+        jobList: [],
+        user: {}
     },
     methods: {
 
@@ -24,6 +25,7 @@ var listVue = new Vue({
                 if (scrollHeight >= 200) {
 
                    var scrollY = $(document).scrollTop();
+                   console.log(scrollY)
                    // 스크롤길이가 200 정도 남았고, 마지막페이지가 아니며, 페이징중이 아니라면 추가로 로드한다.
                    if (scrollY > (scrollHeight - 200) && listVue.isLoadMore() && !listVue.isPaging) {
 
@@ -34,8 +36,13 @@ var listVue = new Vue({
                             }
                         })
                         .then((result) => {
-                             listVue.isPaging = false
-                             listVue.jobList = listVue.jobList.concat(result.data['jobList'])
+                            var jobList = result.data['jobList']
+                            for(var i = 0; i < jobList.length; i++) {
+                                // 원본데이터 변경을 방지하기 위해 새로운 변수에 담는다.
+                                jobList[i].payWithComma = numberWithCommas(jobList[i].pay)
+                            }
+                            listVue.isPaging = false
+                            listVue.jobList = listVue.jobList.concat(jobList)
                         })
                    }
                }
@@ -49,6 +56,19 @@ var listVue = new Vue({
         // 등록하기 클릭
         onRegistClick: function() {
             window.location.href = "/job/regist"
+        },
+
+        onToolbarScrollHeight: function() {
+            var windowHeight = $(window).height();
+
+            $(window).scroll(function () {
+                var documentHeight = $(document).height();
+                var scrollHeight = documentHeight - windowHeight
+
+               var scrollY = $(document).scrollTop();
+                console.log(scrollY)
+            });
+
         }
 
 
@@ -57,6 +77,8 @@ var listVue = new Vue({
     updated () {
         // 스크롤 리스너 연결
         this.onLoadMoreScroll()
+        // toolbar 계산용 스크롤 리스너
+//        this.onToolbarScrollHeight()
     }
 
 
