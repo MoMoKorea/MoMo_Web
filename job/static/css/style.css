@@ -1214,7 +1214,6 @@ button{
   margin: 0px 0px 0px 0px;
 }
 
-
 /* user */
 
 .user_content{
@@ -1434,6 +1433,7 @@ button{
 
 /* headlocal */
 
+
 .headlocal_img{
   width: 9px;
   margin: 11px 0px 0px 6px;
@@ -1467,10 +1467,37 @@ button{
 
 .headlocal_body h4{
   padding: 0px 0px 15px 0px;
-
 }
 
 .headlocal_body h4 a{
   color: #333;
+}
 
+
+/* empty */
+
+
+.empty{
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+
+  width: 100%;
+  text-align: center;
+}
+
+.empty img{
+  width: 150px;
+}
+
+.empty h4{
+  margin: 25px 0px 0px 0px;
+
+  font-family: 'NotoSansKR Bold';
+}
+
+.empty h5{
+  margin: 10px 0px 0px 0px;
+
+  color: #888;
 }
