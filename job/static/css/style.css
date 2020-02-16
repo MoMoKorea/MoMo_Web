@@ -116,6 +116,8 @@ input::placeholder{
 }
 
 button{
+  width: 100%;
+
   background-color: transparent;
   cursor: pointer;
   outline: none;
@@ -754,8 +756,6 @@ button{
 
   background-color: #005cef;
   color: #fff;
-
-  font-family: 'NotoSansKR Bold';
 }
 
 .grobal_errortext{
@@ -1249,7 +1249,7 @@ button{
 }
 
 .home_title{
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 10px 0px;
   text-align: center;
 
   font-family: 'NotoSansKR Bold';
@@ -1377,6 +1377,7 @@ button{
 
   width: 60%;
   height: 100%;
+  overflow: scroll;
 
   background-color: #fff;
 
@@ -1428,6 +1429,43 @@ button{
   width: 22px;
 
   margin: 2px 14px 0px 0px;
+}
+
+.hbg_logout_top img{
+  width: 100%;
+}
+
+.hbg_logout_bottom{
+  text-align: center;
+}
+
+.hbg_logo{
+  margin-top: 45px;
+}
+
+.hbg_logo img{
+  width: 90px;
+}
+
+.hbg_sutitle{
+  margin-top: 15px;
+}
+
+.hbg_regist{
+  margin-top: 30px;
+  padding: 0px 25px;
+}
+
+.hbg_login{
+  margin-top: 20px;
+}
+
+.hbg_bottom{
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  left: 0;
+  right:0;
 }
 
 

@@ -99,12 +99,12 @@ WSGI_APPLICATION = 'momo_web.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'momo_local',
-        'USER': 'root',
-        'PASSWORD': 'secret',  # ken
+        'NAME': 'schoolRoad',
+        'USER': 'momo',
+        'PASSWORD': 'Momokorea!3',  # ken
         # 'PASSWORD': '!Dfdf120452', # Kyle
         # 'PASSWORD': '!1q2w3e4r', # Joe>>>>>>> 6e70a34cc065fe88a8cb010b31023bceea9244f3
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'HOST': 'schoolroad.cxstjzyie2g8.ap-northeast-1.rds.amazonaws.com',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
                  "init_command": "SET foreign_key_checks = 0;",
@@ -215,3 +215,8 @@ ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda r: False,  # disables it
+    # '…
+}
