@@ -6,8 +6,9 @@
 
     $(document).ready(function() {
 
-        var user = {{user|safe}}
         var data = {{data|safe}}
+        var user = {{ request.userModel|safe }}
+
         var jobList = data['jobList']
         var totalPage = data['totalPage']
         listVue.user = user

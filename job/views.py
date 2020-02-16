@@ -105,12 +105,8 @@ def get_list(request):
     if page > 1:
         return HttpResponse(json.dumps(jobList, cls=DjangoJSONEncoder), content_type="application/json")
     else:
-
-        userModel = model_to_dict(request.user)
         params = {
             'data': json.dumps(jobList, cls=DjangoJSONEncoder),
-            'user': json.dumps(userModel, cls=DjangoJSONEncoder)
         }
-
 
         return render(request, template_name='list/list.html', context=params)

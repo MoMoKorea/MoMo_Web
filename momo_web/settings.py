@@ -67,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'job.middleware.JobMiddleware'
 ]
 
 ROOT_URLCONF = 'momo_web.urls'
@@ -208,3 +209,8 @@ INTERNAL_IPS = [
     'http://schoolroad-env.hvnkhfbpdb.ap-northeast-1.elasticbeanstalk.com/',
     '13.114.209.60'
 ]
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda r: True,  # disables it
+    # '...
+}

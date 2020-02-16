@@ -1181,9 +1181,9 @@ button{
 }
 
 
-/* user */
+/*  */
 
-.user_content{
+._content{
   position: absolute;
   top: 50%;
   transform: translate(0,-50%);
@@ -1192,7 +1192,7 @@ button{
   padding: 0px 15px 0px 15px;
 }
 
-.user_head{
+._head{
   position: fixed;
   top: 0px;
   z-index: 100;
@@ -1202,7 +1202,7 @@ button{
   background-color: #fff;
 }
 
-.user_head h4{
+._head h4{
   font-family: 'NotoSansKR Bold';
 }
 

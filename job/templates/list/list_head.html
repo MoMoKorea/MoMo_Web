@@ -1,11 +1,11 @@
 <!-- head -->
 <div class="grobal_head" id="toolbar" style="display:none">
   <h4>
-    <a href="#" id="hl_open">광진구<img class="headlocal_img" src="../../static/images/global/dropdown_arrow.svg" alt="dropdown_arrow"></a>
+    <a id="hl_open">광진구<img class="headlocal_img" src="../../static/images/global/dropdown_arrow.svg" alt="dropdown_arrow"></a>
   </h4>
 
   <div class="grobal_hamburger">
-    <a href="#" id="hbg_open">
+    <a id="hbg_open">
       <img src="../../static/images/global/icon_hamburg_black.svg" alt="icon_hamburg_black">
     </a>
 
@@ -17,8 +17,8 @@
 
 <div class="hbg_body">
   <div class="hbg_top">
-    <h3>[[ user.username ]]&nbsp;님</h3>
-    <h5>[[ user.email ]]</h5>
+    <h3 v-if="user != null">[[ user.username ]]&nbsp;님</h3>
+    <h5 v-if="user != null">[[ user.email ]]</h5>
   </div>
 
   <div class="hbg_bottom">
@@ -52,11 +52,11 @@
 <!-- headlocal modal -->
 
 <div class="headlocal_body">
-  <h4><a href="#">전체</a></h4>
-  <h4><a href="#">서울시 강남구</a></h4>
-  <h4><a href="#">서울시 강동구</a></h4>
-  <h4><a href="#">서울시 강서구</a></h4>
-  <h4><a href="#">서울시 송파구</a></h4>
+  <h4><a >전체</a></h4>
+  <h4><a >서울시 강남구</a></h4>
+  <h4><a >서울시 강동구</a></h4>
+  <h4><a >서울시 강서구</a></h4>
+  <h4><a >서울시 송파구</a></h4>
 </div>
 
 <div class="headlocal_background"></div>
