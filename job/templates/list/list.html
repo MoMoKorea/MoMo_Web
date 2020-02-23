@@ -25,7 +25,7 @@
                             <div class="inline_b">현재</div>
 
                             <div class="inline_b list_local">
-                                <a id="modal_open">광진구<img src="../../static/images/list/list_arrow.svg"
+                                <a id="modal_open">[[ selectedLocation.name ]]<img src="../../static/images/list/list_arrow.svg"
                                                                     alt="list_arrow"></a>
                             </div>
                         </h4>
@@ -49,19 +49,15 @@
                             지역선택
                         </div>
 
-                        <h5 class="col-12">서울특별시 강남구</h5>
+                        <div v-for="location in locations">
+                            <h5 class="col-12" v-for="secondLocation in location.secondLocations" v-on:click="onLocationClick(secondLocation)">[[ location.name ]] [[ secondLocation.name ]] </h5>
+                        </div>
 
-                        <h5 class="col-12">서울특별시 강동구</h5>
-
-                        <h5 class="col-12">
-                            <div class="list_local_check">
-                                서울특별시 광진구 <img src="../../static/images/global/icon_check_p.svg" alt="icon_check_p">
-                            </div>
-                        </h5>
-
-                        <h5 class="col-12">서울특별시 강서구</h5>
-
-                        <h5 class="col-12">서울특별시 서대문구</h5>
+<!--                        <h5 class="col-12">-->
+<!--                            <div class="list_local_check">-->
+<!--                                서울특별시 광진구 <img src="../../static/images/global/icon_check_p.svg" alt="icon_check_p">-->
+<!--                            </div>-->
+<!--                        </h5>-->
 
 
                     </div>

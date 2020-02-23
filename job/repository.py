@@ -85,10 +85,10 @@ class JobRepository:
 
 
     @classmethod
-    def process_job_list(self, page):
+    def process_job_list(self, page, selectedLocationId):
 
         # query
-        querySet = JobRecords.get_job_list()
+        querySet = JobRecords.get_job_list(selectedLocationId)
         # 15개씩 끊어서 아이템을 페이징한다.
         paginator = Paginator(querySet, 15)
         # paginator에서 해당 페이지의 아이템을 가져온다.
@@ -116,5 +116,20 @@ class JobRepository:
             'jobList': jobList
         }
 
+    @classmethod
+    def get_location_list(self):
+
+        # 1차 지역들을 가져온다.
+        locationList = list(JobRecords.get_all_root_location().values())
+
+        for root in locationList:
+            root['secondLocations'] = list(JobRecords.get_second_location(root["job_location_id"]).values())
+
+        return locationList
+
+    @classmethod
+    def get_selected_location(self, selectedLocationId):
+        # user가 선택한 지역을 가져온다.
+        return model_to_dict(JobRecords.get_second_location_by_id(selectedLocationId)[0])
 
 

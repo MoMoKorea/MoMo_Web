@@ -1,7 +1,7 @@
 <!-- head -->
 <div class="grobal_head" id="toolbar" style="display:none">
   <h4>
-    <a id="hl_open">광진구<img class="headlocal_img" src="../../static/images/global/dropdown_arrow.svg" alt="dropdown_arrow"></a>
+    <a id="hl_open">[[ selectedLocation.name ]]<img class="headlocal_img" src="../../static/images/global/dropdown_arrow.svg" alt="dropdown_arrow"></a>
   </h4>
 
   <div class="grobal_hamburger">
@@ -48,15 +48,14 @@
 
 <div class="hbg_background"></div>
 
-
 <!-- headlocal modal -->
 
 <div class="headlocal_body">
-  <h4><a >전체</a></h4>
-  <h4><a >서울시 강남구</a></h4>
-  <h4><a >서울시 강동구</a></h4>
-  <h4><a >서울시 강서구</a></h4>
-  <h4><a >서울시 송파구</a></h4>
+  <div v-for="location in locations">
+    <h4  v-for="secondLocation in location.secondLocations" v-on:click="onLocationClick(secondLocation)">
+      [[ location.name ]] [[ secondLocation.name ]]
+    </h4>
+  </div>
 </div>
 
 <div class="headlocal_background"></div>
