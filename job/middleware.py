@@ -21,7 +21,7 @@ class JobMiddleware:
         if request.user.is_authenticated:
             userModel = json.dumps(model_to_dict(request.user), cls=DjangoJSONEncoder)
         else:
-            userModel = None
+            userModel = 'null'
 
         request.userModel = userModel
 

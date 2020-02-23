@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^f4h*i)xwqt5e_1deirro#0$@bkj3u=ejap&(c9k-s49+l_=fx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -211,6 +211,6 @@ INTERNAL_IPS = [
 ]
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda r: True,  # disables it
+    'SHOW_TOOLBAR_CALLBACK': lambda r: False,  # disables it
     # '...
 }
