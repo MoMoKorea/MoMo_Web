@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>hamburg</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="리스트_01" transform="translate(-680.000000, -60.000000)" fill="#333333">
+            <g id="Group-5" transform="translate(50.000000, 50.000000)">
+                <g id="hamburg" transform="translate(630.000000, 10.000000)">
+                    <path d="M2,0 L28,0 C29.1045695,-2.02906125e-16 30,0.8954305 30,2 C30,3.1045695 29.1045695,4 28,4 L2,4 C0.8954305,4 1.3527075e-16,3.1045695 0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 Z M2,13 L28,13 C29.1045695,13 30,13.8954305 30,15 C30,16.1045695 29.1045695,17 28,17 L2,17 C0.8954305,17 1.3527075e-16,16.1045695 0,15 C-1.3527075e-16,13.8954305 0.8954305,13 2,13 Z M2,26 L28,26 C29.1045695,26 30,26.8954305 30,28 C30,29.1045695 29.1045695,30 28,30 L2,30 C0.8954305,30 1.3527075e-16,29.1045695 0,28 C-1.3527075e-16,26.8954305 0.8954305,26 2,26 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
