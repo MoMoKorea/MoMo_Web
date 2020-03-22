@@ -1,19 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
-from . import views
+from django.urls import path
+from . import views as momoView
+from job.urls import views as jobView
 
 
 urlpatterns = [
-    ## 회원가입/로그인 (Writer : Joe)
-    path('user/signup', views.Signup.signup_allauth),
-    path('user/login', views.Login.login_allauth),
-    path('user/logout', views.Logout.logout_allauth),
-
-    path('user/verification_sent', views.verification_sent_allauth),
-    path('user/passchange', views.password_change_allauth),
-    path('user/passreset', views.password_reset_allauth),
-
-    path('home', views.home),
-
-
+    path('', jobView.get_list),
+    path('home', momoView.home),
 ]

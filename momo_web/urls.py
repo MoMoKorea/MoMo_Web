@@ -20,6 +20,7 @@ from django.contrib.staticfiles import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('user/', include('user.urls')),
     path('', include('momo.urls')),
     path('job/', include('job.urls')),
     path('accounts/', include('allauth.urls')),
