@@ -24,6 +24,11 @@
         selectedDayOfWeekId: [ ],
         childAgeList: '',
         selectedChildAgeId: '',
+        validationFieldList: [
+            ["title", "child_age", "pay", "start_working_date", "day_of_week", "start_working_time", "end_working_time"],
+            ["root_location", "sub_location", "third_location", "mobile", "start_available_calling_time", "end_available_calling_time"],
+            ["preferred_sex", "preferred_age", "preferred_car", "required_document"],
+        ],
 
         // page 2
         startAvailableCallingTime: 0,
@@ -69,7 +74,7 @@
         selectedRootLocationId: function(val) {
             if (val > 0) {
 
-                this.$http.get(baseUri + "job/api/second-location", {
+                this.$http.get(baseUri + "/job/api/second-location", {
                     params: {
                         parent_id: val
                     }
@@ -85,7 +90,7 @@
         selectedSecondLocationId: function(val) {
             if (val > 0) {
 
-                this.$http.get(baseUri + "job/api/third-location", {
+                this.$http.get(baseUri + "/job/api/third-location", {
                     params: {
                         parent_id: val
                     }
@@ -117,6 +122,13 @@
 //        }
         onAfterPage: function(page) {
 
+            this.validationFieldList[page - 1].forEach(function(item) {
+                var divId = item + "_div"
+                var errorMessageId = item + "_err"
+                $("#" + divId).removeClass("input_error")
+                $("#" + errorMessageId).addClass("display_n")
+            })
+
             // validation 체크
             if(this.checkPageValidate(page)) {
                 // validation 항목이 없을경우 페이지 이동
@@ -124,7 +136,14 @@
             }
             // validation 항목이 존재할경우 경고메시지 show
             else{
-                alert(validate)
+
+
+                validate.forEach(function(item) {
+                    var divId = item + "_div"
+                    var errorMessageId = item + "_err"
+                    $("#" + divId).addClass("input_error")
+                    $("#" + errorMessageId).removeClass("display_n")
+                })
             }
 
         },
@@ -134,7 +153,7 @@
         getRootLocation: function() {
             if(this.rootLocationList.length != 0) return
 
-              this.$http.get(baseUri + "job/api/root-location")
+              this.$http.get(baseUri + "/job/api/root-location")
               .then((result) => {
                 this.rootLocationList = result.data.rootLocations
               })
@@ -172,7 +191,7 @@
                 };
 
 
-                this.$http.post(baseUri + "job/regist", { params })
+                this.$http.post(baseUri + "/job/regist", { params })
                   .then((result) => {
                     console.log(result)
                     alert("등록되었습니다.")
@@ -182,7 +201,8 @@
 
         },
         dump: function() {
-            this.title = "test"
+
+            this.title = "testtesttest"
             this.selectedChildAgeId = 1
             this.pay = 5000
             this.startWorkingTime = "09:00"
@@ -190,16 +210,16 @@
             this.selectedDayOfWeekId = [1,2]
             this.startWorkingDate = "2019-09-12"
 
-            this.selectedRootLocationId = 1
-            this.selectedSecondLocationId = 40
-            this.mobile = "01034110912"
-            this.startAvailableCallingTime = "09:00"
-            this.endAvailableCallingTime = "20:00"
+//            this.selectedRootLocationId = 1
+//            this.selectedSecondLocationId = 40
+//            this.mobile = "01034110912"
+//            this.startAvailableCallingTime = "09:00"
+//            this.endAvailableCallingTime = "20:00"
 
-            this.selectedPreferredSexId = 1
-            this.selectedPreferredCarId = 1
-            this.selectedRequiredDocumentId = [1]
-            this.selectedPreferredAgeId = [1]
+//            this.selectedPreferredSexId = 1
+//            this.selectedPreferredCarId = 1
+//            this.selectedRequiredDocumentId = [1]
+//            this.selectedPreferredAgeId = [1]
         },
          // 벨리데이션 체크용 함수
         checkPageValidate: function(page) {
@@ -211,11 +231,9 @@
             if (page == 1) {
 
                 // 제목
-                if (isEmpty(this.title)) {
+                if (isEmpty(this.title)
+                    || (this.title.length < 8 || this.title.length > 25)) {
                     validate.push("title")
-                }
-                else{
-                    // 글자수 체크
                 }
 
                 // 영아정보
@@ -234,21 +252,14 @@
                 }
 
                 // 희망시급
-                if (isEmpty(this.pay)) {
+                if (isEmpty(this.pay) && !this.isNegotiation) {
                     validate.push("pay")
-                }
-                else {
-                    // 금액 체크
                 }
 
                 // 근무시작일
                 if (isEmpty(this.startWorkingDate)) {
-                    validate.push("start_working_time")
+                    validate.push("start_working_date")
                 }
-                else {
-
-                }
-
 
                 // 근무요일
                 if (isEmpty(this.selectedDayOfWeekId)) {
@@ -281,9 +292,6 @@
                 }
 
             }
-
-
-
 
 
 
@@ -346,23 +354,9 @@
                 if (isEmpty(this.selectedPreferredCarId)) {
                     validate.push("preferred_car")
                 }
-                // 희망제출서류
-                if (isEmpty(this.selectedRequiredDocumentId)) {
-                    validate.push("required_document")
-                }
-            }
-
-            // page4
-
-            else if (page == 4) {
-                if (isEmpty(this.description)) {
-                    validate.push("description")
-                }
             }
 
 
-
-            console.log(validate)
             return validate.length == 0
 
         }

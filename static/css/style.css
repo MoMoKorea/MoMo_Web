@@ -116,6 +116,8 @@ input::placeholder{
 }
 
 button{
+  width: 100%;
+
   background-color: transparent;
   cursor: pointer;
   outline: none;
@@ -267,12 +269,6 @@ button{
   border-bottom: 2px solid #005cef;
 }
 
-.textinput_error input[type="text"],
-.textinput_error input[type="email"],
-.textinput_error input[type="password"]{
-  border-bottom: solid 2px #e61b22;
-}
-
 /* input_number */
 
 .numberinput{
@@ -293,10 +289,6 @@ button{
 
 .numberinput input[type="number"]:focus{
   border-bottom: 2px solid #005cef;
-}
-
-.numberinput_error input[type="number"]{
-  border-bottom: solid 2px #e61b22;
 }
 
 /* input_date */
@@ -371,10 +363,6 @@ button{
 .timeinput input[type="time"]:valid{
   border-bottom: 2px solid #005cef;
   color: #005cef !important;
-}
-
-.timeinput_error input[type="time"]{
-  border-bottom: solid 2px #e61b22;
 }
 
 /* input_radiobtn */
@@ -507,6 +495,14 @@ button{
 .checkboxbtn_l_error input[type="checkbox"] + label,
 .checkboxbtn_s_error input[type="checkbox"] + label{
   border: solid 2px #e61b22;
+}
+
+
+/* general */
+
+
+.input_error input{
+  border-bottom: solid 2px #e61b22;
 }
 
 
@@ -754,8 +750,6 @@ button{
 
   background-color: #005cef;
   color: #fff;
-
-  font-family: 'NotoSansKR Bold';
 }
 
 .grobal_errortext{
@@ -1214,7 +1208,6 @@ button{
   margin: 0px 0px 0px 0px;
 }
 
-
 /* user */
 
 .user_content{
@@ -1250,7 +1243,7 @@ button{
 }
 
 .home_title{
-  padding: 0px 0px 20px 0px;
+  padding: 0px 0px 10px 0px;
   text-align: center;
 
   font-family: 'NotoSansKR Bold';
@@ -1378,6 +1371,7 @@ button{
 
   width: 60%;
   height: 100%;
+  overflow: scroll;
 
   background-color: #fff;
 
@@ -1431,8 +1425,46 @@ button{
   margin: 2px 14px 0px 0px;
 }
 
+.hbg_logout_top img{
+  width: 100%;
+}
+
+.hbg_logout_bottom{
+  text-align: center;
+}
+
+.hbg_logo{
+  margin-top: 45px;
+}
+
+.hbg_logo img{
+  width: 90px;
+}
+
+.hbg_sutitle{
+  margin-top: 15px;
+}
+
+.hbg_regist{
+  margin-top: 30px;
+  padding: 0px 25px;
+}
+
+.hbg_login{
+  margin-top: 20px;
+}
+
+.hbg_bottom{
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  left: 0;
+  right:0;
+}
+
 
 /* headlocal */
+
 
 .headlocal_img{
   width: 9px;
@@ -1467,10 +1499,37 @@ button{
 
 .headlocal_body h4{
   padding: 0px 0px 15px 0px;
-
 }
 
 .headlocal_body h4 a{
   color: #333;
+}
 
+
+/* empty */
+
+
+.empty{
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+
+  width: 100%;
+  text-align: center;
+}
+
+.empty img{
+  width: 150px;
+}
+
+.empty h4{
+  margin: 25px 0px 0px 0px;
+
+  font-family: 'NotoSansKR Bold';
+}
+
+.empty h5{
+  margin: 10px 0px 0px 0px;
+
+  color: #888;
 }

@@ -184,7 +184,7 @@ button{
 }
 
 .selectinput_error select{
-  border-bottom: solid 2px #e61b22;
+  border-bottom: solid 2px #e61b22 !important;
 }
 
 
@@ -269,12 +269,6 @@ button{
   border-bottom: 2px solid #005cef;
 }
 
-.textinput_error input[type="text"],
-.textinput_error input[type="email"],
-.textinput_error input[type="password"]{
-  border-bottom: solid 2px #e61b22;
-}
-
 /* input_number */
 
 .numberinput{
@@ -295,10 +289,6 @@ button{
 
 .numberinput input[type="number"]:focus{
   border-bottom: 2px solid #005cef;
-}
-
-.numberinput_error input[type="number"]{
-  border-bottom: solid 2px #e61b22;
 }
 
 /* input_date */
@@ -336,9 +326,6 @@ button{
   color: #005cef !important;
 }
 
-.datebtn_l_error input[type="date"]{
-  border: solid 2px #e61b22;
-}
 
 /* input_time */
 
@@ -373,10 +360,6 @@ button{
 .timeinput input[type="time"]:valid{
   border-bottom: 2px solid #005cef;
   color: #005cef !important;
-}
-
-.timeinput_error input[type="time"]{
-  border-bottom: solid 2px #e61b22;
 }
 
 /* input_radiobtn */
@@ -509,6 +492,20 @@ button{
 .checkboxbtn_l_error input[type="checkbox"] + label,
 .checkboxbtn_s_error input[type="checkbox"] + label{
   border: solid 2px #e61b22;
+}
+
+
+/* error */
+
+
+.input_error input[type="text"],
+.input_error input[type="number"],
+.input_error input[type="time"],
+.input_error select {
+    border-bottom: solid 2px #e61b22 !important;
+}
+.input_error input[type="date"] {
+    border: solid 2px #e61b22 !important;
 }
 
 

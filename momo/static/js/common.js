@@ -1,7 +1,7 @@
 
 
     Vue.prototype.$http = axios
-    const baseUri = $(location).attr('host');
+    const baseUri = "http://" + $(location).attr('host');
 
 
     /**
