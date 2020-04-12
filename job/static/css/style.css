@@ -577,6 +577,10 @@ button{
   font-family: 'NotoSansKR Thin';
 }
 
+.font_b{
+  font-family: 'NotoSansKR Bold';
+}
+
 .display_n{
   display: none;
 }
@@ -754,6 +758,16 @@ button{
   padding: 12px;
   text-align: center;
 
+  background-color: #005cef;
+  color: #fff;
+}
+
+.grobal_btn_s_primary{
+  flex: 1;
+  padding: 9px 12px 8px 12px;
+  text-align: center;
+
+  font-size: 13px;
   background-color: #005cef;
   color: #fff;
 }
@@ -1320,6 +1334,7 @@ button{
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  margin: 0px 0px 15px 0px;
 }
 
 .mpg_menu a{
@@ -1360,8 +1375,17 @@ button{
 
 .mpg_menu_collapse{
   padding: 0px 15px 16px 15px;
+  line-height: 24px;
+}
 
-  color: #888;
+.mpg_menu_collapse p{
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.mpg_menu_collapse p:last-child{
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 

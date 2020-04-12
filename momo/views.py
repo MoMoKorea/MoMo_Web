@@ -7,8 +7,8 @@ from django.urls import reverse
 def home(request):
     # return render(request, 'empty.html')
     # return render(request, 'errors.html')
-    return render(request, 'mypage/mypage.html')
-    # return render(request, 'mypage/help.html')
+    # return render(request, 'mypage/mypage.html')
+    return render(request, 'mypage/help.html')
     # return render(request, 'mypage/contact.html')
     # return render(request, 'mypage/user.html')
     # return render(request, 'account/verification_sent.html')
