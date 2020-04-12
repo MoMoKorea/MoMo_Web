@@ -1,7 +1,8 @@
 
 
     Vue.prototype.$http = axios
-    const baseUri = "http://127.0.0.1:8000/"
+    const baseUri = $(location).attr('host');
+
 
     /**
      * 문자열이 빈 문자열인지 체크하여 결과값을 리턴한다.
@@ -31,7 +32,7 @@
 
     // 금액 천단위마다 콤마(,) 추가
     function numberWithCommas(price) {
-        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
 

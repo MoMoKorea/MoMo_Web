@@ -1,0 +1,61 @@
+<!-- head -->
+<div class="grobal_head" id="toolbar" style="display:none">
+  <h4>
+    <a id="hl_open">[[ selectedLocation.name ]]<img class="headlocal_img" src="../../static/images/global/dropdown_arrow.svg" alt="dropdown_arrow"></a>
+  </h4>
+
+  <div class="grobal_hamburger">
+    <a id="hbg_open">
+      <img src="../../static/images/global/icon_hamburg_black.svg" alt="icon_hamburg_black">
+    </a>
+
+  </div>
+</div>
+
+
+<!-- mypage modal -->
+
+<div class="hbg_body">
+  <div class="hbg_top">
+    <h3 v-if="user != null">[[ user.username ]]&nbsp;님</h3>
+    <h5 v-if="user != null">[[ user.email ]]</h5>
+  </div>
+
+  <div class="hbg_bottom">
+    <h4 class="hbg_section">
+      <a href="#">
+        <img src="../../static/images/hamburger/icon_mylist.svg" alt="icon_mylist">
+        나의 글
+      </a>
+    </h4>
+
+    <h4 class="hbg_section">
+      <a href="#">
+        <img src="../../static/images/hamburger/icon_user.svg" alt="icon_mylist">
+        회원정보
+      </a>
+    </h4>
+
+    <h4 class="hbg_section">
+      <a href="#">
+        <img src="../../static/images/hamburger/icon_question.svg" alt="icon_mylist">
+        도움말 및 문의
+      </a>
+    </h4>
+  </div>
+
+</div>
+
+<div class="hbg_background"></div>
+
+<!-- headlocal modal -->
+
+<div class="headlocal_body">
+  <div v-for="location in locations">
+    <h4  v-for="secondLocation in location.secondLocations" v-on:click="onLocationClick(secondLocation)">
+      [[ location.name ]] [[ secondLocation.name ]]
+    </h4>
+  </div>
+</div>
+
+<div class="headlocal_background"></div>

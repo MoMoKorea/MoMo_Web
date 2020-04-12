@@ -69,8 +69,8 @@ class JobRecords:
     @API: 구직 리스트  
     """
     @staticmethod
-    def get_job_list():
-        return JobORM.get_main_list().order_by('-job_id')
+    def get_job_list(locationId):
+        return JobORM.get_main_list().order_by('-job_id').filter(second_location_id=locationId)
 
 
     """
@@ -125,6 +125,10 @@ class JobRecords:
     @staticmethod
     def get_second_location(parent_id):
         return JobLocationORM.objects.filter(parent_location_id=parent_id, depth=2, status=1)
+
+    @staticmethod
+    def get_second_location_by_id(location_id):
+        return JobLocationORM.objects.filter(job_location_id=location_id, depth=2, status=1)
 
     @staticmethod
     def get_third_location(parent_id):
