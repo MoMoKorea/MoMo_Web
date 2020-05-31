@@ -1,14 +1,63 @@
-{% load account %}
+<!--{% load account %}-->
+<!--{% user_display user as user_display %}-->
+
+<!--안녕하세요 {{ user_display }}님!<br><br>-->
+
+<!--회원가입을 위한 마지막 단계에요<br>-->
+<!--회원가입 완료를 위해 아래 주소를 눌러주시면 회원가입이 완료됩니다.<br><br>-->
+<!-- <b>인증 하기 :</b> <br>-->
+<!-- <a>{{ activate_url }}</a><br><br>-->
+
+<!--인증을 완료하시고 스쿨로드 커뮤니티에서 우리 아이의 등하원 안전을 책임져줄 분들을 만나보세요.<br><br>-->
+
+<!--항상 노력하는 스쿨로드 팀이 되겠습니다.<br>-->
+<!--스쿨로드팀 드림-->
+
 {% user_display user as user_display %}
+{% load account %}
+{% include 'head.html' %}
 
-안녕하세요 {{ user_display }}님!<br><br>
+<!-- 특정 style -->
+<style>
+  body{
+    background-color: #fff;
+  }
+</style>
+<!-- 특정 style end-->
 
-회원가입을 위한 마지막 단계에요<br>
-회원가입 완료를 위해 아래 주소를 눌러주시면 회원가입이 완료됩니다.<br><br>
- <b>인증 하기 :</b> <br>
- <a>{{ activate_url }}</a><br><br>
 
-인증을 완료하시고 스쿨로드 커뮤니티에서 우리 아이의 등하원 안전을 책임져줄 분들을 만나보세요.<br><br>
+<!-- head -->
+<div class="user_head">
+  <h4 class="text_c">이메일 인증완료</h4>
+</div>
 
-항상 노력하는 스쿨로드 팀이 되겠습니다.<br>
-스쿨로드팀 드림
+
+<!-- content -->
+<div class="user_content">
+  <div class="home_emailimg">
+    <img src="../../../static/images/user/img_emailaccount.svg" alt="img_emailaccount">
+  </div>
+
+  <h2 class="home_title">인증완료</h2>
+
+  <h4 class="color_8 text_c">
+    {{ user.email }}<br/>으로 인증 되었습니다
+  </h4>
+
+</div>
+
+
+<!-- bottom -->
+
+<div class="bottombtn">
+  <a href = {{ activate_url }}>
+   <button class="bottombtn_p" type="button" name="간편 회원가입">
+      <h4>서비스 시작하기</h4>
+   </button>
+  </a>
+</div>
+
+
+
+{% include 'footer.html' %}
+

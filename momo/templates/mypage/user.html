@@ -12,7 +12,9 @@
 <!-- head -->
 <div class="white_head">
   <div class="global_back">
-    <img src="../../static/images/global/top_back.svg" alt="global_back">
+    <a href = "/">
+      <img src="../../static/images/global/top_back.svg" alt="global_back">
+    </a>
   </div>
 
   <h4 class="text_c">회원정보</h4>
@@ -34,7 +36,7 @@
             <a href="#">
               <div class="mpg_menu_body">
                 <h4>성함</h4>
-                <h5>장현명</h5>
+                <h5>{{ user.username }}</h5>
               </div>
             </a>
 
@@ -43,7 +45,7 @@
             <a href="#">
               <div class="mpg_menu_body">
                 <h4>이메일</h4>
-                <h5>yukiadada@gmail.com</h5>
+                <h5>{{ user.email }}</h5>
               </div>
             </a>
           </div>
@@ -53,7 +55,7 @@
 
         <div class="mpg_section">
           <div class="mpg_menu">
-            <a href="#">
+            <a href="user/passchange">
               <div class="mpg_menu_body">
                 <h4>비밀번호 변경</h4>
                 <h5><img src="../../static/images/global/arrow_black_right.svg" alt="arrow_black_right"></h5>
@@ -67,7 +69,7 @@
 
         <div class="mpg_section">
           <div class="mpg_menu">
-            <a href="#">
+            <a href="user/logout">
               <div class="mpg_menu_body">
                 <h4>로그아웃</h4>
                 <h5><img src="../../static/images/global/arrow_black_right.svg" alt="arrow_black_right"></h5>
