@@ -7,3 +7,4 @@ class JobViewname:
 class UserViewname:
     VIEW_USER_LOGIN = "user_login"
     VIEW_USER_LOGOUT = "user_logout"
+    VIEW_VERIFICATION_SENT = "verification_sent"

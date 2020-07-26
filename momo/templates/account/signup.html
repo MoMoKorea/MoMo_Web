@@ -5,83 +5,180 @@
   body{
     background-color: #fff;
   }
+
 </style>
 <!-- 특정 style end-->
+
+<script>
+
+  var validationFieldList = ["username", "email", "password1", "password2"]
+
+ $(document).ready(function() {
+
+    $("#signupBtn").click(function () {
+      onSignup()
+
+    });
+
+  });
+
+
+  <!--  회원가입 form 전송-->
+  function onSignup() {
+
+    if (checkValidation()) {
+      $("#signup_form").submit();
+    }
+    else {
+      validate.forEach(function(item) {
+          console.log(item)
+          var divId = item + "_div"
+          var errorMessageId = item + "_err"
+          $("#" + divId).addClass("input_error")
+          $("#" + errorMessageId).removeClass("display_n")
+      })
+    }
+  }
+
+<!--  이메일 검증 스크립트 -->
+  function isEmail(asValue) {
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	return regExp.test(asValue); // 형식에 맞는 경우 true 리턴
+  }
+
+  <!--  이메일 & 패스워드 벨리데이션 체크-->
+  function checkValidation() {
+
+    validationFieldList.forEach(function(item) {
+        var divId = item + "_div"
+        var errorMessageId = item + "_err"
+        $("#" + divId).removeClass("input_error")
+        $("#" + errorMessageId).addClass("display_n")
+    })
+
+    validate = []
+
+    var signupUsername = $("#signup_username").val();
+    var signupEmail = $("#signup_email").val();
+    var signupPassword1 = $("#signup_password1").val();
+    var signupPassword2 = $("#signup_password2").val();
+
+    if (isEmpty(signupUsername)) {
+        validate.push("username")
+    }
+
+    if (isEmpty(signupEmail)) {
+        validate.push("email")
+    } else if (!isEmail(signupEmail)) {
+        validate.push("email")
+        $("#email_err").text("형식을 확인해주세요.")
+    }
+
+    if (isEmpty(signupPassword1)) {
+        validate.push("password1")
+    }
+    if (isEmpty(signupPassword2)) {
+        validate.push("password2")
+    }
+
+    return validate.length == 0
+  }
+
+
+
+
+
+
+
+</script>
 
 
 <!-- head -->
 <div class="user_head">
-  <div class="global_back">
-    <img src="../../static/images/global/top_back.svg" alt="global_back">
-  </div>
+    <div class="global_back">
+        <img src="../../static/images/global/top_back.svg" alt="global_back">
+    </div>
 
-  <h4 class="text_c">회원가입 </h4>
+    <h4 class="text_c">회원가입 </h4>
 </div>
 
 
 <!-- content http://127.0.0.1:8000/accounts/confirm-email/ -->
-
-<form class="signup" id="signup_form" method="post" accept-charset="utf-8" action= "{% url 'account_signup' %}" >
-  {% csrf_token %}
-  {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-
-  <div class="signup_body">
+<div class="signup_body">
     <div class="container">
-      <div class="home_list">
-        <div class="row">
-          <div class="col-12">
-            <div>성함</div>
-              <div class="textinput">
-                  <input type="text" id="username" name="username" placeholder="성함을 입력해주세요" v-model="username">
-              </div>
-          </div>
-        </div>
-      </div>
+        <form class="signup" id="signup_form" method="post" accept-charset="utf-8" action="{% url 'user_signup' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
 
-      <div class="home_list">
-        <div class="row">
-          <div class="col-12">
-            <div>이메일</div>
-              <div class="textinput">
-                  <input type="email" id="email" name="email" placeholder="이메일 주소를 입력해주세요" v-model="email">
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="home_list">
-        <div class="row">
-          <div class="col-12">
-            <div>비밀번호</div>
-              <div class="textinput">
-                  <input type="password" id="password1" name="password1" placeholder="숫자와 특수문자를 포함해주세요" v-model="password1">
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="home_list">
-        <div class="row">
-          <div class="col-12">
-            <div>비밀번호 확인</div>
-              <div class="textinput">
-                  <input type="password" id="password2" name="password2" placeholder="한번 더 입력해주세요" v-model="password2">
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <button type="submit">
-        <div class="home_list_btn">
-            <div class="grobal_btn">
-                <h4 class="grobal_btn_primary grobal_btn_round">회원가입 완료</h4>
+            <div class="home_list">
+                <div class="row">
+                    <div class="col-12">
+                        <div>성함</div>
+                        <div id="username_div" class="textinput">
+                            <input type="text" id="signup_username" name="username" placeholder="성함을 입력해주세요">
+                        </div>
+                        <h5 id="username_err" class="grobal_errortext display_n">성함을 기입해주세요.</h5>
+                    </div>
+                </div>
             </div>
-        </div>
-      </button>
+
+            <div class="home_list">
+                <div class="row">
+                    <div class="col-12">
+                        <div>이메일</div>
+                        <div id="email_div" class="textinput">
+                            <input type="email" id="signup_email" name="email" placeholder="이메일 주소를 입력해주세요">
+                        </div>
+                        <h5 id="email_err" class="grobal_errortext display_n">이메일을 입력해주세요.</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="home_list">
+                <div class="row">
+                    <div class="col-12">
+                        <div>비밀번호</div>
+                        <div id="password1_div" class="textinput">
+                            <input type="password" id="signup_password1" name="password1"
+                                   placeholder="숫자와 특수문자를 포함해주세요">
+                        </div>
+                        <h5 id="password1_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+<!--                        {% if form.errors %}-->
+<!--                            {% for field in form %}-->
+<!--                                {% for error in field.errors %}-->
+<!--                                    <h5 id="password1_err" class="grobal_errortext ">{{ error|escape }}</h5>-->
+<!--                                {% endfor %}-->
+<!--                            {% endfor %}-->
+<!--                        {% endif %}-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="home_list">
+                <div class="row">
+                    <div class="col-12">
+                        <div>비밀번호 확인</div>
+                        <div id="password2_div" class="textinput">
+                            <input type="password" id="signup_password2" name="password2" placeholder="한번 더 입력해주세요">
+                        </div>
+                        <h5 id="password2_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <button id="signupBtn">
+            <div class="home_list_btn">
+                <div class="grobal_btn">
+                    <h4 class="grobal_btn_primary grobal_btn_round">회원가입 완료</h4>
+                </div>
+            </div>
+        </button>
+
     </div>
-  </div>
-</form>
+
+</div>
 
 {% include 'footer.html' %}

@@ -499,6 +499,8 @@ button{
 
 
 .input_error input[type="text"],
+.input_error input[type="email"],
+.input_error input[type="password"],
 .input_error input[type="number"],
 .input_error input[type="time"],
 .input_error select {

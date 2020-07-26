@@ -2,16 +2,21 @@
 <script src="{% static 'js/job_detail_vue.js' %}"></script>
 
 
+
 <script>
 
     $(document).ready(function() {
+        var user = {{ request.userModel|safe }}
         var jobDetail = {{ data|safe }}
         app.job = jobDetail
         app.job.payFormat = numberWithCommas(app.job.pay)
+        if (!isEmpty(user.phone_number)) {
+            app.contactNumber = user.phone_number
+            app.hasContactNumber = true
+        }
 
         // 스크롤 리스너 연결
         initScrollListener()
-
 
     });
 

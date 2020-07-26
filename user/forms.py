@@ -9,9 +9,14 @@ class MyCustomSignupForm(SignupForm):
     # nameUser = forms.CharField(max_length=80,required=True,)
     # password1 = forms.CharField(widget=forms.PasswordInput)
     # password2 = forms.CharField(widget=forms.PasswordInput)
+
+
+
     def save(self, request):
         # Ensure you call the parent class's save.
         # .save() returns a User object.
+
+
         user = super(MyCustomSignupForm, self).save(request)
         # Add your own processing here.
 
