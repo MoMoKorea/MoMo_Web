@@ -785,7 +785,8 @@ button{
   border-bottom-left-radius: 8px;
 }
 
-.modal_bottom{
+.modal_bottom,
+.job_detail_modal_bottom {
   display: none;
   position: fixed;
   bottom:0;
@@ -811,7 +812,8 @@ button{
   font-family: 'NotoSansKR Bold';
 }
 
-.modal_background{
+.modal_background,
+.job_detail_modal_background {
   display: none;
   position: fixed;
   z-index: 200;

@@ -8,27 +8,30 @@
         workingDayOfWeeks: [],
         hasContactNumber: false,
         contactNumber: '',
+        user: {}
       },
 
       watch: {
 
         job: function() {
 
-        }
+        },
       },
 
       methods: {
 
         showContactModal: function() {
 
-            if (this.hasContactNumber) {
-                $("#contactModal").toggle()
+            // 미 로그인 유저라면 로그인 화면으로 이동
+            if (app.user == null) {
+                $(location).attr('href', (baseUrl + "user/login"))
+                return
             }
-            else {
-                $("#requiredContactNumberModal").toggle()
-            }
-            $(".modal_background").toggle()
 
+            // modal & background toggle
+            if (isEmpty(app.user.phone_number)) $("#requiredContactNumberModal").toggle()
+            else $("#contactModal").toggle()
+            $(".job_detail_modal_background").toggle()
         },
         // 연락처 정보 업데이트
         updateContactNumber: function() {
@@ -49,8 +52,13 @@
                                 }
                             })
 
+        },
+        // 여백 클릭시 modal 종료
+        dismissModal: function() {
+            $("#contactModal").hide()
+            $("#requiredContactNumberModal").hide()
+            $(".job_detail_modal_background").hide()
         }
-        // 금액 단위 변환
 
       }
     })

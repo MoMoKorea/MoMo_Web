@@ -74,7 +74,7 @@
         selectedRootLocationId: function(val) {
             if (val > 0) {
 
-                this.$http.get(baseUri + "/job/api/second-location", {
+                this.$http.get("api/second-location", {
                     params: {
                         parent_id: val
                     }
@@ -90,7 +90,7 @@
         selectedSecondLocationId: function(val) {
             if (val > 0) {
 
-                this.$http.get(baseUri + "/job/api/third-location", {
+                this.$http.get("api/third-location", {
                     params: {
                         parent_id: val
                     }
@@ -153,7 +153,7 @@
         getRootLocation: function() {
             if(this.rootLocationList.length != 0) return
 
-              this.$http.get(baseUri + "/job/api/root-location")
+              this.$http.get("api/root-location")
               .then((result) => {
                 this.rootLocationList = result.data.rootLocations
               })
@@ -191,7 +191,7 @@
                 };
 
 
-                this.$http.post(baseUri + "/job/regist", { params })
+                this.$http.post("/job/regist", { params })
                   .then((result) => {
                     console.log(result)
                     alert("등록되었습니다.")
