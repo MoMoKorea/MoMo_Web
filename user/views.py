@@ -57,7 +57,7 @@ def verification_sent_allauth(request):
 def password_change_allauth(request):
     # add code here
 
-    return render(request, 'account/password_change.html')
+    return render(request, 'account/password_change_2.html')
 
 def password_reset_allauth(request):
     # add code here

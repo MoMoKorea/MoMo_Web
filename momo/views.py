@@ -15,7 +15,7 @@ def home(request):
     # return render(request, 'account/email_account.html')
     return render(request, 'account/email_account.html')
     # return render(request, 'account/password_reset.html')
-    # return render(request, 'account/password_change.html')
+    # return render(request, 'account/password_change_2.html')
     # return render(request, 'account/login.html')
     # return render(request, 'account/signup.html')
     # return render(request, 'account/test.html')

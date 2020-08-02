@@ -1,63 +1,141 @@
-<!--{% load account %}-->
-<!--{% user_display user as user_display %}-->
-
-<!--안녕하세요 {{ user_display }}님!<br><br>-->
-
-<!--회원가입을 위한 마지막 단계에요<br>-->
-<!--회원가입 완료를 위해 아래 주소를 눌러주시면 회원가입이 완료됩니다.<br><br>-->
-<!-- <b>인증 하기 :</b> <br>-->
-<!-- <a>{{ activate_url }}</a><br><br>-->
-
-<!--인증을 완료하시고 스쿨로드 커뮤니티에서 우리 아이의 등하원 안전을 책임져줄 분들을 만나보세요.<br><br>-->
-
-<!--항상 노력하는 스쿨로드 팀이 되겠습니다.<br>-->
-<!--스쿨로드팀 드림-->
-
-{% user_display user as user_display %}
-{% load account %}
-{% include 'head.html' %}
-
-<!-- 특정 style -->
-<style>
-  body{
-    background-color: #fff;
-  }
-</style>
-<!-- 특정 style end-->
-
+<!DOCTYPE HTML>
+<html lang="ko">
 
 <!-- head -->
-<div class="user_head">
-  <h4 class="text_c">이메일 인증완료</h4>
-</div>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+
+	<title>안녕하세요 스쿨로드입니다</title>
+
+  <!-- style -->
+  <style>
+  body{
+    font-family: 'Noto Serif','돋움',Dotum,Helvetica,'Apple SD Gothic Neo',Sans-serif;
+    font-size: 16px;
+    background-color: #f5f5f5;
+    color: #333;
+
+    margin: 0;
+    padding: 0;
+  }
+
+  div{
+    vertical-align: top;
+    word-break: break-all;
+  }
+
+  .container{
+    max-width: 600px;
+    margin: 24px auto;
+  }
+
+  .container_body{
+    margin: auto 16px;
+    padding: 28px 24px;
+
+    background: #fff;
+
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(238,238,238,1);
+    -moz-box-shadow: 1px 1px 3px 0px rgba(238,238,238,1);
+    box-shadow: 1px 1px 3px 0px rgba(238,238,238,1);
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .emoji{
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+
+  .title{
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  .textbody{
+    line-height: 26px;
+		margin-bottom: 38px;
+  }
+
+	.button{
+		margin-bottom: 73px;
+  }
+
+	.button a{
+    padding: 14px 25px 13px 25px;
+
+		background-color: #005cef;
+		text-decoration: none;
+		color: #fff;
+		font-weight: 600;
+
+		-webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+  }
+
+	.subscript{
+		margin-bottom: 24px;
+
+		color: #888;
+		line-height: 26px;
+	}
+
+	.logo{
+
+	}
+
+	.logo img{
+		width: 64px;
+	}
+
+  </style>
+</head>
 
 
-<!-- content -->
-<div class="user_content">
-  <div class="home_emailimg">
-    <img src="../../../static/images/user/img_emailaccount.svg" alt="img_emailaccount">
-  </div>
+<!-- body -->
+<body>
+    <div class="container">
+      <div class="container_body">
+        <div class="emoji">
+          &#x1F44B;
+        </div>
 
-  <h2 class="home_title">인증완료</h2>
+        <div class="title">
+          안녕하세요
+        </div>
 
-  <h4 class="color_8 text_c">
-    {{ user.email }}<br/>으로 인증 되었습니다
-  </h4>
+        <div class="textbody">
+          {{ user.username }}&nbsp;님 ({{ user.email }})<br/>
+          회원가입을 위한 마지막 단계에요!<br/>
+          버튼을 눌러주시면 회원가입이 완료됩니다.
+        </div>
 
-</div>
+				<div class="button">
+					<a href= {{ activate_url }}>이메일 인증하기</a>
+				</div>
+
+				<div class="subscript">
+					항상 노력하는 스쿨로드가 되겠습니다.<br/>
+					팀 스쿨로드 드림
+        </div>
+
+				<div class="logo">
+					<img src="../../../static/images/global/icon_logo.svg" alt="icon_logo">
+				</div>
+
+      </div>
+
+    </div>
 
 
-<!-- bottom -->
+</body>
 
-<div class="bottombtn">
-  <a href = {{ activate_url }}>
-   <button class="bottombtn_p" type="button" name="간편 회원가입">
-      <h4>서비스 시작하기</h4>
-   </button>
-  </a>
-</div>
+</html>
 
-
-
-{% include 'footer.html' %}
 

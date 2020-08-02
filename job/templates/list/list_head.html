@@ -6,7 +6,7 @@
 
   <div class="grobal_hamburger">
     <a id="hbg_open">
-      <img src="../../static/images/global/icon_hamburg_black.svg" alt="icon_hamburg_black">
+      <img src="../../static/images/global/icon_hamburg_black.svg" border="0" width = "300" height="300" alt="icon_hamburg_black">
     </a>
 
   </div>
@@ -17,8 +17,14 @@
 
 <div class="hbg_body">
   <div class="hbg_top">
-    <h3 v-if="user != null">[[ user.username ]]&nbsp;님</h3>
+    <!-- 로그인 경우 -->
+    <h3 v-if="user != null">[[ user.username ]]&nbsp;님 반갑습니다</h3>
     <h5 v-if="user != null">[[ user.email ]]</h5>
+
+    <!-- 로그아웃 경우 -->
+    <h4 v-if="user == null">
+      <img src="../../static/images/hamburger/img_mypage_with.png" alt="icon_mylist">
+    </h4>
   </div>
 
   <div class="hbg_bottom">
@@ -29,18 +35,43 @@
 <!--      </a>-->
 <!--    </h4>-->
 
-    <h4 class="hbg_section">
+    <!-- 로그인 경우 -->
+    <h4 v-if="user != null" class="hbg_section">
       <a href="../mypage">
         <img src="../../static/images/hamburger/icon_user.svg" alt="icon_mylist">
-        회원정보
+          회원정보
       </a>
     </h4>
 
-    <h4 class="hbg_section">
+    <h4 v-if="user != null" class="hbg_section">
       <a href="../contact">
         <img src="../../static/images/hamburger/icon_question.svg" alt="icon_mylist">
-        도움말 및 문의
+          도움말 및 문의
       </a>
+    </h4>
+
+    <!-- 로그아웃 경우 -->
+    <h1 v-if="user == null">
+      <img src="../../static/images/global/icon_logo.svg" border="0" width="150" height="40"><br><br>
+    </h1>
+
+    <h4 v-if="user == null" class = "hbg_section">
+      <b>아이들의 안전을 <br>
+      지켜줄 이웃을 만나보세요. </b>
+      <br><br><br>
+
+      <h3 v-if="user == null">
+        <a href="/user/signup">
+          간편 회원가입
+        </a><br>
+        <a href="/user/login">
+          로그인
+        </a>
+      </h3>
+
+      <h5 v-if="user == null"><br><br><br>
+        @2020 Team MOMO
+      </h5>
     </h4>
   </div>
 
