@@ -144,14 +144,14 @@
                             <input type="password" id="signup_password1" name="password1"
                                    placeholder="숫자와 특수문자를 포함해주세요">
                         </div>
-                        <h5 id="password1_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
-<!--                        {% if form.errors %}-->
-<!--                            {% for field in form %}-->
-<!--                                {% for error in field.errors %}-->
-<!--                                    <h5 id="password1_err" class="grobal_errortext ">{{ error|escape }}</h5>-->
-<!--                                {% endfor %}-->
-<!--                            {% endfor %}-->
-<!--                        {% endif %}-->
+<!--                        <h5 id="password1_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>-->
+                        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <h5 id="password1_err" class="grobal_errortext ">{{ error|escape }}</h5>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -163,7 +163,14 @@
                         <div id="password2_div" class="textinput">
                             <input type="password" id="signup_password2" name="password2" placeholder="한번 더 입력해주세요">
                         </div>
-                        <h5 id="password2_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+<!--                        <h5 id="password2_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>-->
+                        {% if form.errors %}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <h5 id="password2_err" class="grobal_errortext ">{{ error|escape }}</h5>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
