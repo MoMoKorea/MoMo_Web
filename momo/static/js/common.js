@@ -1,7 +1,7 @@
-
-
+    baseUrl = "http://" + $(location).attr('host') + "/"
+    axios.defaults.headers.baseURL = baseUrl
+    axios.defaults.headers.post['X-CSRFToken'] = $("[name=csrfmiddlewaretoken]").val()
     Vue.prototype.$http = axios
-    const baseUri = $(location).attr('host');
 
 
     /**

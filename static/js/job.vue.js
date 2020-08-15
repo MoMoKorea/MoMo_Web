@@ -124,7 +124,19 @@
             }
             // validation 항목이 존재할경우 경고메시지 show
             else{
-                alert(validate)
+                var div = "Div"
+                var errorMessage = "ErrorMessage"
+
+                validate.forEach(function(item) {
+                    var divId = item + div
+                    var errorMessageId = item + errorMessage
+                    var firstChildView = $("#" + divId).children().first()
+//                    if (firstChildView.is("input")) {
+//                    }
+//                    console.log($("#" + divId).children().first().is("input"))
+                    $("#" + divId).addClass("input_error")
+                    $("#" + errorMessageId).show()
+                })
             }
 
         },

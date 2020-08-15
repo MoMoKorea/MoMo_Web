@@ -2,7 +2,7 @@
 
 <div id="content">
 
-<div class="grobal_head">
+<div id="toolbar" class="grobal_head" v-on:click="dismissModal">
   <div class="global_back">
     <img src="../../static/images/global/top_back.svg" alt="global_back" >
   </div>
@@ -24,7 +24,7 @@
 </a>
 
 <!-- 전화번호입력 modal -->
-<div id="requiredContactNumberModal" class="detail_call_body modal_bottom">
+<div id="requiredContactNumberModal" class="detail_call_body job_detail_modal_bottom">
   <div class="container">
     <div class="row">
       <div class="col-12 modal_title">
@@ -51,7 +51,7 @@
 </div>
 
 <!-- 연락처 modal-->
-<div id="contactModal" class="detail_call_body modal_bottom">
+<div id="contactModal" class="detail_call_body job_detail_modal_bottom">
   <div class="container">
     <div class="row">
       <div class="col-12 modal_title">
@@ -80,7 +80,7 @@
 </div>
 
 <!-- modal background -->
-<div class="modal_background" v-on:click="showContactModal"></div>
+<div class="job_detail_modal_background" v-on:click="dismissModal"></div>
 
 <!-- body -->
 

@@ -2,16 +2,18 @@
 <script src="{% static 'js/job_detail_vue.js' %}"></script>
 
 
+
 <script>
 
     $(document).ready(function() {
+        var user = {{ request.userModel|safe }}
         var jobDetail = {{ data|safe }}
         app.job = jobDetail
         app.job.payFormat = numberWithCommas(app.job.pay)
+        app.user = user
 
         // 스크롤 리스너 연결
         initScrollListener()
-
 
     });
 
@@ -29,17 +31,10 @@
             if (scrollHeight > 54) {
 
                var scrollY = $(document).scrollTop();
-               if (scrollY > (scrollHeight - 54)) {
-                   $("#btnFloating").hide()
-               }
-               else {
-                   $("#btnFloating").show()
-               }
-
+               if (scrollY > (scrollHeight - 54)) $("#btnFloating").hide()
+               else $("#btnFloating").show()
             }
-            else {
-               $("#btnFloating").hide()
-            }
+            else $("#btnFloating").hide()
         });
 
     }

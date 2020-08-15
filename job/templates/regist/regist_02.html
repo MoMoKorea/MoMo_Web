@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="selectinput">
+    <div id="root_location_div" class="selectinput">
         <div class="row">
             <div class="col-4">
                 <h4 class="color_8">시/도</h4>
@@ -21,12 +21,12 @@
                 <div class="selectinput_arrow">
                     <img src="../static/images/global/dropdown_arrow.svg" alt="global_close">
                 </div>
+                <h5 id="root_location_err" class="grobal_errortext display_n">지역을 선택해주세요!</h5>
             </div>
-
         </div>
     </div>
 
-    <div class="selectinput" v-show="secondLocationList.length > 0">
+    <div id="sub_location_div" class="selectinput" v-show="secondLocationList.length > 0">
         <div class="row">
             <div class="col-4">
                 <h4 class="color_8">구/시</h4>
@@ -41,12 +41,13 @@
                 <div class="selectinput_arrow">
                     <img src="../static/images/global/dropdown_arrow.svg" alt="global_close">
                 </div>
+                <h5 id="sub_location_err" class="grobal_errortext display_n">지역을 선택해주세요!</h5>
             </div>
 
         </div>
     </div>
 
-    <div class="selectinput" v-show="thirdLocationList.length > 0">
+    <div id="third_location_div" class="selectinput" v-show="thirdLocationList.length > 0">
         <div class="row">
             <div class="col-4">
                 <h4 class="color_8">읍/면/동</h4>
@@ -62,6 +63,7 @@
                 <div class="selectinput_arrow">
                     <img src="../static/images/global/dropdown_arrow.svg" alt="global_close">
                 </div>
+                <h5 id="third_location_err" class="grobal_errortext display_n">지역을 선택해주세요!</h5>
             </div>
 
         </div>
@@ -73,10 +75,10 @@
     <div class="row">
         <div class="col-12">
             <div>연락처</div>
-            <div class="numberinput">
+            <div id="mobile_div" class="numberinput">
                 <input type="number" pattern="\d*" placeholder="연락받을 전화번호를 기입하세요" v-model="mobile">
             </div>
-
+            <h5 id="mobile_err" class="grobal_errortext display_n">연락처를 기입해주세요!</h5>
         </div>
     </div>
 </div>
@@ -92,20 +94,22 @@
     <div class="row">
         <div class="col-6">
             <form>
-                <div class="timeinput">
+                <div id="start_available_calling_time_div" class="timeinput">
                     <input type="time" name="contact_time" data-placeholder="부터" required aria-required="true"
                            v-model="startAvailableCallingTime">
                 </div>
             </form>
+            <h5 id="start_available_calling_time_err" class="grobal_errortext display_n">시간을 지정해주세요!</h5>
         </div>
 
         <div class="col-6">
             <form>
-                <div class="timeinput">
+                <div id="end_available_calling_time_div" class="timeinput">
                     <input type="time" name="contact_time" data-placeholder="까지" required aria-required="true"
                            v-model="endAvailableCallingTime">
                 </div>
             </form>
+            <h5 id="end_available_calling_time_err" class="grobal_errortext display_n">시간을 지정해주세요!</h5>
         </div>
     </div>
 

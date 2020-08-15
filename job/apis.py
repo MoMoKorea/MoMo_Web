@@ -1,8 +1,8 @@
+from user.queries import UserRecords
 from .queries import JobRecords
 from rest_framework.decorators import api_view
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 import json
-from pprint import pprint
 
 @api_view(["GET"])
 def get_root_location(request):
@@ -37,3 +37,24 @@ def get_third_location(request):
     data['thirdLocations'] = locationList
 
     return HttpResponse(json.dumps(data), content_type="application/json")
+
+@api_view(["POST"])
+def update_contact_number(request):
+
+    print(request.user)
+
+    data = request.data["params"]
+    # 연락처를 DB에 저장한다.
+    user = UserRecords.update(request.user.id, data)
+
+    if user is not None:
+        # 성공했으면 return
+        response = {
+            "contactNumber": user["phone_number"]
+        }
+        return HttpResponse(json.dumps(response), content_type="application/json")
+    else:
+        return HttpResponseBadRequest()
+
+
+

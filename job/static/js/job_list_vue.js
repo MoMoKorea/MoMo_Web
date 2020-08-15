@@ -79,7 +79,7 @@ var listVue = new Vue({
 
         getJobList: function() {
 
-            listVue.$http.get("http://" + baseUri +"/job", {
+            listVue.$http.get("/job", {
                                 params: {
                                     page: ++listVue.currentPage,
                                     location_id: listVue.selectedLocation.job_location_id
