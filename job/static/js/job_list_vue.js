@@ -16,6 +16,7 @@ var listVue = new Vue({
 
         // 페이징 스크롤 리스너
         onLoadMoreScroll: function() {
+            console.log("here")
 
             var windowHeight = $(window).height();
             var scrollYOffset = 200
