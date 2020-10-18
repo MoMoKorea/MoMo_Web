@@ -1,12 +1,14 @@
-
 {% load static %}
 <script src="{% static 'js/job.vue.js' %}"></script>
 
 <script>
 
-    window.onload = function() {
+
+
+    $(document).ready(function() {
 
         var childAgeList = {{ data.childAgeList|safe }}
+        app.user = {{ request.userModel|safe }}
         app.childAgeList = childAgeList
         app.dayOfWeekList = {{ data.dayOfWeekList|safe }}
         app.preferredCarList = {{ data.preferredCarList|safe }}
@@ -14,8 +16,13 @@
         app.preferredAgeList = {{ data.preferredAgeList|safe }}
         app.requiredDocumentList = {{ data.requiredDocumentList|safe }}
 
-
+<!--        $("#close").click(function() {-->
+<!--            console.log("here")-->
+<!--            history.back()-->
+<!--        })-->
 <!--        app.dump()-->
-    }
+    });
+
+
 
 </script>

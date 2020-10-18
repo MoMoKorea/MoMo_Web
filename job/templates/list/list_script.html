@@ -18,6 +18,7 @@
         listVue.locations = {{ locations|safe }}
         listVue.selectedLocation = {{ selectedLocation|safe }}
 
+        onLoadMoreScroll(listVue)
     })
 
     function intComma(jobList) {
@@ -27,6 +28,44 @@
             jobList[i].payWithComma = numberWithCommas(jobList[i].pay)
         }
     }
+
+     // 페이징 스크롤 리스너
+    function onLoadMoreScroll(listVue) {
+
+        var windowHeight = $(window).height();
+        var scrollYOffset = 200
+
+        $(window).scroll(function () {
+            var documentHeight = $(document).height();
+            var scrollHeight = documentHeight - windowHeight
+
+            // 스크롤길이가 200 이상일때
+            if (scrollHeight >= 200) {
+
+               var scrollY = $(document).scrollTop();
+               if (scrollY >= 140) {
+                  $("#toolbar").show()
+               }
+               else {
+                  $("#toolbar").hide()
+               }
+
+               // 스크롤길이가 200 정도 남았고, 마지막페이지가 아니며, 페이징중이 아니라면 추가로 로드한다.
+               if (scrollY > (scrollHeight - 200) && listVue.isLoadMore() && !listVue.isPaging) {
+
+                    listVue.isPaging = true
+                    listVue.getJobList()
+               }
+           }
+        });
+
+    }
+
+
+
+
+
+
 
 
 

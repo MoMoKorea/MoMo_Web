@@ -18,7 +18,7 @@ window.onload = function() {
     });
 
     // 뒤로가기 글로벌 이벤트
-    $(".global_back").click(function() {
+    $(".global_back,.global_close").click(function() {
         history.back()
     })
 

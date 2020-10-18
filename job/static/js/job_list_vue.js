@@ -14,39 +14,6 @@ var listVue = new Vue({
     },
     methods: {
 
-        // 페이징 스크롤 리스너
-        onLoadMoreScroll: function() {
-            console.log("here")
-
-            var windowHeight = $(window).height();
-            var scrollYOffset = 200
-
-            $(window).scroll(function () {
-                var documentHeight = $(document).height();
-                var scrollHeight = documentHeight - windowHeight
-
-                // 스크롤길이가 200 이상일때
-                if (scrollHeight >= 200) {
-
-                   var scrollY = $(document).scrollTop();
-                   if (scrollY >= 140) {
-                      $("#toolbar").show()
-                   }
-                   else {
-                      $("#toolbar").hide()
-                   }
-
-                   // 스크롤길이가 200 정도 남았고, 마지막페이지가 아니며, 페이징중이 아니라면 추가로 로드한다.
-                   if (scrollY > (scrollHeight - 200) && listVue.isLoadMore() && !listVue.isPaging) {
-
-                        listVue.isPaging = true
-                        listVue.getJobList()
-                   }
-               }
-            });
-
-        },
-
         // 페이징 가능여부
         isLoadMore: function() {
             return this.totalPage > this.currentPage
@@ -100,11 +67,4 @@ var listVue = new Vue({
 
 
     },
-    updated () {
-        // 스크롤 리스너 연결
-        this.onLoadMoreScroll()
-    }
-
-
-
 })

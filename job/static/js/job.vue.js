@@ -10,6 +10,9 @@
 
       data: {
 
+        // base
+        user : { }, // user 객체 공간 선언
+
         // common
         currentPage: 1,
 
@@ -169,7 +172,7 @@
                 var data = this.$data
 
                 var params = {
-                    user_id: 72738,
+                    user: data.user.id,
                     title: data.title,
                     pay: data.pay,
                     is_negotiation: data.isNegotiation,
