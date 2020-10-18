@@ -15,12 +15,7 @@ class JobRepository:
         allDayOfWeeks = JobRecords.get_all_day_of_week()
 
 
-        # TODO fake data
-        jobDetail['user'] = {}
-        jobDetail['user']['id'] = 1
-        jobDetail['user']['username'] = '카일'
-        # TODO fake data
-
+        jobDetail['user'] = model_to_dict(querySet.user)
         jobDetail['title'] = querySet.title
         jobDetail['pay'] = querySet.pay
         jobDetail['description'] = querySet.description

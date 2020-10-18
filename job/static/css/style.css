@@ -663,7 +663,8 @@ button{
   position: fixed;
   z-index: 100;
   bottom: 15px;
-  left: 33%;
+  left: 50%;
+  margin-left: -50px;
 
   padding: 10px 16px 10px 16px;
   background-color: #fff;
@@ -686,6 +687,7 @@ button{
 
 .grobal_hamburger img{
   width: 22px;
+  height: 22px;
 }
 
 .white_head{

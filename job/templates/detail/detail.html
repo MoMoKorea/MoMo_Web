@@ -74,7 +74,9 @@
 
   <div class="modal_btn">
     <button class="bottombtn_p">
-      <h4>010-1**4-1**4 연락하기</h4>
+      <a v-bind:href="tel:{{job.user.phone_number }}">
+        <h4>연락하기</h4>
+      </a>
     </button>
   </div>
 </div>

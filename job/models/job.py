@@ -8,6 +8,7 @@ from job.models.job_age import JobAgeORM
 from job.models.child_age import ChildAgeORM
 from job.models.job_day_of_week import JobDayOfWeekORM
 from job.models.job_require_document import JobRequireDocumentORM
+from user.models import CustomUser
 
 
 class JobORM(models.Model):
@@ -29,14 +30,13 @@ class JobORM(models.Model):
                                            "worker_sex",
                                            "car_preference",
                                            "root_location",
-                                           "second_location")
+                                           "second_location",
+                                           "user")
 
 
 
 
     job_id = models.BigAutoField(primary_key=True)
-    # TODO :: user_id foreignKey
-    user_id = models.BigIntegerField(default=0, help_text='회원 번호')
     status = models.SmallIntegerField(default=1)
     title = models.CharField(max_length=50, help_text='글 제목', default='')
     pay = models.IntegerField(default=0)
@@ -53,6 +53,7 @@ class JobORM(models.Model):
     updated_at = models.DateTimeField(default=timezone.now)
 
 
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, db_column='user_id', related_name='user')
     root_location = models.ForeignKey(JobLocationORM, on_delete=models.SET_NULL, null=True, db_column='root_location_id', related_name='root_location')
     second_location = models.ForeignKey(JobLocationORM, on_delete=models.SET_NULL, null=True, db_column='second_location_id', related_name='second_location')
     worker_sex = models.ForeignKey(JobSexORM, on_delete=models.SET_NULL, null=True, db_column='worker_sex_id', related_name='worker_sex')
