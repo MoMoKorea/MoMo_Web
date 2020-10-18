@@ -632,8 +632,22 @@ button{
 }
 
 .grobal_box{
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 14px;
+  margin-bottom: 16px;
+
+  background-color: #fff;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  -webkit-box-shadow: 3px 3px 8px 0px #eee;
+  -moz-box-shadow: 3px 3px 8px 0px #eee;
+  box-shadow: 3px 3px 8px 0px #eee;
+}
+
+.grobal_basebox{
+  margin-bottom: 16px;
 
   background-color: #fff;
 
@@ -661,7 +675,7 @@ button{
 
 .grobal_radiusbottombtn{
   position: fixed;
-  z-index: 100;
+  z-index: 98;
   bottom: 15px;
   left: 50%;
   margin-left: -50px;
@@ -1005,10 +1019,10 @@ button{
 }
 
 .detail_date_g{
-  padding: 5px 7px 6px 7px;
+  padding: 5px 9px 6px 9.5px;
 
   background-color: #f5f5f5;
-  color: #888;
+  color: #ccc;
 
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -1016,7 +1030,7 @@ button{
 }
 
 .detail_date_p{
-  padding: 5px 7px 6px 7px;
+  padding: 5px 9px 6px 9.5px;
 
   background-color: #e5eefd;
   color: #005cef;
@@ -1068,14 +1082,42 @@ button{
 .list_top{
   position: relative;
 
-  margin: 0px 10px 25px 10px;
+  margin: 0px 8px 20px 8px;
 }
 
-.list_top h3{
-  margin: 0px 0px 15px 0px;
-  line-height: 26px;
+.list_logo img{
+  width: 90px;
+}
 
+.list_logo h4{
+  margin: 16px 0px 0px 0px;
   font-family: 'NotoSansKR Bold';
+}
+
+.list_top_now{
+  margin: 32px 0px 0px 0px;
+}
+
+.list_top_now_dropdown{
+  margin: -3px 6px 0px 0px;
+  padding: 4px 12px;
+  color: #005cef;
+  font-size: 15px;
+
+  background-color: #fff;
+
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  border-radius: 32px;
+
+  -webkit-box-shadow: 3px 3px 8px 0px #eee;
+  -moz-box-shadow: 3px 3px 8px 0px #eee;
+  box-shadow: 3px 3px 8px 0px #eee;
+}
+
+.list_top_now_dropdown img{
+  width: 9px;
+  margin: 10px 0px 0px 4px;
 }
 
 .list_hamburg{
@@ -1109,6 +1151,7 @@ button{
 }
 
 .list_date_start{
+  color: #333;
 }
 
 .list_date_start span{
@@ -1129,10 +1172,11 @@ button{
 }
 
 .list_date_days_g{
-  padding: 2px 5px 3px 5px;
+  padding: 2px 5.5px 3px 6px;
+  margin-left: 5px;
 
   background-color: #f5f5f5;
-  color: #888;
+  color: #ccc;
 
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -1140,7 +1184,8 @@ button{
 }
 
 .list_date_days_p{
-  padding: 2px 5px 3px 5px;
+  padding: 2px 5.5px 3px 6px;
+  margin-left: 5px;
 
   background-color: #e5eefd;
   color: #005cef;
@@ -1152,6 +1197,7 @@ button{
 
 .list_title{
   margin: 0px 0px 4px 0px;
+  color: #333;
 }
 
 .list_sub{
@@ -1175,6 +1221,8 @@ button{
   position: absolute;
   top: 3px;
   left: 0px;
+
+  color: #333;
 }
 
 .list_age img{
@@ -1230,6 +1278,13 @@ button{
 .list_local_body h5:last-child{
   margin: 0px 0px 0px 0px;
 }
+
+.list_onlyimg img{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
 
 /* user */
 

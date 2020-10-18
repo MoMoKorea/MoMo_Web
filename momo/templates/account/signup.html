@@ -85,11 +85,6 @@
   }
 
 
-
-
-
-
-
 </script>
 
 
@@ -131,7 +126,13 @@
                         <div id="email_div" class="textinput">
                             <input type="email" id="signup_email" name="email" placeholder="이메일 주소를 입력해주세요">
                         </div>
-                        <h5 id="email_err" class="grobal_errortext display_n">이메일을 입력해주세요.</h5>
+                        <h5 id="email_err" class="grobal_errortext display_n">   이메일을 입력해주세요.  </h5>
+                        {% if form.email.errors %}
+                            <script>
+                                $("#email_div").addClass("input_error")
+                            </script>
+                            <h5 class="grobal_errortext ">{{form.email.errors}}</h5>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -144,13 +145,12 @@
                             <input type="password" id="signup_password1" name="password1"
                                    placeholder="숫자와 특수문자를 포함해주세요">
                         </div>
-<!--                        <h5 id="password1_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>-->
-                        {% if form.errors %}
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <h5 id="password1_err" class="grobal_errortext ">{{ error|escape }}</h5>
-                                {% endfor %}
-                            {% endfor %}
+                        <h5 id="password1_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+                        {% if form.password1.errors %}
+                            <script>
+                                $("#password1_div").addClass("input_error")
+                            </script>
+                            <h5 class="grobal_errortext ">{{form.password1.errors}}</h5>
                         {% endif %}
                     </div>
                 </div>
@@ -163,18 +163,18 @@
                         <div id="password2_div" class="textinput">
                             <input type="password" id="signup_password2" name="password2" placeholder="한번 더 입력해주세요">
                         </div>
-<!--                        <h5 id="password2_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>-->
-                        {% if form.errors %}
-                            {% for field in form %}
-                                {% for error in field.errors %}
-                                    <h5 id="password2_err" class="grobal_errortext ">{{ error|escape }}</h5>
-                                {% endfor %}
-                            {% endfor %}
+                        <h5 id="password2_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+                        {% if form.password2.errors %}
+                            <script>
+                                $("#password2_div").addClass("input_error")
+                            </script>
+                            <h5 class="grobal_errortext ">{{form.password2.errors}}</h5>
                         {% endif %}
                     </div>
                 </div>
             </div>
         </form>
+
 
         <button id="signupBtn">
             <div class="home_list_btn">
