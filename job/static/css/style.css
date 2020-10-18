@@ -1512,14 +1512,6 @@ button{
   margin: 2px 14px 0px 0px;
 }
 
-.hbg_logout_top img{
-  width: 100%;
-}
-
-.hbg_logout_bottom{
-  text-align: center;
-}
-
 .hbg_logo{
   margin-top: 45px;
 }
@@ -1544,11 +1536,30 @@ button{
 .hbg_bottom{
   position: absolute;
   bottom: 20px;
+
   text-align: center;
   left: 0;
-  right:0;
+  right: 0;
 }
 
+.hbg_logout{
+  position: fixed;
+  z-index: 98;
+  top: 50%;
+  margin-top: -84px;
+
+  padding: 0px 25px 0px 25px;
+  text-align: center;
+}
+
+.hbg_logout img{
+  width: 105px;
+  margin-bottom: 30px;
+}
+
+.hbg_logout button{
+  margin: 0px 0px 20px 0px;
+}
 
 /* headlocal */
 
