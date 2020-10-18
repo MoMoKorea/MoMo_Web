@@ -19,25 +19,27 @@
   <!-- 로그인 경우 -->
   <div v-if="user != null">
     <div class="hbg_top">
-      <h3>[[ user.username ]]&nbsp;님 반갑습니다</h3>
+      <h3>[[ user.username ]]&nbsp;님</h3>
+
       <h5>[[ user.email ]]</h5>
 
     </div>
 
-    <div class="hbg_bottom">
-      <h4 class="hbg_section">
-        <a href="../mypage">
-          <img src="../../static/images/hamburger/icon_user.svg" alt="icon_mylist">
-            회원정보
-        </a>
-      </h4>
 
-      <h4 class="hbg_section">
-        <a href="../contact">
+    <div class="hbg_list">
+      <a href="../mypage">
+        <h4 class="hbg_section">
+          <img src="../../static/images/hamburger/icon_user.svg" alt="icon_mylist">
+          회원정보
+        </h4>
+      </a>
+
+      <a href="../contact">
+        <h4 class="hbg_section">
           <img src="../../static/images/hamburger/icon_question.svg" alt="icon_mylist">
-            도움말 및 문의
-        </a>
-      </h4>
+          도움말 및 문의
+        </h4>
+      </a>
 
     </div>
 
@@ -46,7 +48,7 @@
   <!-- 로그아웃 경우 -->
   <div v-if="user == null">
     <div class="hbg_logout">
-      <img src="../../static/images/global/icon_logo.svg" alt="logo">
+      <img class="hbg_logout_logo" src="../../static/images/global/icon_logo.svg" alt="logo">
 
       <button type="button" name="signup" onClick="location.href='/user/signup'">
         <h4 class="grobal_btn_primary grobal_btn_round">간편 회원가입</h4>
@@ -57,9 +59,9 @@
       </h4>
     </div>
 
-    <h5 class="hbg_bottom color_8">@2020 Team MOMO</h5>
-
   </div>
+
+  <h5 class="hbg_bottom color_8">@2020 Team MOMO</h5>
 
 </div>
 
