@@ -2,233 +2,231 @@
 
 <div id="content">
 
-<div id="toolbar" class="grobal_head" v-on:click="dismissModal">
-  <div class="global_back">
-    <img src="../../static/images/global/top_back.svg" alt="global_back" >
-  </div>
+    <div id="toolbar" class="grobal_head" v-on:click="dismissModal()">
+        <div class="global_back">
+            <img src="../../static/images/global/top_back.svg" alt="global_back">
+        </div>
 
-  <h4 class="text_c">등/하교</h4>
-</div>
-
-
-
-<!-- floating button -->
-<a id="btnFloating" href="#" style="display:none" v-on:click="showContactModal">
-  <div class="grobal_radiusbottombtn">
-    <div class="detail_contact">
-      <img src="../../static/images/detail/detail_phone.svg" alt="detail_phone">
-      <h5>연락하기</h5>
+        <h4 class="text_c">등/하교</h4>
     </div>
 
-  </div>
-</a>
 
-<!-- 전화번호입력 modal -->
-<div id="requiredContactNumberModal" class="detail_call_body job_detail_modal_bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 modal_title">
-        전화번호 입력
-      </div>
-
-      <div class="col-12">
-        <div>연락처</div>
-
-        <div class="textinput">
-          <input type="text"  placeholder="휴대폰번호를 입력하세요" v-model="contactNumber">
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="modal_btn" v-on:click="updateContactNumber">
-    <button v-bind:class="[contactNumber.length > 0 ? 'bottombtn_p' : 'bottombtn_p_o']" >
-      <h4>다음</h4>
-    </button>
-
-  </div>
-</div>
-
-<!-- 연락처 modal-->
-<div id="contactModal" class="detail_call_body job_detail_modal_bottom">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 modal_title">
-        연락하기
-      </div>
-
-      <div class="col-12">
-        <div class="detail_info">
-          <div class="detail_info_title">연락가능시간</div>
-          <h5>10:30 ~ 18:00</h5>
-        </div>
-
-        <div class="detail_info detail_call_caution">
-          ※ 타인에게 전화해서 가나다라바사
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="modal_btn">
-    <button class="bottombtn_p">
-      <a v-bind:href="tel:{{job.user.phone_number }}">
-        <h4>연락하기</h4>
-      </a>
-    </button>
-  </div>
-</div>
-
-<!-- modal background -->
-<div class="job_detail_modal_background" v-on:click="dismissModal"></div>
-
-<!-- body -->
-
-<div class="grobal_body">
-  <!-- title -->
-  <div class="detail_title">
-    <h4>[[ job.user.username ]] 님</h4>
-    <div class="detail_title_want">[[ job.title ]]</div>
-
-  </div>
-
-  <!-- start -->
-
-  <div class="container">
-    <!-- 시급,아이 -->
-    <div class="row">
-      <div class="col-6">
-        <div class="grobal_box">
-          <div class="detail_icontitle">
-            <img src="../../static/images/detail/detail_won.svg" alt="detail_won">
-            <h4>[[ job.payFormat ]] 원</h4>
-            <h5>희망시급</h5>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="col-6">
-        <div class="grobal_box">
-          <div class="detail_icontitle">
-            <img src="../../static/images/detail/detail_children.svg" alt="detail_children">
-            <h4>[[ job.child_age ]]</h4>
-            <h5>아이 나이</h5>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 상세정보 -->
-    <div class="row">
-      <div class="col-12">
-        <div class="grobal_box">
-          <div class="detail_contents">
-            <div id="btn" class="color_8">상세정보</div>
-            <h5>
-              [[ job.description ]]
-            </h5>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 근무정보 -->
-    <div class="row">
-      <div class="col-12">
-        <div class="grobal_box">
-          <div class="detail_info">
-            <div class="detail_info_title">근무시간</div>
-            <h5>[[ job.working_time ]]</h5>
-          </div>
-
-          <div class="detail_info">
-            <div class="detail_info_title">근무위치</div>
-            <h5>[[ job.working_location ]]</h5>
-          </div>
-
-          <div class="detail_info">
-            <div class="detail_info_title">근무시작일</div>
-            <h5>[[ job.working_date ]]</h5>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 근무요일 -->
-    <div class="row">
-      <div class="col-12">
-        <div class="grobal_box">
-          <div class="detail_date">
-            <div class="color_8">근무 요일</div>
-
-            <div>
-              <h5 v-bind:class='item.selected == true ? "detail_date_p" : "detail_date_g"' v-for="item in job.working_day_of_weeks">
-                [[ item.day_of_week ]]
-              </h5>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ect -->
-    <div class="row bottom_btn_end">
-      <div class="col-12">
-        <div class="grobal_box">
-          <div class="detail_info">
-            <div class="detail_info_title">희망 연령대</div>
-            <h5>[[ job.worker_age ]]</h5>
-          </div>
-
-          <div class="detail_info">
-            <div class="detail_info_title">희망 성별</div>
-            <h5>[[ job.worker_sex ]]</h5>
-          </div>
-
-          <div class="detail_info">
-            <div class="detail_info_title">차량소지</div>
-            <h5>[[ job.car_preference ]]</h5>
-          </div>
-
-          <div class="detail_info">
-            <div class="detail_info_title">제출서류</div>
-            <h5>[[ job.documents ]]</h5>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-    <!-- 연락하기 -->
-      <div class="row">
-        <div class="col-12">
-          <div class="grobal_btnbox" v-on:click="showContactModal">
+    <!-- floating button -->
+    <a id="btnFloating" href="#" style="display:none" v-on:click="showContactModal()">
+        <div class="grobal_radiusbottombtn">
             <div class="detail_contact">
-              <img src="../../static/images/detail/detail_phone.svg" alt="detail_phone">
-              <h5>연락하기</h5>
+                <img src="../../static/images/detail/detail_phone.svg" alt="detail_phone">
+                <h5>연락하기</h5>
             </div>
-          </div>
+
         </div>
-      </div>
+    </a>
 
-  </div>
+    <!-- 전화번호입력 modal -->
+    <div id="requiredContactNumberModal" class="detail_call_body job_detail_modal_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 modal_title">
+                    전화번호 입력
+                </div>
+
+                <div class="col-12">
+                    <div>연락처</div>
+
+                    <div class="textinput">
+                        <input type="text" placeholder="휴대폰번호를 입력하세요" v-model="contactNumber">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal_btn" v-on:click="updateContactNumber()">
+            <button v-bind:class="[contactNumber.length > 0 ? 'bottombtn_p' : 'bottombtn_p_o']">
+                <h4>다음</h4>
+            </button>
+
+        </div>
+    </div>
+
+    <!-- 연락처 modal-->
+    <div id="contactModal" class="detail_call_body job_detail_modal_bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 modal_title">
+                    연락하기
+                </div>
+
+                <div class="col-12">
+                    <div class="detail_info">
+                        <div class="detail_info_title">연락가능시간</div>
+                        <h5>10:30 ~ 18:00</h5>
+                    </div>
+
+                    <div class="detail_info detail_call_caution">
+                        ※ 타인에게 전화해서 가나다라바사
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal_btn" v-on:click="onCall()">
+            <button class="bottombtn_p">
+                <h4>연락하기</h4>
+            </button>
+        </div>
+    </div>
+
+    <!-- modal background -->
+    <div class="job_detail_modal_background" v-on:click="dismissModal()"></div>
+
+    <!-- body -->
+
+    <div class="grobal_body">
+        <!-- title -->
+        <div class="detail_title">
+            <h4>[[ job.user.username ]] 님</h4>
+            <div class="detail_title_want">[[ job.title ]]</div>
+
+        </div>
+
+        <!-- start -->
+
+        <div class="container">
+            <!-- 시급,아이 -->
+            <div class="row">
+                <div class="col-6">
+                    <div class="grobal_box">
+                        <div class="detail_icontitle">
+                            <img src="../../static/images/detail/detail_won.svg" alt="detail_won">
+                            <h4>[[ job.payFormat ]] 원</h4>
+                            <h5>희망시급</h5>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="grobal_box">
+                        <div class="detail_icontitle">
+                            <img src="../../static/images/detail/detail_children.svg" alt="detail_children">
+                            <h4>[[ job.child_age ]]</h4>
+                            <h5>아이 나이</h5>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 상세정보 -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="grobal_box">
+                        <div class="detail_contents">
+                            <div id="btn" class="color_8">상세정보</div>
+                            <h5>
+                                [[ job.description ]]
+                            </h5>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 근무정보 -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="grobal_box">
+                        <div class="detail_info">
+                            <div class="detail_info_title">근무시간</div>
+                            <h5>[[ job.working_time ]]</h5>
+                        </div>
+
+                        <div class="detail_info">
+                            <div class="detail_info_title">근무위치</div>
+                            <h5>[[ job.working_location ]]</h5>
+                        </div>
+
+                        <div class="detail_info">
+                            <div class="detail_info_title">근무시작일</div>
+                            <h5>[[ job.working_date ]]</h5>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 근무요일 -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="grobal_box">
+                        <div class="detail_date">
+                            <div class="color_8">근무 요일</div>
+
+                            <div>
+                                <h5 v-bind:class='item.selected == true ? "detail_date_p" : "detail_date_g"'
+                                    v-for="item in job.working_day_of_weeks">
+                                    [[ item.day_of_week ]]
+                                </h5>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ect -->
+            <div class="row bottom_btn_end">
+                <div class="col-12">
+                    <div class="grobal_box">
+                        <div class="detail_info">
+                            <div class="detail_info_title">희망 연령대</div>
+                            <h5>[[ job.worker_age ]]</h5>
+                        </div>
+
+                        <div class="detail_info">
+                            <div class="detail_info_title">희망 성별</div>
+                            <h5>[[ job.worker_sex ]]</h5>
+                        </div>
+
+                        <div class="detail_info">
+                            <div class="detail_info_title">차량소지</div>
+                            <h5>[[ job.car_preference ]]</h5>
+                        </div>
+
+                        <div class="detail_info">
+                            <div class="detail_info_title">제출서류</div>
+                            <h5>[[ job.documents ]]</h5>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 연락하기 -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="grobal_btnbox" v-on:click="showContactModal()">
+                        <div class="detail_contact">
+                            <img src="../../static/images/detail/detail_phone.svg" alt="detail_phone">
+                            <h5>연락하기</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
 
-</div>
+    </div>
 
 </div>
 
