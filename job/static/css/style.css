@@ -744,7 +744,7 @@ button{
 
 .bottombtn_p_o{
 	flex: 1;
-  background-color: #a6c6fa;
+  background-color: #005CEF;
   color: #fff;
   padding: 15px;
 }
@@ -1620,4 +1620,8 @@ button{
   margin: 10px 0px 0px 0px;
 
   color: #888;
+}
+
+#myForm:valid .button {
+  background : #005CEF;
 }
