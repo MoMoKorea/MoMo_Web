@@ -598,9 +598,11 @@ button{
 
 .global_back{
   position: absolute;
-  top: 20px;
-  left: 15px;
+  top: 0px;
+  left: 0px;
   z-index: 99;
+
+  padding: 20px;
 }
 
 .global_back img{
@@ -1122,8 +1124,10 @@ button{
 
 .list_hamburg{
   position: absolute;
-  top: 5px;
-  right: 0px;
+  top: -20px;
+  right: -20px;
+
+  padding: 20px;
 }
 
 .list_hamburg img{
@@ -1495,11 +1499,11 @@ button{
   color: #888;
 }
 
-.hbg_bottom{
+.hbg_list{
   margin-top: 10px;
 }
 
-.hbg_bottom a{
+.hbg_list a{
   color: #333;
 }
 
@@ -1513,43 +1517,33 @@ button{
   margin: 2px 14px 0px 0px;
 }
 
-.hbg_logout_top img{
-  width: 100%;
-}
-
-.hbg_logout_bottom{
-  text-align: center;
-}
-
-.hbg_logo{
-  margin-top: 45px;
-}
-
-.hbg_logo img{
-  width: 90px;
-}
-
-.hbg_sutitle{
-  margin-top: 15px;
-}
-
-.hbg_regist{
-  margin-top: 30px;
-  padding: 0px 25px;
-}
-
-.hbg_login{
-  margin-top: 20px;
-}
-
 .hbg_bottom{
   position: absolute;
   bottom: 20px;
+
   text-align: center;
   left: 0;
-  right:0;
+  right: 0;
 }
 
+.hbg_logout{
+  position: fixed;
+  z-index: 98;
+  top: 50%;
+  margin-top: -84px;
+
+  padding: 0px 25px 0px 25px;
+  text-align: center;
+}
+
+.hbg_logout_logo{
+  width: 105px;
+  margin-bottom: 30px;
+}
+
+.hbg_logout button{
+  margin: 0px 0px 20px 0px;
+}
 
 /* headlocal */
 

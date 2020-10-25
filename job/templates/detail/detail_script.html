@@ -6,11 +6,10 @@
 <script>
 
     $(document).ready(function() {
-        var user = {{ request.userModel|safe }}
         var jobDetail = {{ data|safe }}
         app.job = jobDetail
         app.job.payFormat = numberWithCommas(app.job.pay)
-        app.user = user
+        app.user = {{ request.userModel|safe }}
 
         // 스크롤 리스너 연결
         initScrollListener()

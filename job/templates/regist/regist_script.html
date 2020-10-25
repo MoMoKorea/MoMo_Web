@@ -8,6 +8,7 @@
     $(document).ready(function() {
 
         var childAgeList = {{ data.childAgeList|safe }}
+        app.user = {{ request.userModel|safe }}
         app.childAgeList = childAgeList
         app.dayOfWeekList = {{ data.dayOfWeekList|safe }}
         app.preferredCarList = {{ data.preferredCarList|safe }}
