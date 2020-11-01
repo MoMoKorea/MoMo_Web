@@ -99,92 +99,89 @@
 
 
 <!-- content http://127.0.0.1:8000/accounts/confirm-email/ -->
-<div class="signup_body">
-    <div class="container">
-        <form class="signup" id="signup_form" method="post" accept-charset="utf-8" action="{% url 'user_signup' %}">
-            {% csrf_token %}
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-            {% endif %}
+<div class="user_content">
+  <form class="signup" id="signup_form" method="post" accept-charset="utf-8" action="{% url 'user_signup' %}">
+      {% csrf_token %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+      {% endif %}
 
-            <div class="home_list">
-                <div class="row">
-                    <div class="col-12">
-                        <div>성함</div>
-                        <div id="username_div" class="textinput">
-                            <input type="text" id="signup_username" name="username" placeholder="성함을 입력해주세요">
-                        </div>
-                        <h5 id="username_err" class="grobal_errortext display_n">성함을 기입해주세요.</h5>
-                    </div>
-                </div>
-            </div>
+      <div class="home_list">
+          <div class="row">
+              <div class="col-12">
+                  <div>성함</div>
+                  <div id="username_div" class="textinput">
+                      <input type="text" id="signup_username" name="username" placeholder="성함을 입력해주세요">
+                  </div>
+                  <h5 id="username_err" class="grobal_errortext display_n">성함을 기입해주세요.</h5>
+              </div>
+          </div>
+      </div>
 
-            <div class="home_list">
-                <div class="row">
-                    <div class="col-12">
-                        <div>이메일</div>
-                        <div id="email_div" class="textinput">
-                            <input type="email" id="signup_email" name="email" placeholder="이메일 주소를 입력해주세요">
-                        </div>
-                        <h5 id="email_err" class="grobal_errortext display_n">   이메일을 입력해주세요.  </h5>
-                        {% if form.email.errors %}
-                            <script>
-                                $("#email_div").addClass("input_error")
-                            </script>
-                            <h5 class="grobal_errortext ">{{form.email.errors}}</h5>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+      <div class="home_list">
+          <div class="row">
+              <div class="col-12">
+                  <div>이메일</div>
+                  <div id="email_div" class="textinput">
+                      <input type="email" id="signup_email" name="email" placeholder="이메일 주소를 입력해주세요">
+                  </div>
+                  <h5 id="email_err" class="grobal_errortext display_n">   이메일을 입력해주세요.  </h5>
+                  {% if form.email.errors %}
+                      <script>
+                          $("#email_div").addClass("input_error")
+                      </script>
+                      <h5 class="grobal_errortext ">{{form.email.errors}}</h5>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
 
-            <div class="home_list">
-                <div class="row">
-                    <div class="col-12">
-                        <div>비밀번호</div>
-                        <div id="password1_div" class="textinput">
-                            <input type="password" id="signup_password1" name="password1"
-                                   placeholder="숫자와 특수문자를 포함해주세요">
-                        </div>
-                        <h5 id="password1_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
-                        {% if form.password1.errors %}
-                            <script>
-                                $("#password1_div").addClass("input_error")
-                            </script>
-                            <h5 class="grobal_errortext ">{{form.password1.errors}}</h5>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
+      <div class="home_list">
+          <div class="row">
+              <div class="col-12">
+                  <div>비밀번호</div>
+                  <div id="password1_div" class="textinput">
+                      <input type="password" id="signup_password1" name="password1"
+                             placeholder="숫자와 특수문자를 포함해주세요">
+                  </div>
+                  <h5 id="password1_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+                  {% if form.password1.errors %}
+                      <script>
+                          $("#password1_div").addClass("input_error")
+                      </script>
+                      <h5 class="grobal_errortext ">{{form.password1.errors}}</h5>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
 
-            <div class="home_list">
-                <div class="row">
-                    <div class="col-12">
-                        <div>비밀번호 확인</div>
-                        <div id="password2_div" class="textinput">
-                            <input type="password" id="signup_password2" name="password2" placeholder="한번 더 입력해주세요">
-                        </div>
-                        <h5 id="password2_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
-                        {% if form.password2.errors %}
-                            <script>
-                                $("#password2_div").addClass("input_error")
-                            </script>
-                            <h5 class="grobal_errortext ">{{form.password2.errors}}</h5>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </form>
+      <div class="home_list">
+          <div class="row">
+              <div class="col-12">
+                  <div>비밀번호 확인</div>
+                  <div id="password2_div" class="textinput">
+                      <input type="password" id="signup_password2" name="password2" placeholder="한번 더 입력해주세요">
+                  </div>
+                  <h5 id="password2_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+                  {% if form.password2.errors %}
+                      <script>
+                          $("#password2_div").addClass("input_error")
+                      </script>
+                      <h5 class="grobal_errortext ">{{form.password2.errors}}</h5>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+  </form>
 
 
-        <button id="signupBtn">
-            <div class="home_list_btn">
-                <div class="grobal_btn">
-                    <h4 class="grobal_btn_primary grobal_btn_round">회원가입 완료</h4>
-                </div>
-            </div>
-        </button>
-
-    </div>
+  <button id="signupBtn">
+      <div class="home_list_btn">
+          <div class="grobal_btn">
+              <h4 class="grobal_btn_primary grobal_btn_round">회원가입 완료</h4>
+          </div>
+      </div>
+  </button>
 
 </div>
 

@@ -73,21 +73,21 @@
 
 <!-- content -->
 <div class="user_content">
-<form id="loginForm" class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
+  <form id="loginForm" class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
 
-
-<!--  <div class="user_content">-->
     <div class="home_list">
       <div class="row">
         <div class="col-12">
           <div>이메일</div>
+
           <div id="email_div" class="textinput">
               <input type="email" id="login_email" name="login" placeholder="이메일 주소" autofocus="autofocus"  >
           </div>
+
           <h5 id="email_err" class="grobal_errortext display_n">이메일을 입력해주세요.</h5>
         </div>
       </div>
@@ -97,28 +97,31 @@
       <div class="row">
         <div class="col-12">
           <div>비밀번호</div>
+
           <div id="password_div" class="textinput">
               <input type="password" id="login_password" name="password" placeholder="숫자와 특수문자 포함" >
           </div>
+
           <h5 id="password_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
+
         </div>
 
       </div>
     </div>
-    </form>
+  </form>
 
-    <button class="primaryAction" id="loginBtn">
-      <div class="home_list_btn">
-        <div class="home_btn grobal_btn">
-          <h4 class="grobal_btn_primary grobal_btn_round">로그인</h4>
-        </div>
+  <button class="primaryAction" id="loginBtn">
+    <div class="home_list_btn">
+      <div class="home_btn grobal_btn">
+        <h4 class="grobal_btn_primary grobal_btn_round">로그인</h4>
       </div>
-    </button>
+    </div>
+  </button>
 
 
-      <a href="/user/passreset">
-        <h4 class="text_c home_login">비밀번호 찾기</h4>
-      </a>
+    <a href="/user/passreset">
+      <h4 class="text_c home_login">비밀번호 찾기</h4>
+    </a>
   </div>
 
 
