@@ -1293,12 +1293,7 @@ button{
 /* user */
 
 .user_content{
-  position: absolute;
-  top: 50%;
-  transform: translate(0,-50%);
-
-  width: 100%;
-  padding: 0px 15px 0px 15px;
+  padding: 104px 15px 0px 15px;
 }
 
 .user_head{
@@ -1314,6 +1309,13 @@ button{
 .user_head h4{
   font-family: 'NotoSansKR Bold';
 }
+
+.user_emailverification_sent{
+  width: 100px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
 
 
 /* home */
@@ -1361,16 +1363,6 @@ button{
 
 .home_bottom span{
   margin-right: 10px;
-}
-
-.home_emailimg{
-  width: 150px;
-  margin: 0 auto;
-  padding-bottom: 20px;
-}
-
-.signup_body{
-  margin: 90px 0px 40px 0px;
 }
 
 
