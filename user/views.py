@@ -11,13 +11,8 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from momo_web.viewname import *
 
-
-
-## user내의 form에 있는 함수를 불러오는 라인을 짜보시오
 from .forms import MyCustomSignupForm
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
 
 class Signup(SignupView):
     '''
@@ -63,15 +58,14 @@ class Logout(LogoutView):
         # add code here
         return render(request, 'account/logout.html')
 
+def password_change_allauth(request):
+
+    return render(request, 'accounts/password/change/')
+
 def verification_sent_allauth(request):
     # add code here
 
     return render(request, 'account/verification_sent.html')
-
-def password_change_allauth(request):
-    # add code here
-
-    return render(request, 'account/password_change_2.html')
 
 def password_reset_allauth(request):
     # add code here
