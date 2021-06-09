@@ -1,12 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>home</title>
+{% include 'head.html' %}
 
-    <h1>home</h1>
-</head>
-<body>
+<!-- 특정 style -->
+<style>
+  body{
+    background-color: #fff;
+  }
+</style>
+<!-- 특정 style end-->
 
-</body>
-</html>
+
+<div class="user_content">
+  <div class="home_img">
+    <img src="../../static/images/user/img_welcome.svg" alt="img_welcome">
+  </div>
+
+  <h2 class="home_title">아이들의 안전을<br/>지켜줄 이웃을 만나보세요</h2>
+
+  <a href="/user/signup">
+    <div class="home_btn grobal_btn">
+      <h4 class="grobal_btn_primary grobal_btn_round">간편 회원가입</h4>
+    </div>
+  </a>
+
+  <a href="/user/login">
+    <h4 class="text_c home_login">로그인</h4>
+  </a>
+
+  <a href="#">
+    <h4 class="text_c color_8">먼저 둘러보기</h4>
+  </a>
+
+</div>
+
+
+{% include 'footer.html' %}

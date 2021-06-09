@@ -1,0 +1,34 @@
+{% load static %}
+<script src="{% static 'js/job_list_vue.js' %}"></script>
+
+<script>
+
+
+    $(document).ready(function() {
+
+        var data = {{data|safe}}
+        var user = {{ request.userModel|safe }}
+
+        var jobList = data['jobList']
+        var totalPage = data['totalPage']
+        listVue.user = user
+        listVue.jobList = jobList
+        intComma(listVue.jobList)
+        listVue.totalPage = totalPage
+        listVue.locations = {{ locations|safe }}
+        listVue.selectedLocation = {{ selectedLocation|safe }}
+
+    })
+
+    function intComma(jobList) {
+
+        for (var i = 0; i < jobList.length; i++) {
+<!--            원본데이터 변경을 방지하기 위해 새로운 변수에 담는다.-->
+            jobList[i].payWithComma = numberWithCommas(jobList[i].pay)
+        }
+    }
+
+
+
+
+</script>

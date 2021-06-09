@@ -1,7 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
-from . import views
+from django.urls import path
+from . import views as momoView
+from job.urls import views as jobView
+
 
 urlpatterns = [
-    path('', views.home)
+    path('', jobView.get_list),
+    path('home', momoView.home),
 ]

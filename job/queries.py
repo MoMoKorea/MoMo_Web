@@ -1,7 +1,7 @@
-import logging
+import logging, json
 from pprint import pprint
 
-from job.models import JobRequireDocumentMappingORM
+from job.models import JobRequireDocumentMappingORM, JobAgeMappingORM
 from job.models.job import JobORM
 from job.serializers import JobSerializer, ChildAgeSerializer
 from job.models.child_age import ChildAgeORM
@@ -35,12 +35,18 @@ class JobRecords:
             # 근무요일 save
             for dayId in data["selectedDayOfWeeks"]:
                 selectedDayOfWeek = JobDayOfWeekORM(dayId)
-                JobDayOfWeekMappingORM.objects.create(job_id=job.job_id, day_of_week_id=selectedDayOfWeek)
+                JobDayOfWeekMappingORM.objects.create(job_id=job, day_of_week_id=selectedDayOfWeek)
 
             # 제출문서 save
             for documentId in data["selectedRequiredDocuments"]:
                 selectedDocument = JobRequireDocumentORM(documentId)
-                JobRequireDocumentMappingORM.objects.create(job_id=job.job_id, require_document_id=selectedDocument)
+                JobRequireDocumentMappingORM.objects.create(job_id=job, require_document_id=selectedDocument)
+
+            # 선호 연령 save
+            for workerAge in data["selectedWorkerAge"]:
+                selectedWorkerAge = JobAgeORM(workerAge)
+                JobAgeMappingORM.objects.create(job_id=job, age_id=selectedWorkerAge)
+
 
             return serializer
         else:
@@ -55,12 +61,17 @@ class JobRecords:
 
     @staticmethod
     def get_job_detail(jobId):
+        return JobORM.get_detail().get(job_id=jobId)
 
-        querySet = JobORM.objects.get(job_id=jobId)
-        jobSerializer = JobSerializer(querySet)
+    """
+    Kyle 2019-10-06
 
-        jobData = jobSerializer.data.copy()
-        return jobData
+    @API: 구직 리스트  
+    """
+    @staticmethod
+    def get_job_list(locationId):
+        return JobORM.get_main_list().order_by('-job_id').filter(second_location_id=locationId)
+
 
     """
     Kyle 2019-07-20
@@ -114,6 +125,10 @@ class JobRecords:
     @staticmethod
     def get_second_location(parent_id):
         return JobLocationORM.objects.filter(parent_location_id=parent_id, depth=2, status=1)
+
+    @staticmethod
+    def get_second_location_by_id(location_id):
+        return JobLocationORM.objects.filter(job_location_id=location_id, depth=2, status=1)
 
     @staticmethod
     def get_third_location(parent_id):
