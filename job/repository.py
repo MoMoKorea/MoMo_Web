@@ -5,7 +5,6 @@ from django.core.paginator import Paginator
 
 
 class JobRepository:
-
     @classmethod
     def process_job_detail(self, job_id):
 
@@ -61,8 +60,6 @@ class JobRepository:
 
         jobDetail['worker_age'] = selectedWorkAgeString
 
-
-
         return jobDetail
 
     @classmethod
@@ -83,10 +80,8 @@ class JobRepository:
         return customDayOfWeeks
 
 
-
     @classmethod
     def process_job_list(self, page, selectedLocationId):
-
         # query
         querySet = JobRecords.get_job_list(selectedLocationId)
         # 15개씩 끊어서 아이템을 페이징한다.

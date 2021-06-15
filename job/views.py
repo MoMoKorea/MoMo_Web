@@ -94,14 +94,14 @@ Kyle 2019-10-06
 
 @API: job 리스트
 """
+@api_view(['GET'])
 def get_list(request):
-
     # 1. 리스트 데이터들을 불러온다.
     # request.GET.get('page') 가 NoneType이면 1을 반환 아니면 넘어온 page를 반환
     page = 1 if request.GET.get('page') is None else int(request.GET.get('page'))
     # TODO: user 계정에 선택된 지역 id값을 추가해야한다.
     # TODO: 계정에서 가져온 지역id로 지역이름도 가져와서 셋팅을 해준다.
-    selectedLocationId = 40 if request.GET.get('location_id') is None else int(request.GET.get('location_id'))
+    selectedLocationId = 41 if request.GET.get('location_id') is None else int(request.GET.get('location_id'))
     selectedLocation = jobRepository.get_selected_location(selectedLocationId)
     jobList = jobRepository.process_job_list(page, selectedLocationId)
     location = jobRepository.get_location_list()
