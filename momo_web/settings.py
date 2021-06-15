@@ -117,7 +117,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -169,7 +168,7 @@ ACCOUNT_FORMS = {'signup': 'user.forms.MyCustomSignupForm'}
 LOGIN_REDIRECT_URL = '/job/' #home >> 나중에 Kyle이랑 합칠 때 피드 URL 넣을 부분임
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/user/signup' #home'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/user/login' #home'
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False # 로그인 후 로그인/회원가입 페이지 접근 제어 하도록 하는 설정 https://django-allauth.readthedocs.io/en/latest/configuration.html
 SITE_ID = 1
 

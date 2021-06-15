@@ -8,6 +8,58 @@
 </style>
 <!-- 특정 style end-->
 
+<script>
+
+  var validate = new Array()
+
+
+<!-- road -->
+  $(document).ready(function() {
+
+    $("#loginBtn").click(function () {
+      onLogin();
+    });
+  });
+
+<!--  로그인 form 전송-->
+  function onLogin() {
+
+    if (checkValidation()) {
+      $("#loginForm").submit();
+    }
+    else {
+      validate.forEach(function(item) {
+          console.log(item)
+          var divId = item + "_div"
+          var errorMessageId = item + "_err"
+          $("#" + divId).addClass("input_error")
+          $("#" + errorMessageId).removeClass("display_n")
+      })
+    }
+
+  }
+
+<!--  이메일 & 패스워드 벨리데이션 체크-->
+  function checkValidation() {
+
+    validate = []
+
+    var loginEmail = $("#login_email").val();
+    var password = $("#login_password").val();
+    if (isEmpty(loginEmail)) {
+        validate.push("email")
+    }
+
+
+    if (isEmpty(password)) {
+        validate.push("password")
+    }
+
+    return validate.length == 0
+  }
+
+
+</script>
 
 <!-- head -->
 <div class="user_head">
@@ -20,21 +72,23 @@
 
 
 <!-- content -->
-<form class="login" method="POST" action="{% url 'account_login' %}">
+<div class="user_content">
+<form id="loginForm" class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
 
 
-  <div class="user_content">
+<!--  <div class="user_content">-->
     <div class="home_list">
       <div class="row">
         <div class="col-12">
           <div>이메일</div>
-          <div class="textinput">
-              <input type="email" id="signup_email" name="login" placeholder="이메일 주소" autofocus="autofocus"  v-model="title">
+          <div id="email_div" class="textinput">
+              <input type="email" id="login_email" name="login" placeholder="이메일 주소" autofocus="autofocus"  >
           </div>
+          <h5 id="email_err" class="grobal_errortext display_n">이메일을 입력해주세요.</h5>
         </div>
       </div>
     </div>
@@ -43,24 +97,29 @@
       <div class="row">
         <div class="col-12">
           <div>비밀번호</div>
-          <div class="textinput">
-              <input type="password" id="signup_password" name="password" placeholder="숫자와 특수문자 포함" v-model="title">
+          <div id="password_div" class="textinput">
+              <input type="password" id="login_password" name="password" placeholder="숫자와 특수문자 포함" >
           </div>
+          <h5 id="password_err" class="grobal_errortext display_n">비밀번호를 입력해주세요.</h5>
         </div>
 
       </div>
     </div>
-    <button class="primaryAction" type="submit">
+    </form>
+
+    <button class="primaryAction" id="loginBtn">
       <div class="home_list_btn">
         <div class="home_btn grobal_btn">
           <h4 class="grobal_btn_primary grobal_btn_round">로그인</h4>
         </div>
+      </div>
     </button>
+
 
       <a href="/user/passreset">
         <h4 class="text_c home_login">비밀번호 찾기</h4>
       </a>
-    </div>
+  </div>
 
 
   <!-- bottom -->
@@ -68,6 +127,5 @@
   <h4 class="home_bottom">
     <span class="color_8">아직 계정이 없으세요?</span><a href="/user/signup">회원가입하기</a>
   </h4>
-</form>
 
 {% include 'footer.html' %}

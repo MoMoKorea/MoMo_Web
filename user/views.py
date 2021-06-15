@@ -6,6 +6,11 @@ from django.http import HttpResponse
 from allauth.account.views import SignupView
 from allauth.account.views import LoginView
 from allauth.account.views import LogoutView
+from rest_framework.decorators import api_view, renderer_classes
+from django.shortcuts import redirect
+from django.urls import reverse
+from momo_web.viewname import *
+
 
 
 ## user내의 form에 있는 함수를 불러오는 라인을 짜보시오
@@ -22,10 +27,19 @@ class Signup(SignupView):
         super(self).__init__()
         self.name = "Joe"
 
+    @api_view(('POST', 'GET'))
     def signup_allauth(request):
         # add code here
 
-        return render(request, 'account/signup.html')
+        if request.method == 'POST':
+            form = MyCustomSignupForm(request.POST, request.FILES)
+            print(form)
+            if form.is_valid():
+                return redirect(reverse(UserViewname.VIEW_VERIFICATION_SENT))
+            else:
+                return render(request, 'account/signup.html', {'form': form})
+        else:
+            return render(request, 'account/signup.html')
 
 class Login(LoginView):
     '''
@@ -57,7 +71,7 @@ def verification_sent_allauth(request):
 def password_change_allauth(request):
     # add code here
 
-    return render(request, 'account/password_change.html')
+    return render(request, 'account/password_change_2.html')
 
 def password_reset_allauth(request):
     # add code here

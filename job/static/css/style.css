@@ -184,7 +184,7 @@ button{
 }
 
 .selectinput_error select{
-  border-bottom: solid 2px #e61b22;
+  border-bottom: solid 2px #e61b22 !important;
 }
 
 
@@ -269,12 +269,6 @@ button{
   border-bottom: 2px solid #005cef;
 }
 
-.textinput_error input[type="text"],
-.textinput_error input[type="email"],
-.textinput_error input[type="password"]{
-  border-bottom: solid 2px #e61b22;
-}
-
 /* input_number */
 
 .numberinput{
@@ -295,10 +289,6 @@ button{
 
 .numberinput input[type="number"]:focus{
   border-bottom: 2px solid #005cef;
-}
-
-.numberinput_error input[type="number"]{
-  border-bottom: solid 2px #e61b22;
 }
 
 /* input_date */
@@ -336,9 +326,6 @@ button{
   color: #005cef !important;
 }
 
-.datebtn_l_error input[type="date"]{
-  border: solid 2px #e61b22;
-}
 
 /* input_time */
 
@@ -373,10 +360,6 @@ button{
 .timeinput input[type="time"]:valid{
   border-bottom: 2px solid #005cef;
   color: #005cef !important;
-}
-
-.timeinput_error input[type="time"]{
-  border-bottom: solid 2px #e61b22;
 }
 
 /* input_radiobtn */
@@ -512,6 +495,22 @@ button{
 }
 
 
+/* error */
+
+
+.input_error input[type="text"],
+.input_error input[type="email"],
+.input_error input[type="password"],
+.input_error input[type="number"],
+.input_error input[type="time"],
+.input_error select {
+    border-bottom: solid 2px #e61b22 !important;
+}
+.input_error input[type="date"] {
+    border: solid 2px #e61b22 !important;
+}
+
+
 /* general */
 
 
@@ -575,6 +574,10 @@ button{
 
 .font_t{
   font-family: 'NotoSansKR Thin';
+}
+
+.font_b{
+  font-family: 'NotoSansKR Bold';
 }
 
 .display_n{
@@ -758,6 +761,16 @@ button{
   color: #fff;
 }
 
+.grobal_btn_s_primary{
+  flex: 1;
+  padding: 9px 12px 8px 12px;
+  text-align: center;
+
+  font-size: 13px;
+  background-color: #005cef;
+  color: #fff;
+}
+
 .grobal_errortext{
   margin-top: 4px;
   color: #e61b22;
@@ -786,7 +799,8 @@ button{
   border-bottom-left-radius: 8px;
 }
 
-.modal_bottom{
+.modal_bottom,
+.job_detail_modal_bottom {
   display: none;
   position: fixed;
   bottom:0;
@@ -812,7 +826,8 @@ button{
   font-family: 'NotoSansKR Bold';
 }
 
-.modal_background{
+.modal_background,
+.job_detail_modal_background {
   display: none;
   position: fixed;
   z-index: 200;
@@ -1320,6 +1335,7 @@ button{
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  margin: 0px 0px 15px 0px;
 }
 
 .mpg_menu a{
@@ -1360,8 +1376,17 @@ button{
 
 .mpg_menu_collapse{
   padding: 0px 15px 16px 15px;
+  line-height: 24px;
+}
 
-  color: #888;
+.mpg_menu_collapse p{
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.mpg_menu_collapse p:last-child{
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 

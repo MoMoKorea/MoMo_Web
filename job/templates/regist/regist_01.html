@@ -4,9 +4,10 @@
         <div class="col-12">
 
             <div>제목</div>
-            <div class="textinput">
+            <div id="title_div" class="textinput">
                 <input type="text" id="regist_title" placeholder="등하교를 도와주실분 찾습니다" v-model="title">
             </div>
+            <h5 id="title_err" class="grobal_errortext display_n">8~25글자 이하로 입력해주세요.</h5>
 
         </div>
     </div>
@@ -34,6 +35,8 @@
                 </label>
 
             </div>
+            <h5 id="child_age_err" class="grobal_errortext display_n">하나를 선택해주세요!</h5>
+
         </div>
     </div>
 </div>
@@ -48,9 +51,10 @@
 
     <div class="row">
         <div class="col-7">
-            <div class="numberinput">
+            <div id="pay_div" class="numberinput">
                 <input type="number" pattern="\d*" placeholder="희망시급을 입력하세요" v-model.number="pay">
             </div>
+            <h5 id="pay_err" class="grobal_errortext display_n">금액을 입력해주세요!</h5>
         </div>
 
         <div class="col-5 text_c">
@@ -79,10 +83,12 @@
         <div class="col-12">
             <div>근무시작일</div>
             <form>
-                <div class="datebtn_l">
+                <div id="start_working_date_div" class="datebtn_l">
                     <input type="date" name="workdate" data-placeholder="&#x1F4C5;  시작일 선택" required
                            aria-required="true" v-model="startWorkingDate"/>
                 </div>
+                <h5 id="start_working_date_err" class="grobal_errortext display_n">시작일을 선택해주세요!</h5>
+
             </form>
 
         </div>
@@ -106,8 +112,8 @@
                 <label v-bind:for="'regist_week_' + item.job_day_of_week_id"> [[item.day_of_week]] </label>
             </div>
         </div>
-
     </div>
+    <h5 id="day_of_week_err" class="grobal_errortext display_n">희망 요일을 선택해주세요!</h5>
 </div>
 
 <!-- 근무시간 -->
@@ -121,20 +127,22 @@
     <div class="row">
         <div class="col-6">
             <form>
-                <div class="timeinput">
+                <div id="start_working_time_div" class="timeinput">
                     <input type="time" name="regist_time" data-placeholder="&#x1F31D;  시작" required aria-required="true"
                            v-model="startWorkingTime">
                 </div>
             </form>
+            <h5 id="start_working_time_err" class="grobal_errortext display_n">시간을 지정해주세요!</h5>
         </div>
 
         <div class="col-6">
             <form>
-                <div class="timeinput">
+                <div id="end_working_time_div" class="timeinput">
                     <input type="time" name="regist_time" data-placeholder="&#x1F31A;  끝" required aria-required="true"
                            v-model="endWorkingTime">
                 </div>
             </form>
+            <h5 id="end_working_time_err" class="grobal_errortext display_n">시간을 지정해주세요!</h5>
         </div>
     </div>
 </div>
