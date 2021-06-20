@@ -9,7 +9,7 @@ urlpatterns = [
     # 공고 등록
     path('regist', views.register, name=JobViewname.VIEW_JOB_REGIST),
     # 공고 상세
-    path('detail/<int:jobId>', views.get_detail, name=JobViewname.VIEW_JOB_DETAIL),
+    path('detail/<int:jobId>', views.get_detail.as_view(), name=JobViewname.VIEW_JOB_DETAIL),
 
     path('api/', include([
         path('root-location', apis.get_root_location),

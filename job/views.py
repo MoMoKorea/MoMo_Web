@@ -80,44 +80,52 @@ Kyle 2019-06-15
 
 @API: job 상세
 """
-@api_view(['GET'])
-def get_detail(request, jobId):
+# @api_view(['GET'])
+# def get_detail(request, jobId):
+#     # 0. 유효하지않은 jobId면 없는페이지로 돌린다
+#     # 1. jobId로 정보들을 불러오고 가공한다.
+#     jobDetail = jobRepository.process_job_detail(jobId)
+#     # 2. 화면으로 가공한 정보를 넘긴다.
+#     return render(request, template_name='detail/detail.html', context={'data': json.dumps(jobDetail, cls=DjangoJSONEncoder)})
 
-    # 0. 유효하지않은 jobId면 없는페이지로 돌린다
-    # 1. jobId로 정보들을 불러오고 가공한다.
-    jobDetail = jobRepository.process_job_detail(jobId)
+class get_detail(View):
+    def get(self, request, jobId):
+        # 0. 유효하지않은 jobId면 없는페이지로 돌린다
+        # 1. jobId로 정보들을 불러오고 가공한다.
+        jobDetail = jobRepository.process_job_detail(jobId)
+        # 2. 화면으로 가공한 정보를 넘긴다.
+        return render(request, template_name='detail/detail.html',
+                      context={'data': json.dumps(jobDetail, cls=DjangoJSONEncoder)})
 
-    # 2. 화면으로 가공한 정보를 넘긴다.
-    return render(request, template_name='detail/detail.html', context={'data': json.dumps(jobDetail, cls=DjangoJSONEncoder)})
 
 """
 Kyle 2019-10-06
 
 @API: job 리스트
 """
-@api_view(['GET'])
-def get_list(request):
-    # 1. 리스트 데이터들을 불러온다.
-    # request.GET.get('page') 가 NoneType이면 1을 반환 아니면 넘어온 page를 반환
-    page = 1 if request.GET.get('page') is None else int(request.GET.get('page'))
-    # TODO: user 계정에 선택된 지역 id값을 추가해야한다.
-    # TODO: 계정에서 가져온 지역id로 지역이름도 가져와서 셋팅을 해준다.
-    selectedLocationId = 41 if request.GET.get('location_id') is None else int(request.GET.get('location_id'))
-    selectedLocation = jobRepository.get_selected_location(selectedLocationId)
-    jobList = jobRepository.process_job_list(page, selectedLocationId)
-    location = jobRepository.get_location_list()
-
-    # rest api 요청일경우에는 json형식으로 내려준다
-    if request.META.get('HTTP_ACCEPT').find('json') != -1:
-        return HttpResponse(json.dumps(jobList, cls=DjangoJSONEncoder), content_type="application/json")
-    else:
-        params = {
-            'data': json.dumps(jobList, cls=DjangoJSONEncoder),
-            'locations': json.dumps(location, cls=DjangoJSONEncoder),
-            'selectedLocation': json.dumps(selectedLocation, cls=DjangoJSONEncoder),
-        }
-
-        return render(request, template_name='list/list.html', context=params)
+# @api_view(['GET'])
+# def get_list(request):
+#     # 1. 리스트 데이터들을 불러온다.
+#     # request.GET.get('page') 가 NoneType이면 1을 반환 아니면 넘어온 page를 반환
+#     page = 1 if request.GET.get('page') is None else int(request.GET.get('page'))
+#     # TODO: user 계정에 선택된 지역 id값을 추가해야한다.
+#     # TODO: 계정에서 가져온 지역id로 지역이름도 가져와서 셋팅을 해준다.
+#     selectedLocationId = 41 if request.GET.get('location_id') is None else int(request.GET.get('location_id'))
+#     selectedLocation = jobRepository.get_selected_location(selectedLocationId)
+#     jobList = jobRepository.process_job_list(page, selectedLocationId)
+#     location = jobRepository.get_location_list()
+#
+#     # rest api 요청일경우에는 json형식으로 내려준다
+#     if request.META.get('HTTP_ACCEPT').find('json') != -1:
+#         return HttpResponse(json.dumps(jobList, cls=DjangoJSONEncoder), content_type="application/json")
+#     else:
+#         params = {
+#             'data': json.dumps(jobList, cls=DjangoJSONEncoder),
+#             'locations': json.dumps(location, cls=DjangoJSONEncoder),
+#             'selectedLocation': json.dumps(selectedLocation, cls=DjangoJSONEncoder),
+#         }
+#
+#         return render(request, template_name='list/list.html', context=params)
 
 """
 Joe 2021-06-19
@@ -146,3 +154,5 @@ class get_list(View):
                 'selectedLocation': json.dumps(selectedLocation, cls=DjangoJSONEncoder),
             }
             return render(request, template_name='list/list.html', context=params)
+
+
