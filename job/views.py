@@ -88,6 +88,11 @@ Kyle 2019-06-15
 #     # 2. 화면으로 가공한 정보를 넘긴다.
 #     return render(request, template_name='detail/detail.html', context={'data': json.dumps(jobDetail, cls=DjangoJSONEncoder)})
 
+"""
+Joe 2021-06-19
+
+@API: job 리스트 > class기반 뷰 
+"""
 class get_detail(View):
     def get(self, request, jobId):
         # 0. 유효하지않은 jobId면 없는페이지로 돌린다

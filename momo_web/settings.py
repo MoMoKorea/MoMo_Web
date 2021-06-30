@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     # 금액 천단위 콤마
     'django.contrib.humanize',
 
+    # temp
+    'acountapp',
+
 ]
 
 MIDDLEWARE = [
